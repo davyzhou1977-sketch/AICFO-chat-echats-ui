@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Input, Select, Table, Space, Tag, Pagination, Tooltip } from 'antd';
-import { DownloadOutlined, PlusOutlined, MessageOutlined, BarChartOutlined } from '@ant-design/icons';
+import { BarChartOutlined, DownloadOutlined, MessageOutlined } from '@ant-design/icons';
 import AISidebar from './AISidebar';
 import ReportDrawer from './ReportDrawer';
 
@@ -8,7 +8,7 @@ const { Option } = Select;
 
 const MainContent = () => {
   const [aiSidebarVisible, setAiSidebarVisible] = useState(false);
-  const [reportDrawerVisible, setReportDrawerVisible] = useState(false);
+  const [reportDrawerVisible, setReportDrawerVisible] = useState(true);
   
   const columns = [
     {
@@ -214,7 +214,9 @@ const MainContent = () => {
         <div style={{ display: 'flex', gap: '12px' }}>
           <Button>批量操作</Button>
           <Button icon={<DownloadOutlined />}>导出Excel</Button>
-          <Button type="primary" icon={<PlusOutlined />}>申请报销</Button>
+          <Button type="primary" icon={<BarChartOutlined />} onClick={() => setReportDrawerVisible(true)}>
+            AI报表查询
+          </Button>
         </div>
       </div>
 
@@ -234,41 +236,48 @@ const MainContent = () => {
         <Button size="small">展开</Button>
       </div>
 
-      {/* 表格 - 可滚动 */}
-      <div style={{ flex: 1, overflow: 'auto', padding: '16px' }}>
-        <div style={{ backgroundColor: '#fff', borderRadius: '4px', overflow: 'hidden' }}>
-          <Table 
-            columns={columns} 
-            dataSource={data} 
-            pagination={false}
-            bordered
-            rowKey="key"
-            size="small"
-            style={{ 
-              border: '1px solid #e8e8e8',
-              borderRadius: '4px',
-              overflow: 'hidden'
-            }}
-          />
-          <div style={{ marginTop: '16px', padding: '0 16px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div>共 198 条记录</div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-              <Pagination 
-                current={2} 
-                total={198} 
-                pageSize={10} 
-                showSizeChanger={false} 
-                size="small"
-              />
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span>10条/页</span>
-                <span>跳至</span>
-                <Input style={{ width: 60 }} defaultValue="2" size="small" />
-                <span>页</span>
+      {/* 主体区域 */}
+      <div style={{ flex: 1, overflow: 'hidden', padding: '16px', display: 'flex', gap: '20px' }}>
+        <div style={{ flex: 1, minWidth: 0, overflow: 'auto' }}>
+          <div style={{ backgroundColor: '#fff', borderRadius: '18px', overflow: 'hidden', boxShadow: '0 12px 32px rgba(15, 23, 42, 0.04)' }}>
+            <Table 
+              columns={columns} 
+              dataSource={data} 
+              pagination={false}
+              bordered
+              rowKey="key"
+              size="small"
+              style={{ 
+                border: '1px solid #e8e8e8',
+                borderRadius: '18px',
+                overflow: 'hidden'
+              }}
+            />
+            <div style={{ marginTop: '16px', padding: '0 16px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div>共 198 条记录</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <Pagination 
+                  current={2} 
+                  total={198} 
+                  pageSize={10} 
+                  showSizeChanger={false} 
+                  size="small"
+                />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span>10条/页</span>
+                  <span>跳至</span>
+                  <Input style={{ width: 60 }} defaultValue="2" size="small" />
+                  <span>页</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+        <ReportDrawer
+          visible={reportDrawerVisible}
+          onClose={() => setReportDrawerVisible(false)}
+        />
       </div>
 
       {/* 悬浮按钮 */}
@@ -288,33 +297,12 @@ const MainContent = () => {
             onClick={() => setAiSidebarVisible(true)} 
           />
         </Tooltip>
-        <Tooltip title="报销单报表">
-          <Button 
-            shape="circle" 
-            icon={<BarChartOutlined />} 
-            style={{ 
-              width: 48, 
-              height: 48, 
-              fontSize: 20, 
-              boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-              backgroundColor: '#52c41a',
-              borderColor: '#52c41a'
-            }} 
-            onClick={() => setReportDrawerVisible(true)} 
-          />
-        </Tooltip>
       </div>
 
       {/* 智能AI问答侧边栏 */}
       <AISidebar 
         visible={aiSidebarVisible} 
         onClose={() => setAiSidebarVisible(false)} 
-      />
-      
-      {/* 报销单报表抽屉 */}
-      <ReportDrawer
-        visible={reportDrawerVisible}
-        onClose={() => setReportDrawerVisible(false)}
       />
     </div>
   );

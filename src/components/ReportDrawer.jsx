@@ -1,111 +1,218 @@
-import React, { useEffect, useRef } from 'react';
-import { Drawer } from 'antd';
-import { CloseOutlined } from '@ant-design/icons';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { BulbOutlined, CloseOutlined } from '@ant-design/icons';
 import echarts from 'echarts';
+import './ReportDrawer.css';
+
+const chartData = {
+  categories: ['1 月', '2 月', '3 月'],
+  westCampus: [8200, 11200, 3376],
+  eastCampus: [16800, 18100, 428]
+};
+
+function getDefaultChartType(categories) {
+  const timeLikePattern = /(月|周|日|季度|年)/;
+  return categories.some((label) => timeLikePattern.test(label)) ? 'line' : 'bar';
+}
+
+function formatCurrency(value) {
+  return new Intl.NumberFormat('zh-CN').format(value);
+}
 
 const ReportDrawer = ({ visible, onClose }) => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
+  const [chartType, setChartType] = useState(getDefaultChartType(chartData.categories));
+
+  const summary = useMemo(() => {
+    const totalWest = chartData.westCampus.reduce((sum, value) => sum + value, 0);
+    const totalEast = chartData.eastCampus.reduce((sum, value) => sum + value, 0);
+    const totalAmount = totalWest + totalEast;
+    const combinedMonthly = chartData.categories.map((_, index) => chartData.westCampus[index] + chartData.eastCampus[index]);
+    const peakMonthIndex = combinedMonthly.indexOf(Math.max.apply(null, combinedMonthly));
+    const peakMonth = chartData.categories[peakMonthIndex];
+    const dominantCampus = totalEast > totalWest ? '东校区' : '西校区';
+
+    return {
+      totalWest,
+      totalEast,
+      totalAmount,
+      dominantCampus,
+      peakMonth,
+      insight: `2026年1-3月水费共 ${formatCurrency(totalAmount)} 元，其中${dominantCampus}支出更高，${peakMonth}达到阶段峰值。建议后续补充校区面积或人数口径后，再看单位成本是否存在优化空间。`
+    };
+  }, []);
+
+  const buildChartOption = (chartWidth = 320) => {
+    const categories = chartData.categories;
+    const westCampusData = chartData.westCampus;
+    const eastCampusData = chartData.eastCampus;
+    const seriesCount = 2;
+    const categoryCount = categories.length || 1;
+
+    const computedBarWidth = Math.max(
+      20,
+      Math.min(30, Math.round(chartWidth / (categoryCount * (seriesCount * 3))))
+    );
+
+    return {
+      animationDuration: 850,
+      animationDurationUpdate: 500,
+      animationEasing: 'cubicOut',
+      animationEasingUpdate: 'cubicOut',
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: chartType === 'line' ? 'line' : 'shadow',
+          lineStyle: {
+            color: 'rgba(98, 113, 138, 0.32)',
+            width: 1
+          },
+          shadowStyle: {
+            color: 'rgba(62, 101, 255, 0.06)'
+          }
+        },
+        backgroundColor: 'rgba(22, 29, 45, 0.88)',
+        borderWidth: 0,
+        padding: [10, 12],
+        textStyle: {
+          color: '#f8fafc',
+          fontSize: 12
+        }
+      },
+      grid: {
+        left: 34,
+        right: 12,
+        bottom: 16,
+        top: 14,
+        containLabel: true
+      },
+      xAxis: {
+        type: 'category',
+        data: categories,
+        axisLine: {
+          show: true,
+          lineStyle: {
+            color: '#d9dee8'
+          }
+        },
+        axisTick: {
+          show: false
+        },
+        axisLabel: {
+          color: '#7f8ba3',
+          fontSize: 12,
+          margin: 10
+        }
+      },
+      yAxis: {
+        type: 'value',
+        min: 0,
+        max: 21000,
+        interval: 3000,
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: '#d5dce7',
+            type: 'dashed'
+          }
+        },
+        axisLine: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        axisLabel: {
+          color: '#7f8ba3',
+          fontSize: 12,
+          margin: 12,
+          formatter(value) {
+            return chartType === 'line' ? `${formatCurrency(value)}元` : formatCurrency(value);
+          }
+        },
+        splitArea: {
+          show: false
+        }
+      },
+      series: [
+        {
+          name: '西校区',
+          type: chartType,
+          smooth: chartType === 'line',
+          symbol: chartType === 'line' ? 'circle' : 'none',
+          symbolSize: chartType === 'line' ? 7 : 0,
+          showSymbol: true,
+          barWidth: computedBarWidth,
+          barMaxWidth: 30,
+          barMinHeight: 2,
+          barGap: '12%',
+          barCategoryGap: '22%',
+          lineStyle: {
+            width: 3,
+            color: '#2d5ef2'
+          },
+          itemStyle: {
+            color: chartType === 'line'
+              ? '#2d5ef2'
+              : new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                  { offset: 0, color: '#4d7cff' },
+                  { offset: 1, color: '#2d5ef2' }
+                ]),
+            barBorderRadius: [8, 8, 0, 0]
+          },
+          animationDuration: 720,
+          animationDelay(idx) {
+            return idx * 100;
+          },
+          areaStyle: chartType === 'line' ? { color: 'transparent' } : undefined,
+          data: westCampusData
+        },
+        {
+          name: '东校区',
+          type: chartType,
+          smooth: chartType === 'line',
+          symbol: chartType === 'line' ? 'circle' : 'none',
+          symbolSize: chartType === 'line' ? 7 : 0,
+          showSymbol: true,
+          barWidth: computedBarWidth,
+          barMaxWidth: 30,
+          barMinHeight: 2,
+          barGap: '12%',
+          barCategoryGap: '22%',
+          lineStyle: {
+            width: 3,
+            color: '#1eaf74'
+          },
+          itemStyle: {
+            color: chartType === 'line'
+              ? '#1eaf74'
+              : new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                  { offset: 0, color: '#31cf93' },
+                  { offset: 1, color: '#1eaf74' }
+                ]),
+            barBorderRadius: [8, 8, 0, 0]
+          },
+          animationDuration: 720,
+          animationDelay(idx) {
+            return 120 + idx * 100;
+          },
+          areaStyle: chartType === 'line' ? { color: 'transparent' } : undefined,
+          data: eastCampusData
+        }
+      ]
+    };
+  };
 
   useEffect(() => {
     if (visible && chartRef.current) {
       if (!chartInstance.current) {
         chartInstance.current = echarts.init(chartRef.current);
       }
-
-      const option = {
-        backgroundColor: 'rgba(255, 255, 255, 0.05)',
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'shadow'
-          }
-        },
-        grid: {
-          left: '5%',
-          right: '5%',
-          bottom: '5%',
-          top: '5%',
-          containLabel: true
-        },
-        xAxis: {
-          type: 'category',
-          data: ['1 月', '2 月', '3 月'],
-          axisLine: {
-            show: true,
-            lineStyle: {
-              color: 'rgba(217, 217, 217, 0.5)'
-            }
-          },
-          axisTick: {
-            show: false
-          },
-          axisLabel: {
-            color: '#666',
-            fontSize: 11
-          }
-        },
-        yAxis: {
-          type: 'value',
-          splitLine: {
-            show: true,
-            lineStyle: {
-              color: 'rgba(240, 240, 240, 0.5)',
-              type: 'dashed'
-            }
-          },
-          axisLabel: {
-            color: '#999',
-            fontSize: 11,
-            formatter: '{value}'
-          }
-        },
-        series: [
-          {
-            name: '东校区',
-            type: 'bar',
-            barWidth: '18%',
-            barGap: '50%',
-            itemStyle: {
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                { offset: 0, color: '#3b82f6' },
-                { offset: 0.5, color: '#3b82f6' },
-                { offset: 1, color: '#2563eb' }
-              ]),
-              barBorderRadius: [5, 5, 0, 0],
-              shadowColor: 'rgba(59, 130, 246, 0.3)',
-              shadowBlur: 8,
-              shadowOffsetX: 0,
-              shadowOffsetY: 3,
-            },
-            data: [8000, 11000, 3000]
-          },
-          {
-            name: '西校区',
-            type: 'bar',
-            barWidth: '18%',
-            barGap: '50%',
-            itemStyle: {
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                { offset: 0, color: '#10b981' },
-                { offset: 0.5, color: '#10b981' },
-                { offset: 1, color: '#059669' }
-              ]),
-              barBorderRadius: [5, 5, 0, 0],
-              shadowColor: 'rgba(16, 185, 129, 0.3)',
-              shadowBlur: 8,
-              shadowOffsetX: 0,
-              shadowOffsetY: 3
-            },
-            data: [17000, 18000, 0]
-          }
-        ]
-      };
-
-      chartInstance.current.setOption(option);
+      chartInstance.current.setOption(buildChartOption(chartRef.current.clientWidth), true);
 
       const handleResize = () => {
         if (chartInstance.current) {
+          chartInstance.current.setOption(buildChartOption(chartRef.current?.clientWidth), true);
           chartInstance.current.resize();
         }
       };
@@ -116,7 +223,7 @@ const ReportDrawer = ({ visible, onClose }) => {
         window.removeEventListener('resize', handleResize);
       };
     }
-  }, [visible]);
+  }, [visible, chartType]);
 
   useEffect(() => {
     if (!visible && chartInstance.current) {
@@ -125,177 +232,96 @@ const ReportDrawer = ({ visible, onClose }) => {
     }
   }, [visible]);
 
+  if (!visible) {
+    return null;
+  }
+
   return (
-    <Drawer
-      visible={visible}
-      onClose={onClose}
-      width={480}
-      closeIcon={null}
-      bodyStyle={{ padding: 0 }}
-      maskClosable={true}
-      headerStyle={{ display: 'none', padding: 0, height: 0 }}
-      style={{ pointerEvents: 'none' }}
-    >
-      <div style={{
-        width: '100%',
-        height: '100%',
-        background: 'linear-gradient(180deg, #F0F4FF 0%, #E8EEFF 100%)',
-        display: 'flex',
-        flexDirection: 'column',
-        pointerEvents: 'auto'
-      }}>
-        {/* Header */}
-        <div style={{
-          padding: '20px 20px 12px 20px',
-          borderBottom: '1px solid rgba(217, 217, 217, 0.3)'
-        }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <div style={{
-              fontSize: '12px',
-              fontWeight: '600',
-              color: '#2563eb',
-              letterSpacing: '1px'
-            }}>
-              AI REPORT QUERY
-            </div>
-            <div
-              onClick={onClose}
-              style={{
-                width: '28px',
-                height: '28px',
-                borderRadius: '50%',
-                background: '#fff',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)'
-              }}
-            >
-              <CloseOutlined style={{ fontSize: '14px', color: '#666' }} />
-            </div>
+    <aside className="report-drawer-shell">
+      <div className="report-drawer-panel">
+        <div className="report-drawer-header">
+          <div>
+            <div className="report-drawer-kicker">AI REPORT QUERY</div>
+            <h2 className="report-drawer-title">AI报表查询结果</h2>
+            <p className="report-drawer-description">
+              系统根据当前筛选条件自动汇总为图表报告，无需
+              <br />
+              二次导出 Excel 再处理。
+            </p>
           </div>
-          <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#1f2937', marginBottom: '8px' }}>
-            AI 报表查询结果
-          </div>
-          <div style={{ fontSize: '12px', color: '#6b7280', lineHeight: '1.6' }}>
-            系统根据当前筛选条件自动汇总为图表报告，无需二次导出 Excel 再处理。
-          </div>
+          <button type="button" className="report-drawer-close" onClick={onClose}>
+            <CloseOutlined />
+          </button>
         </div>
 
-        {/* Content */}
-        <div style={{
-          flex: 1,
-          overflow: 'auto',
-          padding: '20px'
-        }}>
-          {/* Stats Cards */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '12px',
-            marginBottom: '20px'
-          }}>
-            <div style={{
-              background: 'rgba(255, 255, 255, 0.7)',
-              backdropFilter: 'blur(8px)',
-              WebkitBackdropFilter: 'blur(8px)',
-              borderRadius: '12px',
-              padding: '16px',
-              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
-              border: '1px solid rgba(255, 255, 255, 0.5)'
-            }}>
-              <div style={{ fontSize: '11px', color: '#9ca3af', marginBottom: '6px' }}>查询笔数</div>
-              <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#1f2937' }}>5 笔</div>
+        <div className="report-drawer-content">
+          <div className="report-drawer-metrics">
+            <div className="report-metric-card">
+              <div className="report-metric-label">查询笔数</div>
+              <div className="report-metric-value">5 笔</div>
             </div>
-            <div style={{
-              background: 'rgba(255, 255, 255, 0.7)',
-              backdropFilter: 'blur(8px)',
-              WebkitBackdropFilter: 'blur(8px)',
-              borderRadius: '12px',
-              padding: '16px',
-              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
-              border: '1px solid rgba(255, 255, 255, 0.5)'
-            }}>
-              <div style={{ fontSize: '11px', color: '#9ca3af', marginBottom: '6px' }}>西校区总额</div>
-              <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#1f2937' }}>22,776 元</div>
+            <div className="report-metric-card">
+              <div className="report-metric-label">西校区总额</div>
+              <div className="report-metric-value">{formatCurrency(summary.totalWest)} 元</div>
             </div>
-            <div style={{
-              background: 'rgba(255, 255, 255, 0.7)',
-              backdropFilter: 'blur(8px)',
-              WebkitBackdropFilter: 'blur(8px)',
-              borderRadius: '12px',
-              padding: '16px',
-              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
-              border: '1px solid rgba(255, 255, 255, 0.5)'
-            }}>
-              <div style={{ fontSize: '11px', color: '#9ca3af', marginBottom: '6px' }}>东校区总额</div>
-              <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#1f2937' }}>35,328 元</div>
+            <div className="report-metric-card">
+              <div className="report-metric-label">东校区总额</div>
+              <div className="report-metric-value">{formatCurrency(summary.totalEast)} 元</div>
             </div>
-            <div style={{
-              background: 'rgba(255, 255, 255, 0.7)',
-              backdropFilter: 'blur(8px)',
-              WebkitBackdropFilter: 'blur(8px)',
-              borderRadius: '12px',
-              padding: '16px',
-              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
-              border: '1px solid rgba(255, 255, 255, 0.5)'
-            }}>
-              <div style={{ fontSize: '11px', color: '#9ca3af', marginBottom: '6px' }}>合计金额</div>
-              <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#1f2937' }}>58,104 元</div>
+            <div className="report-metric-card">
+              <div className="report-metric-label">合计金额</div>
+              <div className="report-metric-value">{formatCurrency(summary.totalAmount)} 元</div>
             </div>
           </div>
 
-          {/* Chart Section */}
-          <div style={{
-            background: 'rgba(255, 255, 255, 0.6)',
-            backdropFilter: 'blur(10px)',
-            WebkitBackdropFilter: 'blur(10px)',
-            borderRadius: '12px',
-            padding: '20px',
-            boxShadow: '0 2px 12px rgba(0, 0, 0, 0.05)',
-            border: '1px solid rgba(255, 255, 255, 0.4)'
-          }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-              <div style={{ fontSize: '16px', fontWeight: '600', color: '#1f2937' }}>
-                东西校区月度水费对比
+          <section className="report-chart-card">
+            <div className="report-chart-header">
+              <div className="report-chart-title">
+                {chartType === 'line' ? '东西校区月度水费趋势' : '东西校区月度水费对比'}
               </div>
-              <div style={{
-                padding: '4px 12px',
-                background: 'rgba(255, 255, 255, 0.8)',
-                border: '1px solid #e5e7eb',
-                borderRadius: '16px',
-                fontSize: '12px',
-                color: '#6b7280'
-              }}>
-                柱状图
+              <div className="report-chart-switch">
+                <button
+                  type="button"
+                  className={`report-chart-tag ${chartType === 'bar' ? 'report-chart-tag-active' : ''}`}
+                  onClick={() => setChartType('bar')}
+                >
+                  柱状图
+                </button>
+                <button
+                  type="button"
+                  className={`report-chart-tag ${chartType === 'line' ? 'report-chart-tag-active' : ''}`}
+                  onClick={() => setChartType('line')}
+                >
+                  折线图
+                </button>
               </div>
             </div>
 
-            <div
-              ref={chartRef}
-              style={{
-                width: '100%',
-                height: '260px'
-              }}
-            />
+            <div ref={chartRef} className="report-chart-canvas" />
 
-            <div style={{
-              marginTop: '16px',
-              padding: '12px',
-              background: 'rgba(249, 250, 251, 0.6)',
-              backdropFilter: 'blur(8px)',
-              borderRadius: '8px',
-              fontSize: '12px',
-              color: '#6b7280',
-              lineHeight: '1.6'
-            }}>
-              根据当前查询结果自动识别出"时间 + 校区"这类适合做对比图的结构。
+            <div className="report-chart-note">
+              {chartType === 'line'
+                ? '若继续选择更多月份，系统将沿用同一趋势图口径自动扩展。'
+                : '根据当前查询结果自动识别出 "时间 + 校区" 这类适合做对比图的结构。'}
             </div>
-          </div>
+          </section>
+
+          <section className="report-insight-card">
+            <div className="report-insight-header">
+              <div className="report-insight-icon">
+                <BulbOutlined />
+              </div>
+              <div className="report-insight-title">一句话摘要</div>
+            </div>
+            <p className="report-insight-text">{summary.insight}</p>
+            <div className="report-insight-divider" />
+            <div className="report-insight-footnote">
+              当前轻量版只输出图表、汇总金额和一句话结论，为查询者提供即时决策支持。
+            </div>
+          </section>
         </div>
       </div>
-    </Drawer>
+    </aside>
   );
 };
 
