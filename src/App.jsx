@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
   return (
-    <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
+    <div className="app-shell">
       <SideMenu />
       <MainContent />
     </div>

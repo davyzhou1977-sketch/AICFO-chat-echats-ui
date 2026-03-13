@@ -1,45 +1,38 @@
-import React, { useState } from 'react';
-import { Button, Input, Select, Table, Space, Tag, Pagination, Tooltip } from 'antd';
-import { BarChartOutlined, DownloadOutlined, MessageOutlined } from '@ant-design/icons';
+import React, { useMemo, useState } from 'react';
+import { Button, Table, Tag } from 'antd';
+import {
+  BarChartOutlined,
+  BellOutlined,
+  DownloadOutlined,
+  MessageOutlined,
+  SettingOutlined
+} from '@ant-design/icons';
 import AISidebar from './AISidebar';
 import ReportDrawer from './ReportDrawer';
-
-const { Option } = Select;
+import reimbursementRecords from '../data/reimbursement-production-export.mock.json';
+import { buildReimbursementViewModel, formatCurrency } from '../lib/reimbursementMockAdapter';
+import './MainContent.css';
 
 const MainContent = () => {
   const [aiSidebarVisible, setAiSidebarVisible] = useState(false);
   const [reportDrawerVisible, setReportDrawerVisible] = useState(true);
-  
+  const viewModel = useMemo(() => buildReimbursementViewModel(reimbursementRecords), []);
+
   const columns = [
     {
       title: '单据编号',
       dataIndex: 'code',
       key: 'code',
-      width: 150,
+      width: 190,
+      render: (value) => <span className="bill-table-code">{value}</span>,
     },
     {
       title: '审批状态',
       dataIndex: 'status',
       key: 'status',
-      width: 100,
+      width: 110,
       render: (status) => {
-        let color = '';
-        switch (status) {
-          case '审批中':
-            color = 'blue';
-            break;
-          case '待提交':
-            color = 'orange';
-            break;
-          case '已通过':
-            color = 'green';
-            break;
-          case '被驳回':
-            color = 'red';
-            break;
-          default:
-            color = 'default';
-        }
+        const color = status === '已通过' ? 'green' : status === '待提交' ? 'orange' : 'blue';
         return <Tag color={color}>{status}</Tag>;
       },
     },
@@ -47,13 +40,14 @@ const MainContent = () => {
       title: '报销事由',
       dataIndex: 'reason',
       key: 'reason',
-      width: 200,
+      width: 360,
+      render: (value) => <span className="bill-table-reason">{value}</span>,
     },
     {
       title: '申请部门',
       dataIndex: 'department',
       key: 'department',
-      width: 100,
+      width: 160,
     },
     {
       title: '申请人',
@@ -65,246 +59,135 @@ const MainContent = () => {
       title: '申请时间',
       dataIndex: 'date',
       key: 'date',
-      width: 120,
+      width: 130,
     },
     {
-      title: '下一审批人',
-      dataIndex: 'nextApprover',
-      key: 'nextApprover',
-      width: 120,
+      title: '核销金额',
+      dataIndex: 'verifyAmount',
+      key: 'verifyAmount',
+      width: 130,
+      align: 'right',
+      render: (amount) => <span>{formatCurrency(amount)}.00</span>,
     },
     {
       title: '报销金额',
       dataIndex: 'amount',
       key: 'amount',
-      width: 120,
-      render: (amount) => <span style={{ textAlign: 'right' }}>¥{amount.toFixed(2)}</span>,
+      width: 130,
+      align: 'right',
+      render: (amount) => <span>{formatCurrency(amount)}.00</span>,
     },
   ];
 
-  const data = [
-    {
-      key: '1',
-      code: 'RI-20260309-0006',
-      status: '审批中',
-      reason: '成都新锦城吃饭',
-      department: '工会',
-      applicant: '刘老师.1000',
-      date: '2026-03-09',
-      nextApprover: '财务杨',
-      amount: 19099,
-    },
-    {
-      key: '2',
-      code: 'RI-20260309-0005',
-      status: '审批中',
-      reason: '1天差旅费',
-      department: '其他',
-      applicant: '张老师.10093',
-      date: '2026-03-09',
-      nextApprover: '张老师.10093',
-      amount: 1,
-    },
-    {
-      key: '3',
-      code: 'RI-20260309-0004',
-      status: '审批中',
-      reason: '1天差旅费',
-      department: '人事部',
-      applicant: '管老师.1',
-      date: '2026-03-09',
-      nextApprover: '管老师.1',
-      amount: 1,
-    },
-    {
-      key: '4',
-      code: 'RI-20260309-0003',
-      status: '审批中',
-      reason: '1111',
-      department: '其他',
-      applicant: '张老师.10093',
-      date: '2026-03-09',
-      nextApprover: '张老师.10093',
-      amount: 1,
-    },
-    {
-      key: '5',
-      code: 'RI-20260309-0002',
-      status: '审批中',
-      reason: '11',
-      department: '其他',
-      applicant: '张老师.10093',
-      date: '2026-03-09',
-      nextApprover: '张老师.10093',
-      amount: 1,
-    },
-    {
-      key: '6',
-      code: 'RI-20260309-0001',
-      status: '审批中',
-      reason: '23',
-      department: '其他',
-      applicant: '张老师.10093',
-      date: '2026-03-09',
-      nextApprover: '张老师.10093',
-      amount: 1,
-    },
-    {
-      key: '7',
-      code: 'RI-20260306-0002',
-      status: '审批中',
-      reason: '再试试的问题',
-      department: '人事部',
-      applicant: '管老师.1',
-      date: '2026-03-06',
-      nextApprover: '管老师.1',
-      amount: 2,
-    },
-    {
-      key: '8',
-      code: 'RI-20260306-0001',
-      status: '审批中',
-      reason: '附件有问题的',
-      department: '人事部',
-      applicant: '管老师.1',
-      date: '2026-03-06',
-      nextApprover: '管老师.1',
-      amount: 1,
-    },
-    {
-      key: '9',
-      code: 'RI-20260305-0006',
-      status: '待提交',
-      reason: '合并战略-森林',
-      department: '人事部',
-      applicant: '管老师.1',
-      date: '2026-03-05',
-      nextApprover: '',
-      amount: 19,
-    },
-    {
-      key: '10',
-      code: 'RI-20260305-0004',
-      status: '审批中',
-      reason: '1',
-      department: '人事部',
-      applicant: '管老师.1',
-      date: '2026-03-05',
-      nextApprover: '管老师.1',
-      amount: 1,
-    },
+  const filterChips = [
+    `审批状态：${viewModel.filters.status}`,
+    `报销事由：${viewModel.filters.topic}`,
+    `时间范围：2026年${viewModel.filters.period}`,
+    `校区：${viewModel.filters.campus}`,
   ];
 
   return (
-    <div style={{ flex: 1, height: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#f5f5f5' }}>
-      {/* 顶部菜单栏 */}
-      <div style={{ padding: '12px 16px', borderBottom: '1px solid #f0f0f0', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', backgroundColor: '#fff' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span style={{ color: '#666', fontSize: '14px' }}>2026年</span>
-          <span style={{ color: '#666', fontSize: '14px' }}>管老师_1</span>
-          <div style={{ width: 32, height: 32, borderRadius: '50%', backgroundColor: '#1890ff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
-            管
+    <main className="bill-main-shell">
+      <header className="bill-topbar">
+        <div />
+        <div className="bill-topbar-right">
+          <div className="bill-topbar-bell">
+            <BellOutlined />
+            <span className="bill-topbar-badge">99+</span>
+          </div>
+          <div className="bill-topbar-year">2025财年</div>
+          <div className="bill-topbar-user">
+            <div className="bill-topbar-avatar">管</div>
+            <span>管老师_1</span>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Title信息 */}
-      <div style={{ padding: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div style={{ fontSize: '16px', fontWeight: 'bold', color: '#333' }}>报销单</div>
-        <div style={{ display: 'flex', gap: '12px' }}>
-          <Button>批量操作</Button>
-          <Button icon={<DownloadOutlined />}>导出Excel</Button>
-          <Button type="primary" icon={<BarChartOutlined />} onClick={() => setReportDrawerVisible(true)}>
-            AI报表查询
-          </Button>
+      <section className="bill-page-shell">
+        <div className="bill-page-titlebar">
+          <div className="bill-page-title">报销单</div>
+          <div className="bill-page-actions">
+            <button type="button" className="bill-link-action">批量操作</button>
+            <button type="button" className="bill-link-action">
+              <DownloadOutlined />
+              <span>导出Excel</span>
+            </button>
+            <Button type="primary" className="bill-primary-button" onClick={() => setReportDrawerVisible(true)}>
+              申请报销
+            </Button>
+          </div>
         </div>
-      </div>
 
-      {/* 查询条件 */}
-      <div style={{ padding: '12px 16px', margin: '0 16px', borderRadius: '4px', display: 'flex', gap: '12px', alignItems: 'center', backgroundColor: '#fff' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ fontSize: '14px', color: '#666' }}>审批状态：</span>
-          <Select defaultValue="all" style={{ width: 180 }} size="small">
-            <Option value="all">全部</Option>
-            <Option value="pending">待提交</Option>
-            <Option value="approving">审批中</Option>
-            <Option value="rejected">被驳回</Option>
-            <Option value="approved">已通过</Option>
-          </Select>
+        <div className="bill-filter-shell">
+          <div className="bill-filter-tags">
+            {filterChips.map((chip) => (
+              <div key={chip} className="bill-filter-tag">{chip}</div>
+            ))}
+            <button type="button" className="bill-filter-link">清空</button>
+            <button type="button" className="bill-filter-link">展开</button>
+          </div>
+          <button type="button" className="bill-filter-setting">
+            <SettingOutlined />
+          </button>
         </div>
-        <Button size="small">清空</Button>
-        <Button size="small">展开</Button>
-      </div>
 
-      {/* 主体区域 */}
-      <div style={{ flex: 1, overflow: 'hidden', padding: '16px', display: 'flex', gap: '20px' }}>
-        <div style={{ flex: 1, minWidth: 0, overflow: 'auto' }}>
-          <div style={{ backgroundColor: '#fff', borderRadius: '18px', overflow: 'hidden', boxShadow: '0 12px 32px rgba(15, 23, 42, 0.04)' }}>
-            <Table 
-              columns={columns} 
-              dataSource={data} 
-              pagination={false}
-              bordered
-              rowKey="key"
-              size="small"
-              style={{ 
-                border: '1px solid #e8e8e8',
-                borderRadius: '18px',
-                overflow: 'hidden'
-              }}
-            />
-            <div style={{ marginTop: '16px', padding: '0 16px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div>共 198 条记录</div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <Pagination 
-                  current={2} 
-                  total={198} 
-                  pageSize={10} 
-                  showSizeChanger={false} 
-                  size="small"
-                />
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span>10条/页</span>
-                  <span>跳至</span>
-                  <Input style={{ width: 60 }} defaultValue="2" size="small" />
-                  <span>页</span>
-                </div>
+        <div className="bill-content-layout">
+          <section className="bill-list-panel">
+            <div className="bill-list-panel-header">
+              <div className="bill-list-panel-title">查询结果列表</div>
+              <div className="bill-list-panel-actions">
+                <div className="bill-record-count">共 {viewModel.rows.length} 条记录</div>
+                <button type="button" className="bill-small-action" onClick={() => setReportDrawerVisible((open) => !open)}>
+                  <BarChartOutlined />
+                  <span>{reportDrawerVisible ? '收起报表' : '查看报表'}</span>
+                </button>
               </div>
             </div>
-          </div>
-        </div>
 
-        <ReportDrawer
-          visible={reportDrawerVisible}
-          onClose={() => setReportDrawerVisible(false)}
-        />
-      </div>
+            <div className="bill-table-wrap">
+              <Table
+                className="bill-data-table"
+                columns={columns}
+                dataSource={viewModel.rows}
+                pagination={false}
+                rowKey="key"
+                size="middle"
+                scroll={{ x: 1320 }}
+              />
+            </div>
 
-      {/* 悬浮按钮 */}
-      <div style={{ position: 'fixed', right: 24, bottom: 24, zIndex: 1000, display: 'flex', flexDirection: 'column', gap: 12 }}>
-        <Tooltip title="智能AI问答">
-          <Button 
-            shape="circle" 
-            icon={<MessageOutlined />} 
-            style={{ 
-              width: 48, 
-              height: 48, 
-              fontSize: 20, 
-              boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-              backgroundColor: '#1890ff',
-              borderColor: '#1890ff'
-            }} 
-            onClick={() => setAiSidebarVisible(true)} 
+            <div className="bill-table-footer">
+              <div>共 {viewModel.rows.length} 条记录</div>
+              <div className="bill-table-pagination">
+                <button type="button" className="bill-page-btn bill-page-btn-disabled">{'<'}</button>
+                <button type="button" className="bill-page-btn bill-page-btn-active">1</button>
+                <button type="button" className="bill-page-btn">2</button>
+                <button type="button" className="bill-page-btn">3</button>
+                <span className="bill-page-more">...</span>
+                <button type="button" className="bill-page-btn">97</button>
+                <button type="button" className="bill-page-btn">{'>'}</button>
+                <div className="bill-page-size">10 条/页</div>
+              </div>
+            </div>
+          </section>
+
+          <ReportDrawer
+            visible={reportDrawerVisible}
+            onClose={() => setReportDrawerVisible(false)}
+            records={reimbursementRecords}
           />
-        </Tooltip>
-      </div>
+        </div>
+      </section>
 
-      {/* 智能AI问答侧边栏 */}
-      <AISidebar 
-        visible={aiSidebarVisible} 
-        onClose={() => setAiSidebarVisible(false)} 
+      <button type="button" className="bill-ai-fab" onClick={() => setAiSidebarVisible(true)}>
+        <MessageOutlined />
+      </button>
+
+      <AISidebar
+        visible={aiSidebarVisible}
+        onClose={() => setAiSidebarVisible(false)}
       />
-    </div>
+    </main>
   );
 };
 
