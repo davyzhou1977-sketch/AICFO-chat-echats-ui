@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { Button, Input, Select, Table, Space, Tag, Pagination, Tooltip } from 'antd';
 import { DownloadOutlined, PlusOutlined, MessageOutlined, BarChartOutlined } from '@ant-design/icons';
 import AISidebar from './AISidebar';
+import ReportDrawer from './ReportDrawer';
 
 const { Option } = Select;
 
 const MainContent = () => {
   const [aiSidebarVisible, setAiSidebarVisible] = useState(false);
+  const [reportDrawerVisible, setReportDrawerVisible] = useState(false);
   
   const columns = [
     {
@@ -247,7 +249,6 @@ const MainContent = () => {
               borderRadius: '4px',
               overflow: 'hidden'
             }}
-            pagination={false}
           />
           <div style={{ marginTop: '16px', padding: '0 16px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>共 198 条记录</div>
@@ -299,7 +300,7 @@ const MainContent = () => {
               backgroundColor: '#52c41a',
               borderColor: '#52c41a'
             }} 
-            onClick={() => alert('报销单报表功能开发中')} 
+            onClick={() => setReportDrawerVisible(true)} 
           />
         </Tooltip>
       </div>
@@ -308,6 +309,12 @@ const MainContent = () => {
       <AISidebar 
         visible={aiSidebarVisible} 
         onClose={() => setAiSidebarVisible(false)} 
+      />
+      
+      {/* 报销单报表抽屉 */}
+      <ReportDrawer
+        visible={reportDrawerVisible}
+        onClose={() => setReportDrawerVisible(false)}
       />
     </div>
   );

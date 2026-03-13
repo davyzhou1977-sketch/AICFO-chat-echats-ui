@@ -8,7 +8,7 @@ import {
   BuildOutlined, 
   BarChartOutlined, 
   DatabaseOutlined, 
-  SettingOutlined 
+  SettingOutlined
 } from '@ant-design/icons';
 
 const SideMenu = () => {
