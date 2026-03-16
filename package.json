@@ -1,12 +1,15 @@
 {
-  "name": "school-finance-mobile-h5",
+  "name": "aicfo-workspace",
   "private": true,
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -p tsconfig.json && vite build",
-    "preview": "vite preview"
+    "dev": "vite --config apps/mobile/vite.config.js",
+    "build": "tsc -p apps/mobile/tsconfig.json && vite build --config apps/mobile/vite.config.js",
+    "preview": "vite preview --config apps/mobile/vite.config.js",
+    "dev:mobile": "npm run dev",
+    "build:mobile": "npm run build",
+    "preview:mobile": "npm run preview"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

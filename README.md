@@ -1,54 +1,42 @@
 # AICFO Workspace
 
-这个仓库用于承载 AICFO 的统一工作区，目标是逐步收拢：
+这个仓库用于承载 AICFO 的统一工作区，当前重点是把移动端 Demo、设计文档和后续多端协作放到同一套清晰目录里。
 
-- Web 端
-- 移动端
-- 共享文档
-- 设计规范
-- 公共数据样例
-
-## 当前状态
-
-当前根目录仓库已经初始化，用于后续统一管理 AICFO 工作区。
-
-为了避免打乱已经在协作中的 Web 子仓库，现阶段采取以下策略：
-
-- 根目录仓库先管理当前工作区的主工程和文档
-- 现有独立 Web 仓库 `reimburse-list-chat-echarts/` 暂时保持隔离
-- 后续确认迁移窗口后，再把 Web 代码平滑迁入根仓库
-
-## 为什么先不直接吞并现有 Web 子仓库
-
-因为 `reimburse-list-chat-echarts/` 当前已经是独立 Git 仓库，并且已经共享给其他同事。
-
-如果直接在当前阶段把它强行并入根仓库，容易带来：
-
-- 历史记录混乱
-- 同事现有协作分支受影响
-- 目录结构和发布链路同时变化
-
-所以当前先做：
-
-- 根仓库初始化
-- 忽略独立 Web 仓库
-- 在根仓库内稳定移动端与文档协作
-
-## 后续建议目录
-
-后续建议逐步收敛为：
+## 当前目录
 
 ```text
 apps/
-  web/
-  mobile/
-docs/
-Data/
-shared/
+  mobile/    当前可运行的移动端财务分析 Demo（Vite）
+docs/        方案、接口、视觉规范与评审文档
+Data/        原始数据样例
+reimburse-list-chat-echarts/  现有独立 Web 仓库，暂时隔离保留
 ```
 
-## 近期协作原则
+## 启动方式
 
-1. Web 独立仓库继续正常协作
-2. 根仓库优先承载移动端和统一文档
-3. 等 Web 侧确认迁移窗口后，再做代码搬迁
+虽然代码已经整理进 `apps/mobile`，但根目录仍然保留了一键命令：
+
+```bash
+npm run dev
+npm run build
+npm run preview
+```
+
+当前主要演示页面：
+
+- `/mobile/school-finance-fusion-demo`
+- `/mobile/school-finance`
+- `/mobile/school-finance-v2`
+- `/web/reimbursements/ai-report-demo`
+
+## 当前协作策略
+
+- 根仓库负责统一管理移动端 Demo、文档和后续多端目录结构
+- `reimburse-list-chat-echarts/` 继续作为现有 Web 独立仓库保留，不在本阶段直接吞并
+- 等 Web 侧确认迁移窗口后，再把 Web 代码平滑迁入 `apps/web`
+
+## 下一步建议
+
+1. 继续把移动端 Demo 逐步收口为老技术栈可迁移结构
+2. 为未来的 `apps/web` 预留目录与发布规范
+3. 在根仓库中补齐共享接口契约、组件约束和上线说明

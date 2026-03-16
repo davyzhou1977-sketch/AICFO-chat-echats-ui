@@ -1,6 +1,13 @@
+import { fileURLToPath } from "node:url";
+
+const appRoot = fileURLToPath(new URL(".", import.meta.url));
+
 /** @type {import('tailwindcss').Config} */
 const config = {
-  content: ["./index.html", "./src/**/*.{ts,tsx}"],
+  content: [
+    fileURLToPath(new URL("./index.html", import.meta.url)),
+    `${appRoot}src/**/*.{ts,tsx}`,
+  ],
   theme: {
     extend: {
       colors: {
