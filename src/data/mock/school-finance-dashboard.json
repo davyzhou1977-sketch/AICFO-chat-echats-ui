@@ -1,0 +1,853 @@
+{
+  "header": {
+    "title": "校长财务驾驶舱",
+    "subtitle": "面向移动端的财务洞察页，聚焦报销趋势、结构分布与校长视角资源流向。",
+    "tags": ["移动 H5", "ECharts 图表", "AI 解读", "Mock 数据"],
+    "periodLabel": "2025 学年 · 最近 12 个月"
+  },
+  "expenseAnalysis": {
+    "metrics": [
+      {
+        "label": "本月报销金额",
+        "value": "186.4 万",
+        "trend": "较上月 +12.8%",
+        "trendState": "up"
+      },
+      {
+        "label": "本月报销笔数",
+        "value": "327",
+        "trend": "月底集中度 34%",
+        "trendState": "warning"
+      },
+      {
+        "label": "平均单笔金额",
+        "value": "5701",
+        "trend": "大额单笔 14 笔",
+        "trendState": "down"
+      },
+      {
+        "label": "TOP10 供应商占比",
+        "value": "41.6%",
+        "trend": "集中度中高",
+        "trendState": "warning"
+      }
+    ],
+    "monthlyTrend": [
+      { "month": "1月", "amount": 96, "count": 102 },
+      { "month": "2月", "amount": 102, "count": 108 },
+      { "month": "3月", "amount": 110, "count": 121 },
+      { "month": "4月", "amount": 126, "count": 132 },
+      { "month": "5月", "amount": 121, "count": 126 },
+      { "month": "6月", "amount": 142, "count": 148 },
+      { "month": "7月", "amount": 151, "count": 161 },
+      { "month": "8月", "amount": 168, "count": 173 },
+      { "month": "9月", "amount": 164, "count": 182 },
+      { "month": "10月", "amount": 177, "count": 194 },
+      { "month": "11月", "amount": 196, "count": 208 },
+      { "month": "12月", "amount": 216, "count": 224 }
+    ],
+    "categoryBreakdown": [
+      { "name": "活动费", "value": 28, "color": "#2F6BFF" },
+      { "name": "设备材料", "value": 21, "color": "#18B47A" },
+      { "name": "维修费", "value": 17, "color": "#FF9F43" },
+      { "name": "培训差旅", "value": 14, "color": "#7C5CFF" },
+      { "name": "办公用品", "value": 11, "color": "#13B5B1" },
+      { "name": "其他", "value": 9, "color": "#94A3B8" }
+    ],
+    "topVendors": [
+      { "name": "城东教育设备有限公司", "value": 68, "unit": "万" },
+      { "name": "博雅文化传播", "value": 54, "unit": "万" },
+      { "name": "启明后勤服务", "value": 49, "unit": "万" },
+      { "name": "卓越信息科技", "value": 42, "unit": "万" },
+      { "name": "青禾书店", "value": 38, "unit": "万" }
+    ],
+    "largeExpenses": [
+      { "project": "实验室设备采购", "category": "设备材料", "amount": "18.6 万" },
+      { "project": "校园文化节执行", "category": "活动费", "amount": "13.3 万" },
+      { "project": "暑期教室维修", "category": "维修费", "amount": "11.8 万" },
+      { "project": "教师外出培训", "category": "培训差旅", "amount": "9.6 万" }
+    ],
+    "insight": {
+      "title": "AI 解读",
+      "summary": "本月报销金额和报销笔数同步上升，11 至 12 月出现明显抬升，符合学期末支出高峰特征。",
+      "bullets": [
+        "前三类支出合计占比 66%，活动费与设备材料构成主要成本压力。",
+        "月底集中报销和供应商集中度偏高，建议纳入自动预警。",
+        "可进一步结合完成日期，识别同周集中提交与跨部门联动采购。"
+      ]
+    },
+    "defaultPeriod": "year",
+    "periodOptions": [
+      { "value": "year", "label": "本年" },
+      { "value": "quarter", "label": "本季" },
+      { "value": "month", "label": "本月" }
+    ],
+    "subThemeOptions": [
+      { "value": "control", "label": "内控风险" },
+      { "value": "reimbursement", "label": "报销分析" }
+    ],
+    "controlAnalysis": {
+      "year": {
+        "overview": {
+          "metrics": [
+            {
+              "label": "本年核查单量",
+              "value": "4,286",
+              "trend": "覆盖审批单据 92%",
+              "trendState": "up"
+            },
+            {
+              "label": "风险命中单量",
+              "value": "618",
+              "trend": "命中率 14.4%",
+              "trendState": "warning"
+            },
+            {
+              "label": "风险金额暴露",
+              "value": "268 万",
+              "trend": "高风险金额占 23%",
+              "trendState": "warning"
+            },
+            {
+              "label": "需人工干预",
+              "value": "186 单",
+              "trend": "自动放行率 70%",
+              "trendState": "down"
+            }
+          ],
+          "riskTrend": [
+            { "month": "1月", "hitRate": 11.2, "riskCount": 38 },
+            { "month": "2月", "hitRate": 10.8, "riskCount": 35 },
+            { "month": "3月", "hitRate": 12.6, "riskCount": 42 },
+            { "month": "4月", "hitRate": 12.9, "riskCount": 46 },
+            { "month": "5月", "hitRate": 13.4, "riskCount": 49 },
+            { "month": "6月", "hitRate": 14.1, "riskCount": 51 },
+            { "month": "7月", "hitRate": 14.6, "riskCount": 53 },
+            { "month": "8月", "hitRate": 14.8, "riskCount": 54 },
+            { "month": "9月", "hitRate": 15.2, "riskCount": 58 },
+            { "month": "10月", "hitRate": 15.1, "riskCount": 61 },
+            { "month": "11月", "hitRate": 15.6, "riskCount": 64 },
+            { "month": "12月", "hitRate": 16.3, "riskCount": 67 }
+          ],
+          "riskThemeDistribution": [
+            { "name": "票据与凭证完整性", "value": 186, "color": "#2F6BFF" },
+            { "name": "金额与标准合规", "value": 148, "color": "#18B47A" },
+            { "name": "合同与时序合规", "value": 122, "color": "#F97316" },
+            { "name": "预算与指标合规", "value": 96, "color": "#7C5CFF" },
+            { "name": "一致性与真实性", "value": 66, "color": "#13B5B1" }
+          ],
+          "trendInsight": {
+            "title": "AI 解读",
+            "summary": "本年 AI 核查命中率整体走高，9 月以后维持在 15% 以上，说明风险并非偶发，而是随业务高峰同步放大。",
+            "bullets": [
+              "风险命中率与命中单量同步抬升，表明制度约束没有完全跟上业务扩张节奏。",
+              "四季度命中率连续高于全年均值，更适合财务负责人做专项抽查。",
+              "若后续自动放行率继续下降，应优先排查规则解释不足还是报销习惯恶化。"
+            ]
+          },
+          "themeInsight": {
+            "title": "AI 解读",
+            "summary": "票据与凭证完整性仍是风险最大来源，说明当前最先影响审批效率的不是金额异常，而是基础资料不完整。",
+            "bullets": [
+              "票据与凭证类问题高频出现，适合优先通过填单引导和附件校验降低重复错误。",
+              "金额与标准合规、合同时序合规位列第二梯队，已经触及制度刚性边界。",
+              "一致性与真实性命中次数虽然较低，但单笔风险通常更重，需要持续单列关注。"
+            ]
+          }
+        },
+        "weakness": {
+          "topThemes": [
+            { "name": "票据与凭证完整性", "value": 186, "unit": "次" },
+            { "name": "金额与标准合规", "value": 148, "unit": "次" },
+            { "name": "合同与时序合规", "value": 122, "unit": "次" },
+            { "name": "预算与指标合规", "value": 96, "unit": "次" },
+            { "name": "一致性与真实性", "value": 66, "unit": "次" }
+          ],
+          "topRules": [
+            { "name": "缺少发票真伪查验", "value": 92, "unit": "次" },
+            { "name": "合同签订日期晚于审批日期", "value": 71, "unit": "次" },
+            { "name": "差旅标准超标", "value": 64, "unit": "次" },
+            { "name": "合同乙方与发票销售方不一致", "value": 53, "unit": "次" },
+            { "name": "预算项目与财务指标不一致", "value": 47, "unit": "次" }
+          ],
+          "themeInsight": {
+            "title": "AI 解读",
+            "summary": "当前制度薄弱点首先体现在资料完整性和标准执行，而不是复杂舞弊场景，这意味着改进空间明确且可快速见效。",
+            "bullets": [
+              "高频问题集中在基础规范，说明最有效的动作是前置约束，而不是事后追责。",
+              "金额和标准合规已成为第二大薄弱点，建议同步检查差旅、培训、接待标准宣导是否失效。",
+              "如果高频风险主题在连续两个周期不下降，应升级为专项制度整改。"
+            ]
+          },
+          "ruleInsight": {
+            "title": "AI 解读",
+            "summary": "具体规则命中最集中在附件、时序和标准三类，反映出经办人在材料准备与流程先后顺序上仍存在明显误区。",
+            "bullets": [
+              "附件和真伪查验问题适合通过系统强校验直接压降。",
+              "合同时序异常若长期高发，意味着前置审批纪律需要重新收紧。",
+              "标准超标问题若集中在少数业务类型，可直接形成财务专项提醒。"
+            ]
+          }
+        },
+        "concentration": {
+          "departmentDistribution": [
+            { "name": "总务处", "prompt": 26, "attention": 18, "high": 8 },
+            { "name": "教务处", "prompt": 22, "attention": 15, "high": 6 },
+            { "name": "德育处", "prompt": 18, "attention": 10, "high": 4 },
+            { "name": "后勤中心", "prompt": 24, "attention": 17, "high": 9 },
+            { "name": "信息中心", "prompt": 16, "attention": 9, "high": 5 }
+          ],
+          "businessDistribution": [
+            { "name": "货物类", "value": 132, "unit": "次" },
+            { "name": "服务类", "value": 118, "unit": "次" },
+            { "name": "代发劳务费", "value": 104, "unit": "次" },
+            { "name": "参加培训/会议", "value": 86, "unit": "次" },
+            { "name": "租车费", "value": 52, "unit": "次" }
+          ],
+          "departmentInsight": {
+            "title": "AI 解读",
+            "summary": "风险分布并不平均，后勤中心和总务处既有高频提示，也承担更多高风险项，是财务负责人最应该盯住的条线。",
+            "bullets": [
+              "高风险项集中在采购和服务条线，说明复杂业务更容易触发制度边界问题。",
+              "教务处与德育处风险量不低，但高风险占比相对可控，更适合做填单规范训练。",
+              "部门分布图适合与业务规模联看，避免把高业务量误判为单纯高风险。"
+            ]
+          },
+          "businessInsight": {
+            "title": "AI 解读",
+            "summary": "从业务类型看，货物类、服务类和代发劳务费是风险最集中的三类，说明高频高金额业务仍是内控主战场。",
+            "bullets": [
+              "货物类风险更偏一致性和合同链条问题，治理重点在供应商、合同与票据关联。",
+              "服务类和代发劳务费更容易涉及标准、时序与附件完整性，适合结合业务指引做前置提醒。",
+              "如果参加培训/会议、租车费等类型继续抬升，说明专项标准执行正在变弱。"
+            ]
+          }
+        },
+        "closure": {
+          "closureTrend": [
+            { "month": "1月", "found": 38, "resolved": 30 },
+            { "month": "2月", "found": 35, "resolved": 31 },
+            { "month": "3月", "found": 42, "resolved": 36 },
+            { "month": "4月", "found": 46, "resolved": 40 },
+            { "month": "5月", "found": 49, "resolved": 41 },
+            { "month": "6月", "found": 51, "resolved": 43 },
+            { "month": "7月", "found": 53, "resolved": 45 },
+            { "month": "8月", "found": 54, "resolved": 48 },
+            { "month": "9月", "found": 58, "resolved": 49 },
+            { "month": "10月", "found": 61, "resolved": 52 },
+            { "month": "11月", "found": 64, "resolved": 55 },
+            { "month": "12月", "found": 67, "resolved": 57 }
+          ],
+          "lowClosureUnits": [
+            { "name": "后勤中心", "value": 61, "note": "供应商资料补齐慢，跨节点流转耗时长" },
+            { "name": "信息中心", "value": 66, "note": "采购链路长，合同补录滞后" },
+            { "name": "德育处", "value": 71, "note": "活动项目较多，附件反复退回" },
+            { "name": "总务处", "value": 73, "note": "高频采购导致整改任务堆积" }
+          ],
+          "closureInsight": {
+            "title": "AI 解读",
+            "summary": "全年发现风险数量持续高于完成整改数量，说明系统已经能看见问题，但组织闭环速度仍然偏慢。",
+            "bullets": [
+              "整改完成量虽同步增长，但始终低于发现量，待处理库存会持续累积。",
+              "四季度风险发现明显加速，更需要同步配置整改责任人和时限。",
+              "如果只做提示不做闭环追踪，AI 核查会很快退化成审批噪音。"
+            ]
+          },
+          "unitInsight": {
+            "title": "AI 解读",
+            "summary": "低闭环单位主要集中在采购和项目执行相关条线，问题不只是懂不懂规则，更在于跨角色协同链路过长。",
+            "bullets": [
+              "后勤中心和总务处低闭环最明显，说明高频业务需要专门的整改台账机制。",
+              "信息中心闭环慢更可能与采购补件和合同流程相关，而不是单点经办失误。",
+              "低闭环单位排行榜适合作为财务例会和内控整改会的固定议题。"
+            ]
+          }
+        }
+      },
+      "quarter": {
+        "overview": {
+          "metrics": [
+            {
+              "label": "本季核查单量",
+              "value": "1,082",
+              "trend": "覆盖审批单据 94%",
+              "trendState": "up"
+            },
+            {
+              "label": "风险命中单量",
+              "value": "182",
+              "trend": "命中率 16.8%",
+              "trendState": "warning"
+            },
+            {
+              "label": "风险金额暴露",
+              "value": "82 万",
+              "trend": "高风险金额占 25%",
+              "trendState": "warning"
+            },
+            {
+              "label": "需人工干预",
+              "value": "61 单",
+              "trend": "自动放行率 68%",
+              "trendState": "down"
+            }
+          ],
+          "riskTrend": [
+            { "month": "10月", "hitRate": 15.1, "riskCount": 61 },
+            { "month": "11月", "hitRate": 15.6, "riskCount": 64 },
+            { "month": "12月", "hitRate": 16.3, "riskCount": 67 },
+            { "month": "本季均值", "hitRate": 15.7, "riskCount": 64 }
+          ],
+          "riskThemeDistribution": [
+            { "name": "票据与凭证完整性", "value": 54, "color": "#2F6BFF" },
+            { "name": "金额与标准合规", "value": 46, "color": "#18B47A" },
+            { "name": "合同与时序合规", "value": 38, "color": "#F97316" },
+            { "name": "预算与指标合规", "value": 27, "color": "#7C5CFF" },
+            { "name": "一致性与真实性", "value": 17, "color": "#13B5B1" }
+          ],
+          "trendInsight": {
+            "title": "AI 解读",
+            "summary": "本季风险命中率继续走高，且季末并未回落，说明风险压力在学期末集中释放。",
+            "bullets": [
+              "10 至 12 月风险量逐月增加，说明年末冲量和集中报销效应明显。",
+              "季均命中率已高于全年均值，更适合做专项复盘。",
+              "若下季起点仍维持在高位，应判断问题是否已经固化。"
+            ]
+          },
+          "themeInsight": {
+            "title": "AI 解读",
+            "summary": "本季依然是资料完整性和标准执行两类问题最突出，说明前置治理仍未完全穿透业务一线。",
+            "bullets": [
+              "附件、票据、标准三类问题仍占绝大多数，具备快速压降空间。",
+              "合同链条问题保持第二梯队，说明采购与服务类业务仍需持续监管。",
+              "一致性风险虽少，但更值得单列预警。"
+            ]
+          }
+        },
+        "weakness": {
+          "topThemes": [
+            { "name": "票据与凭证完整性", "value": 54, "unit": "次" },
+            { "name": "金额与标准合规", "value": 46, "unit": "次" },
+            { "name": "合同与时序合规", "value": 38, "unit": "次" },
+            { "name": "预算与指标合规", "value": 27, "unit": "次" },
+            { "name": "一致性与真实性", "value": 17, "unit": "次" }
+          ],
+          "topRules": [
+            { "name": "缺少发票真伪查验", "value": 26, "unit": "次" },
+            { "name": "差旅标准超标", "value": 21, "unit": "次" },
+            { "name": "合同签订日期晚于审批日期", "value": 20, "unit": "次" },
+            { "name": "合同乙方与发票销售方不一致", "value": 15, "unit": "次" },
+            { "name": "预算项目与财务指标不一致", "value": 12, "unit": "次" }
+          ],
+          "themeInsight": {
+            "title": "AI 解读",
+            "summary": "本季制度薄弱点结构没有明显改变，说明问题并非一次性偶发，而是业务组织层面的共性偏差。",
+            "bullets": [
+              "高频问题集中度依旧很高，适合财务负责人做面向经办人的重点宣导。",
+              "若下季前两位高频主题不下降，应直接推动流程改版。",
+              "主题分布稳定反而说明治理抓手明确。"
+            ]
+          },
+          "ruleInsight": {
+            "title": "AI 解读",
+            "summary": "本季被重复触发的规则仍以附件、标准和合同时序为主，是最适合系统化拦截的规则集。",
+            "bullets": [
+              "规则重复命中说明人工提醒效果有限，下一步应更多依赖强校验。",
+              "合同时序问题如果持续高频，说明前置审批纪律存在松动。",
+              "差旅标准问题集中时，适合对相关业务类型做专项回溯。"
+            ]
+          }
+        },
+        "concentration": {
+          "departmentDistribution": [
+            { "name": "总务处", "prompt": 8, "attention": 6, "high": 3 },
+            { "name": "教务处", "prompt": 7, "attention": 5, "high": 2 },
+            { "name": "德育处", "prompt": 6, "attention": 4, "high": 1 },
+            { "name": "后勤中心", "prompt": 9, "attention": 7, "high": 4 },
+            { "name": "信息中心", "prompt": 5, "attention": 4, "high": 2 }
+          ],
+          "businessDistribution": [
+            { "name": "货物类", "value": 39, "unit": "次" },
+            { "name": "服务类", "value": 34, "unit": "次" },
+            { "name": "代发劳务费", "value": 31, "unit": "次" },
+            { "name": "参加培训/会议", "value": 24, "unit": "次" },
+            { "name": "租车费", "value": 13, "unit": "次" }
+          ],
+          "departmentInsight": {
+            "title": "AI 解读",
+            "summary": "本季高风险主要仍聚焦后勤中心和总务处，说明采购与服务链路的内控难度在短期内没有缓解。",
+            "bullets": [
+              "高风险占比最高的仍是后勤中心，适合重点盯整改闭环。",
+              "教务、德育风险更偏轻中度，更适合培训与规范提示。",
+              "部门侧看点是定位整改对象，而不是简单排名。"
+            ]
+          },
+          "businessInsight": {
+            "title": "AI 解读",
+            "summary": "本季风险主要仍集中在货物类、服务类和代发劳务费，业务类型结构没有出现明显迁移。",
+            "bullets": [
+              "业务类型分布稳定，便于形成固定的内控巡检主题。",
+              "货物类应继续盯合同链条一致性，服务类和劳务类则重点盯标准、时序和附件。",
+              "如果参加培训/会议类继续上升，可能意味着专项费用标准执行开始失控。"
+            ]
+          }
+        },
+        "closure": {
+          "closureTrend": [
+            { "month": "10月", "found": 61, "resolved": 52 },
+            { "month": "11月", "found": 64, "resolved": 55 },
+            { "month": "12月", "found": 67, "resolved": 57 },
+            { "month": "本季均值", "found": 64, "resolved": 55 }
+          ],
+          "lowClosureUnits": [
+            { "name": "后勤中心", "value": 64, "note": "供应商补件和验收材料退回较多" },
+            { "name": "信息中心", "value": 68, "note": "合同补录晚，整改跨环节" },
+            { "name": "总务处", "value": 72, "note": "采购量大，整改任务累积" },
+            { "name": "德育处", "value": 75, "note": "活动执行材料回补慢" }
+          ],
+          "closureInsight": {
+            "title": "AI 解读",
+            "summary": "本季风险发现与整改之间的缺口继续存在，说明学期末业务高峰正在放大内控闭环压力。",
+            "bullets": [
+              "整改量虽上升，但仍跟不上发现量增长。",
+              "季末若不设置整改清零动作，存量问题会跨期积压。",
+              "闭环效率应进入财务例会常规看板。"
+            ]
+          },
+          "unitInsight": {
+            "title": "AI 解读",
+            "summary": "低闭环单位主要仍集中在采购和项目执行部门，问题不在识别，而在协同落实。",
+            "bullets": [
+              "低闭环单位适合设置专项责任人与完成时限。",
+              "如果低闭环名单长期不变，说明治理动作还没进入组织层。",
+              "排名用于识别重点条线，不宜简单作为绩效评价。"
+            ]
+          }
+        }
+      },
+      "month": {
+        "overview": {
+          "metrics": [
+            {
+              "label": "本月核查单量",
+              "value": "362",
+              "trend": "覆盖审批单据 95%",
+              "trendState": "up"
+            },
+            {
+              "label": "风险命中单量",
+              "value": "67",
+              "trend": "命中率 18.5%",
+              "trendState": "warning"
+            },
+            {
+              "label": "风险金额暴露",
+              "value": "31 万",
+              "trend": "高风险金额占 27%",
+              "trendState": "warning"
+            },
+            {
+              "label": "需人工干预",
+              "value": "24 单",
+              "trend": "自动放行率 65%",
+              "trendState": "down"
+            }
+          ],
+          "riskTrend": [
+            { "month": "第1周", "hitRate": 15.9, "riskCount": 14 },
+            { "month": "第2周", "hitRate": 17.2, "riskCount": 16 },
+            { "month": "第3周", "hitRate": 18.4, "riskCount": 18 },
+            { "month": "第4周", "hitRate": 18.5, "riskCount": 19 }
+          ],
+          "riskThemeDistribution": [
+            { "name": "票据与凭证完整性", "value": 21, "color": "#2F6BFF" },
+            { "name": "金额与标准合规", "value": 17, "color": "#18B47A" },
+            { "name": "合同与时序合规", "value": 14, "color": "#F97316" },
+            { "name": "预算与指标合规", "value": 9, "color": "#7C5CFF" },
+            { "name": "一致性与真实性", "value": 6, "color": "#13B5B1" }
+          ],
+          "trendInsight": {
+            "title": "AI 解读",
+            "summary": "本月风险命中率周周抬升，且最后两周增幅更快，说明月末集中提交正在放大内控压力。",
+            "bullets": [
+              "最后两周风险量上升快于单量增长，更像提交质量下降而不是业务自然增长。",
+              "本月自动放行率下降到 65%，人工审核压力已经明显变大。",
+              "如果次月第一周命中率仍高位，应优先做经办人提醒。"
+            ]
+          },
+          "themeInsight": {
+            "title": "AI 解读",
+            "summary": "本月问题结构仍然以附件、票据和标准为主，说明高峰期最先崩的是基础规范。",
+            "bullets": [
+              "附件和票据类问题占比最高，极适合做提交前拦截。",
+              "标准合规问题同步上升，意味着高峰期更容易出现超标报销。",
+              "复杂一致性问题数量不高，但需要继续盯住。"
+            ]
+          }
+        },
+        "weakness": {
+          "topThemes": [
+            { "name": "票据与凭证完整性", "value": 21, "unit": "次" },
+            { "name": "金额与标准合规", "value": 17, "unit": "次" },
+            { "name": "合同与时序合规", "value": 14, "unit": "次" },
+            { "name": "预算与指标合规", "value": 9, "unit": "次" },
+            { "name": "一致性与真实性", "value": 6, "unit": "次" }
+          ],
+          "topRules": [
+            { "name": "缺少发票真伪查验", "value": 9, "unit": "次" },
+            { "name": "差旅标准超标", "value": 8, "unit": "次" },
+            { "name": "合同签订日期晚于审批日期", "value": 7, "unit": "次" },
+            { "name": "合同乙方与发票销售方不一致", "value": 5, "unit": "次" },
+            { "name": "预算项目与财务指标不一致", "value": 4, "unit": "次" }
+          ],
+          "themeInsight": {
+            "title": "AI 解读",
+            "summary": "本月高频问题和全年结构基本一致，说明经办习惯层面的共性问题仍是主因。",
+            "bullets": [
+              "短周期下也高度集中，说明治理动作可以更聚焦。",
+              "附件、标准、时序三类问题可以直接形成月度内控提示。",
+              "若次月主题分布突变，再考虑新增专题规则。"
+            ]
+          },
+          "ruleInsight": {
+            "title": "AI 解读",
+            "summary": "本月重复规则命中最集中在附件、标准和时序，说明系统改造优先级非常清晰。",
+            "bullets": [
+              "月度重复命中说明当前提示方式不足以改变行为。",
+              "针对前三条规则做强校验，通常能最快看到命中下降。",
+              "规则治理应优先看重复率，不只看单次严重度。"
+            ]
+          }
+        },
+        "concentration": {
+          "departmentDistribution": [
+            { "name": "总务处", "prompt": 3, "attention": 2, "high": 1 },
+            { "name": "教务处", "prompt": 3, "attention": 2, "high": 1 },
+            { "name": "德育处", "prompt": 2, "attention": 1, "high": 1 },
+            { "name": "后勤中心", "prompt": 4, "attention": 3, "high": 2 },
+            { "name": "信息中心", "prompt": 2, "attention": 2, "high": 1 }
+          ],
+          "businessDistribution": [
+            { "name": "货物类", "value": 16, "unit": "次" },
+            { "name": "服务类", "value": 13, "unit": "次" },
+            { "name": "代发劳务费", "value": 12, "unit": "次" },
+            { "name": "参加培训/会议", "value": 9, "unit": "次" },
+            { "name": "租车费", "value": 5, "unit": "次" }
+          ],
+          "departmentInsight": {
+            "title": "AI 解读",
+            "summary": "本月高风险仍集中在后勤中心和总务处，说明月末集中采购和补单是当前主要压力点。",
+            "bullets": [
+              "后勤中心高风险占比仍高，应重点盯供应商资料链。",
+              "教务和德育风险主要是轻中度问题，适合靠规范培训优化。",
+              "月度分布更适合用来锁定立即整改对象。"
+            ]
+          },
+          "businessInsight": {
+            "title": "AI 解读",
+            "summary": "本月风险业务类型没有偏离全年主线，货物类和服务类仍是最值得盯住的两类。",
+            "bullets": [
+              "货物类问题持续第一，说明一致性与合同链条仍是核心。",
+              "服务类和代发劳务费若继续上升，需要同步复核标准、材料与审批时序要求。",
+              "参加培训/会议类位列前列，反映专项费用标准执行仍偏弱。"
+            ]
+          }
+        },
+        "closure": {
+          "closureTrend": [
+            { "month": "第1周", "found": 14, "resolved": 11 },
+            { "month": "第2周", "found": 16, "resolved": 13 },
+            { "month": "第3周", "found": 18, "resolved": 15 },
+            { "month": "第4周", "found": 19, "resolved": 16 }
+          ],
+          "lowClosureUnits": [
+            { "name": "后勤中心", "value": 63, "note": "供应商补件和验收资料回收慢" },
+            { "name": "总务处", "value": 69, "note": "集中采购导致整改排队" },
+            { "name": "信息中心", "value": 74, "note": "合同与票据补录跨环节" },
+            { "name": "德育处", "value": 77, "note": "活动类附件补齐滞后" }
+          ],
+          "closureInsight": {
+            "title": "AI 解读",
+            "summary": "本月每周整改量都低于发现量，说明短周期内风险库存仍在上升。",
+            "bullets": [
+              "周周存在新增未清风险，月末库存会继续累积。",
+              "若次月初不做清理动作，AI 核查体验会被整改滞后拖累。",
+              "闭环效率是决定 AI 核查是否真正有管理价值的关键指标。"
+            ]
+          },
+          "unitInsight": {
+            "title": "AI 解读",
+            "summary": "本月低闭环单位仍以采购和项目执行条线为主，问题集中在协同补件效率而非系统识别能力。",
+            "bullets": [
+              "低闭环单位适合直接进入月度督办清单。",
+              "采购条线若连续两月低闭环，应考虑专项治理。",
+              "单位排行最适合服务财务负责人，而不是直接做公开展示。"
+            ]
+          }
+        }
+      }
+    },
+    "reimbursementAnalysis": {
+      "year": {
+        "metrics": [
+          {
+            "label": "本年报销金额",
+            "value": "1,962 万",
+            "trend": "较上年 +9.2%",
+            "trendState": "up"
+          },
+          {
+            "label": "本年报销笔数",
+            "value": "4,286",
+            "trend": "学期末集中度 31%",
+            "trendState": "warning"
+          },
+          {
+            "label": "平均单笔金额",
+            "value": "4578",
+            "trend": "大额单笔 82 笔",
+            "trendState": "warning"
+          },
+          {
+            "label": "TOP10 供应商占比",
+            "value": "39.8%",
+            "trend": "集中度中高",
+            "trendState": "warning"
+          }
+        ],
+        "monthlyTrend": [
+          { "month": "1月", "amount": 96, "count": 102 },
+          { "month": "2月", "amount": 102, "count": 108 },
+          { "month": "3月", "amount": 110, "count": 121 },
+          { "month": "4月", "amount": 126, "count": 132 },
+          { "month": "5月", "amount": 121, "count": 126 },
+          { "month": "6月", "amount": 142, "count": 148 },
+          { "month": "7月", "amount": 151, "count": 161 },
+          { "month": "8月", "amount": 168, "count": 173 },
+          { "month": "9月", "amount": 164, "count": 182 },
+          { "month": "10月", "amount": 177, "count": 194 },
+          { "month": "11月", "amount": 196, "count": 208 },
+          { "month": "12月", "amount": 216, "count": 224 }
+        ],
+        "categoryBreakdown": [
+          { "name": "活动费", "value": 28, "color": "#2F6BFF" },
+          { "name": "设备材料", "value": 21, "color": "#18B47A" },
+          { "name": "维修费", "value": 17, "color": "#FF9F43" },
+          { "name": "培训差旅", "value": 14, "color": "#7C5CFF" },
+          { "name": "办公用品", "value": 11, "color": "#13B5B1" },
+          { "name": "其他", "value": 9, "color": "#94A3B8" }
+        ],
+        "topVendors": [
+          { "name": "城东教育设备有限公司", "value": 68, "unit": "万" },
+          { "name": "博雅文化传播", "value": 54, "unit": "万" },
+          { "name": "启明后勤服务", "value": 49, "unit": "万" },
+          { "name": "卓越信息科技", "value": 42, "unit": "万" },
+          { "name": "青禾书店", "value": 38, "unit": "万" }
+        ],
+        "largeExpenses": [
+          { "project": "实验室设备采购", "category": "设备材料", "amount": "18.6 万" },
+          { "project": "校园文化节执行", "category": "活动费", "amount": "13.3 万" },
+          { "project": "暑期教室维修", "category": "维修费", "amount": "11.8 万" },
+          { "project": "教师外出培训", "category": "培训差旅", "amount": "9.6 万" }
+        ],
+        "insight": {
+          "title": "AI 解读",
+          "summary": "本年报销金额整体抬升，支出重心仍在活动、设备与维修三类，符合学校运行和办学活动双重驱动特征。",
+          "bullets": [
+            "前三类支出占比 66%，是预算执行和供应商集中的主要压力点。",
+            "四季度金额和笔数同步冲高，建议与年末采购计划联看。",
+            "供应商集中度保持在中高区间，适合结合内控风险做交叉筛查。"
+          ]
+        }
+      },
+      "quarter": {
+        "metrics": [
+          {
+            "label": "本季报销金额",
+            "value": "589 万",
+            "trend": "较上季 +8.1%",
+            "trendState": "up"
+          },
+          {
+            "label": "本季报销笔数",
+            "value": "1,082",
+            "trend": "季末集中度 36%",
+            "trendState": "warning"
+          },
+          {
+            "label": "平均单笔金额",
+            "value": "5444",
+            "trend": "大额单笔 24 笔",
+            "trendState": "warning"
+          },
+          {
+            "label": "TOP10 供应商占比",
+            "value": "42.3%",
+            "trend": "集中度偏高",
+            "trendState": "warning"
+          }
+        ],
+        "monthlyTrend": [
+          { "month": "10月", "amount": 177, "count": 194 },
+          { "month": "11月", "amount": 196, "count": 208 },
+          { "month": "12月", "amount": 216, "count": 224 },
+          { "month": "本季均值", "amount": 196, "count": 209 }
+        ],
+        "categoryBreakdown": [
+          { "name": "活动费", "value": 31, "color": "#2F6BFF" },
+          { "name": "设备材料", "value": 24, "color": "#18B47A" },
+          { "name": "维修费", "value": 15, "color": "#FF9F43" },
+          { "name": "培训差旅", "value": 13, "color": "#7C5CFF" },
+          { "name": "办公用品", "value": 9, "color": "#13B5B1" },
+          { "name": "其他", "value": 8, "color": "#94A3B8" }
+        ],
+        "topVendors": [
+          { "name": "城东教育设备有限公司", "value": 24, "unit": "万" },
+          { "name": "博雅文化传播", "value": 18, "unit": "万" },
+          { "name": "启明后勤服务", "value": 17, "unit": "万" },
+          { "name": "卓越信息科技", "value": 15, "unit": "万" },
+          { "name": "青禾书店", "value": 13, "unit": "万" }
+        ],
+        "largeExpenses": [
+          { "project": "实验室设备采购", "category": "设备材料", "amount": "18.6 万" },
+          { "project": "校园文化节执行", "category": "活动费", "amount": "13.3 万" },
+          { "project": "教师外出培训", "category": "培训差旅", "amount": "9.6 万" },
+          { "project": "校舍局部维修", "category": "维修费", "amount": "8.9 万" }
+        ],
+        "insight": {
+          "title": "AI 解读",
+          "summary": "本季报销金额继续上升，季末集中度高于全年均值，说明学期末活动与采购节奏明显加快。",
+          "bullets": [
+            "活动费和设备材料占比继续走高，是季末支出的两个主要抓手。",
+            "供应商集中度抬升，需同步关注是否与合同链路风险重合。",
+            "若下季继续高位运行，应提前做预算和审批节奏分散。"
+          ]
+        }
+      },
+      "month": {
+        "metrics": [
+          {
+            "label": "本月报销金额",
+            "value": "186.4 万",
+            "trend": "较上月 +12.8%",
+            "trendState": "up"
+          },
+          {
+            "label": "本月报销笔数",
+            "value": "327",
+            "trend": "月底集中度 34%",
+            "trendState": "warning"
+          },
+          {
+            "label": "平均单笔金额",
+            "value": "5701",
+            "trend": "大额单笔 14 笔",
+            "trendState": "down"
+          },
+          {
+            "label": "TOP10 供应商占比",
+            "value": "41.6%",
+            "trend": "集中度中高",
+            "trendState": "warning"
+          }
+        ],
+        "monthlyTrend": [
+          { "month": "第1周", "amount": 39, "count": 62 },
+          { "month": "第2周", "amount": 44, "count": 74 },
+          { "month": "第3周", "amount": 48, "count": 89 },
+          { "month": "第4周", "amount": 55, "count": 102 }
+        ],
+        "categoryBreakdown": [
+          { "name": "活动费", "value": 30, "color": "#2F6BFF" },
+          { "name": "设备材料", "value": 22, "color": "#18B47A" },
+          { "name": "维修费", "value": 16, "color": "#FF9F43" },
+          { "name": "培训差旅", "value": 13, "color": "#7C5CFF" },
+          { "name": "办公用品", "value": 10, "color": "#13B5B1" },
+          { "name": "其他", "value": 9, "color": "#94A3B8" }
+        ],
+        "topVendors": [
+          { "name": "城东教育设备有限公司", "value": 8.6, "unit": "万" },
+          { "name": "启明后勤服务", "value": 7.9, "unit": "万" },
+          { "name": "博雅文化传播", "value": 7.4, "unit": "万" },
+          { "name": "卓越信息科技", "value": 6.8, "unit": "万" },
+          { "name": "青禾书店", "value": 5.9, "unit": "万" }
+        ],
+        "largeExpenses": [
+          { "project": "实验室设备采购", "category": "设备材料", "amount": "8.6 万" },
+          { "project": "校园文化节执行", "category": "活动费", "amount": "7.4 万" },
+          { "project": "后勤应急维修", "category": "维修费", "amount": "6.1 万" },
+          { "project": "教师外出培训", "category": "培训差旅", "amount": "5.8 万" }
+        ],
+        "insight": {
+          "title": "AI 解读",
+          "summary": "本月报销金额和笔数同步上升，且周度曲线后高前低，说明月底集中报销仍较明显。",
+          "bullets": [
+            "活动费和设备材料仍是本月主要支出来源。",
+            "供应商集中度中高，更适合与内控风险联看。",
+            "如果次月仍后段冲高，需进一步平滑提交节奏。"
+          ]
+        }
+      }
+    }
+  },
+  "principalPerspective": {
+    "resourceFlow": [
+      { "name": "学生发展", "value": 24, "color": "#2F6BFF" },
+      { "name": "课堂教学", "value": 17, "color": "#18B47A" },
+      { "name": "教师发展", "value": 14, "color": "#FF9F43" },
+      { "name": "学校运转", "value": 11, "color": "#13B5B1" },
+      { "name": "后勤保障", "value": 9, "color": "#7C5CFF" },
+      { "name": "基础建设", "value": 25, "color": "#94A3B8" }
+    ],
+    "investmentCompare": [
+      { "name": "学生端", "value": 41, "color": "#2F6BFF" },
+      { "name": "教师端", "value": 24, "color": "#18B47A" },
+      { "name": "运转端", "value": 35, "color": "#FF9F43" }
+    ],
+    "structureTrend": [
+      { "month": "1月", "student": 35, "teacher": 22, "operation": 43 },
+      { "month": "2月", "student": 36, "teacher": 22, "operation": 42 },
+      { "month": "3月", "student": 37, "teacher": 23, "operation": 40 },
+      { "month": "4月", "student": 38, "teacher": 23, "operation": 39 },
+      { "month": "5月", "student": 39, "teacher": 24, "operation": 37 },
+      { "month": "6月", "student": 40, "teacher": 24, "operation": 36 },
+      { "month": "7月", "student": 41, "teacher": 24, "operation": 35 },
+      { "month": "8月", "student": 42, "teacher": 24, "operation": 34 },
+      { "month": "9月", "student": 43, "teacher": 25, "operation": 32 },
+      { "month": "10月", "student": 44, "teacher": 25, "operation": 31 },
+      { "month": "11月", "student": 45, "teacher": 26, "operation": 29 },
+      { "month": "12月", "student": 46, "teacher": 26, "operation": 28 }
+    ],
+    "dataNeeds": [
+      {
+        "field": "AI 一级标签",
+        "purpose": "映射学生、教师、运转、保障、建设等校长视角口径"
+      },
+      {
+        "field": "AI 二级标签",
+        "purpose": "细分竞赛、教研、培训、维修、办公等主题"
+      },
+      {
+        "field": "标签置信度",
+        "purpose": "支持人工复核和模型持续优化"
+      },
+      {
+        "field": "标准费用编码",
+        "purpose": "统一跨系统统计口径"
+      },
+      {
+        "field": "报销完成日期",
+        "purpose": "计算流程周期与滞留时长"
+      }
+    ],
+    "insight": {
+      "title": "AI 解读",
+      "summary": "AI 重分类后，学生端投入占 41%，教师端投入占 24%，运转端占 35%，资源仍有较大比例用于日常运转。",
+      "bullets": [
+        "学生端投入保持连续抬升，说明资源正逐步回到办学目标。",
+        "如果运转端连续 3 个月上升，应触发校长关注提醒。",
+        "建议将资源结构趋势与预算执行率联动展示，形成更完整决策链路。"
+      ]
+    }
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "header": {
+    "title": "校长治理财务立方体",
+    "subtitle": "默认以可治理支出池为主口径，帮助校长追踪资源是否真正下沉到学生、教师与基层一线。",
+    "tags": ["V2 治理视角", "可治理支出池", "基层自主", "教师动能"],
+    "periodLabel": "2025 学年 · 治理视角 H5"
+  },
+  "governanceOverview": {
+    "governableAmount": "760 万",
+    "totalExpenseShare": "38%",
+    "summary": "本年可治理资金 760 万，占总支出 38%，以下图表默认以“可治理支出池”为分母。",
+    "flow": [
+      { "name": "学生成长与学习支持", "value": 286, "color": "#2F6BFF" },
+      { "name": "教师发展与激励", "value": 118, "color": "#18B47A" },
+      { "name": "组织运行与行政统筹", "value": 94, "color": "#FF9F43" },
+      { "name": "后勤保障与公共服务", "value": 76, "color": "#13B5B1" },
+      { "name": "人力资本与薪酬", "value": 52, "color": "#7C5CFF" },
+      { "name": "校园基建与战略资产", "value": 134, "color": "#94A3B8" }
+    ],
+    "flowInsight": {
+      "title": "AI 解读",
+      "summary": "当前可治理资金主要流向学生成长与学习支持、校园基建与教师发展三类，说明学校资源配置已具备治理抓手。",
+      "bullets": [
+        "学生成长与学习支持占比最高，说明治理资源更多贴近教学与学习现场。",
+        "校园基建与战略资产仍占较高权重，需要持续判断其是否直接服务教育目标。",
+        "组织运行类支出占比可控，未出现治理资源被行政统筹过度吞噬的迹象。"
+      ]
+    }
+  },
+  "studentProximity": {
+    "studentGrassrootsRatio": "63%",
+    "studentGovernableAmount": "286 万",
+    "frontlineCoverage": "一线触达 71%",
+    "split": [
+      {
+        "name": "学生成长与学习支持",
+        "shortName": "学生成长",
+        "grassroots": 180,
+        "administrative": 106
+      },
+      {
+        "name": "教师发展与激励",
+        "shortName": "教师发展",
+        "grassroots": 72,
+        "administrative": 46
+      },
+      {
+        "name": "组织运行与行政统筹",
+        "shortName": "组织运行",
+        "grassroots": 18,
+        "administrative": 76
+      },
+      {
+        "name": "后勤保障与公共服务",
+        "shortName": "后勤保障",
+        "grassroots": 28,
+        "administrative": 48
+      },
+      {
+        "name": "人力资本与薪酬",
+        "shortName": "人力资本",
+        "grassroots": 6,
+        "administrative": 46
+      },
+      {
+        "name": "校园基建与战略资产",
+        "shortName": "校园基建",
+        "grassroots": 24,
+        "administrative": 110
+      }
+    ],
+    "trend": [
+      { "month": "1月", "student": 18, "administrative": 13 },
+      { "month": "2月", "student": 20, "administrative": 12 },
+      { "month": "3月", "student": 22, "administrative": 14 },
+      { "month": "4月", "student": 23, "administrative": 14 },
+      { "month": "5月", "student": 24, "administrative": 15 },
+      { "month": "6月", "student": 26, "administrative": 15 },
+      { "month": "7月", "student": 27, "administrative": 16 },
+      { "month": "8月", "student": 28, "administrative": 16 },
+      { "month": "9月", "student": 30, "administrative": 16 },
+      { "month": "10月", "student": 31, "administrative": 17 },
+      { "month": "11月", "student": 32, "administrative": 17 },
+      { "month": "12月", "student": 35, "administrative": 18 }
+    ],
+    "structureInsight": {
+      "title": "AI 解读",
+      "summary": "学生类投入中，基层自主占比达到 63%，说明更多资源已被下沉到离学生更近的一线场景。",
+      "bullets": [
+        "学生成长类投入持续高于行政类投入，且两者差距在过去 12 个月逐步扩大。",
+        "组织运行、校园基建等科目仍明显依赖行政统筹，符合其治理属性，但需防止挤压前线资源。",
+        "若学生类投入中的基层自主占比连续回落，应及时排查资源是否重新向校级集中。"
+      ]
+    },
+    "trendInsight": {
+      "title": "AI 解读",
+      "summary": "近 12 个月学生类投入保持稳步走高，且增速持续快于行政类投入，说明资源正更稳定地流向学生现场。",
+      "bullets": [
+        "学生类投入从年初到年末持续抬升，具备连续性而非单点冲高特征。",
+        "行政类投入整体较平稳，说明治理资源没有被管理性支出重新吞噬。",
+        "如果后续学生类投入增速放缓，而行政类突然抬升，应及时发出治理偏移提醒。"
+      ]
+    }
+  },
+  "grassrootsVitality": {
+    "autonomousPool": "328 万",
+    "activatedUnits": "8 / 10",
+    "averageUsageRate": "67%",
+    "units": [
+      { "name": "七年级组", "allocated": 48, "used": 39 },
+      { "name": "八年级组", "allocated": 46, "used": 34 },
+      { "name": "九年级组", "allocated": 52, "used": 44 },
+      { "name": "语文组", "allocated": 38, "used": 29 },
+      { "name": "数学组", "allocated": 36, "used": 11 },
+      { "name": "英语组", "allocated": 35, "used": 27 },
+      { "name": "科学组", "allocated": 32, "used": 15 },
+      { "name": "综合实践组", "allocated": 28, "used": 9 }
+    ],
+    "lowActivityRanking": [
+      { "name": "综合实践组", "value": 32, "unit": "%", "note": "项目立项慢，预算使用节奏明显滞后" },
+      { "name": "数学组", "value": 31, "unit": "%", "note": "教研经费动用偏低，跨组活动较少" },
+      { "name": "科学组", "value": 47, "unit": "%", "note": "设备类需求审批周期较长" },
+      { "name": "八年级组", "value": 74, "unit": "%", "note": "处于正常下沿，建议关注下学期活动储备" }
+    ],
+    "budgetInsight": {
+      "title": "AI 解读",
+      "summary": "基层自主预算池中，已有 8 个单位被激活，但低活跃单位仍集中在数学、科学与综合实践等创新活动强相关板块。",
+      "bullets": [
+        "七年级组和九年级组预算执行较快，说明年级端的自主治理能力更强。",
+        "低活跃单位并非一定缺钱，更可能是立项、审批或组织动员机制偏弱。",
+        "基层活力仪表盘应持续只看基层自主预算池，避免被校级统筹预算稀释信号。"
+      ]
+    },
+    "lowActivityInsight": {
+      "title": "AI 解读",
+      "summary": "低活跃单位主要集中在需要跨学科协同或项目制推进的条线，问题更可能在机制，而非单纯预算不足。",
+      "bullets": [
+        "综合实践组和数学组处于低活跃区，后续应优先关注活动策划与审批协同。",
+        "科学组预算释放慢，可能与设备采购和实验安排周期较长有关。",
+        "对低活跃单位更有效的管理动作，应是帮其把预算转成项目，而不是继续简单加钱。"
+      ]
+    }
+  },
+  "teacherMomentum": {
+    "yearlyInvestment": "108 万",
+    "categories": [
+      { "name": "校本教研补偿", "value": 46, "color": "#2F6BFF" },
+      { "name": "外部研训引智", "value": 38, "color": "#18B47A" },
+      { "name": "教师关怀激励", "value": 24, "color": "#FF9F43" }
+    ],
+    "coverage": [
+      { "label": "覆盖教师人数", "value": "186 人", "helper": "含教研、培训与激励触达人数" },
+      { "label": "覆盖率", "value": "82%", "helper": "按本学年在岗教师口径统计" },
+      { "label": "人均投入", "value": "5810 元", "helper": "不含基础工资，仅看成长与激励" }
+    ],
+    "trend": [
+      { "month": "1月", "value": 6 },
+      { "month": "2月", "value": 5 },
+      { "month": "3月", "value": 7 },
+      { "month": "4月", "value": 8 },
+      { "month": "5月", "value": 9 },
+      { "month": "6月", "value": 10 },
+      { "month": "7月", "value": 8 },
+      { "month": "8月", "value": 9 },
+      { "month": "9月", "value": 11 },
+      { "month": "10月", "value": 12 },
+      { "month": "11月", "value": 13 },
+      { "month": "12月", "value": 10 }
+    ],
+    "categoryInsight": {
+      "title": "AI 解读",
+      "summary": "教师成长与激励性投入全年累计 108 万，覆盖率 82%，说明学校正在持续为教师动能而非单纯维持运转买单。",
+      "bullets": [
+        "校本教研补偿仍是主投入项，说明内部学习共同体在发挥作用。",
+        "外部研训引智保持稳定增长，利于把外部方法带回校内形成扩散。",
+        "教师关怀激励虽不是最大头，但对组织内驱力具有显著放大效应，建议持续保留。"
+      ]
+    },
+    "trendInsight": {
+      "title": "AI 解读",
+      "summary": "教师成长投入在年中后持续上扬，说明学校对教师支持不是一次性项目，而在逐步形成节奏。",
+      "bullets": [
+        "9 至 11 月投入明显抬升，通常对应教研深化、培训密集和组织激励增强。",
+        "12 月虽有回落，但仍高于年初基线，说明投入韧性还在。",
+        "后续若连续两个月回落到年初水平，应关注教师成长投入是否被其他事项挤占。"
+      ]
+    }
+  }
+}

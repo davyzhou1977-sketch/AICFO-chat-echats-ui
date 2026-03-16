@@ -1,0 +1,14 @@
+.DS_Store
+.vercel
+node_modules/
+dist/
+coverage/
+*.log
+*.tsbuildinfo
+
+# Keep the existing standalone web repo isolated until we migrate it
+reimburse-list-chat-echarts/
+
+# Local output and generated artifacts
+output/
+tmp/

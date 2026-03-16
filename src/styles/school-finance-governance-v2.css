@@ -1,0 +1,20 @@
+.chart-lg {
+  height: 260px;
+  width: 100%;
+}
+
+.governance-anchor-nav {
+  scrollbar-width: none;
+}
+
+.governance-anchor-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.governance-sections {
+  scrollbar-width: none;
+}
+
+.governance-sections::-webkit-scrollbar {
+  display: none;
+}

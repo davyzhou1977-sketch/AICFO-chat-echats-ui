@@ -1,0 +1,26 @@
+.mobile-tabs {
+  scrollbar-width: none;
+}
+
+.mobile-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.chart-md {
+  height: 240px;
+  width: 100%;
+}
+
+.chart-sm {
+  height: 210px;
+  width: 100%;
+}
+
+.chart-xs {
+  height: 180px;
+  width: 100%;
+}
+
+.safe-bottom {
+  padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+}
