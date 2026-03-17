@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "./.generated",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "declaration": false,
+    "sourceMap": false
+  },
+  "include": ["src/**/*"]
+}

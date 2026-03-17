@@ -1,0 +1,1189 @@
+{
+    "financialAnalysis": {
+        "defaultPeriod": "year",
+        "periodOptions": [
+            { "value": "year", "label": "本年" },
+            { "value": "quarter", "label": "本季" },
+            { "value": "month", "label": "本月" }
+        ],
+        "defaultTopic": "budget",
+        "topicOptions": [
+            { "value": "budget", "label": "预算" },
+            { "value": "reimbursement", "label": "报销" },
+            { "value": "personnel", "label": "人员" },
+            { "value": "guarantee", "label": "保障" },
+            { "value": "special", "label": "专题" }
+        ],
+        "snapshots": {
+            "year": {
+                "budget": {
+                    "metrics": [
+                        { "label": "预算金额", "value": "2,680 万", "trend": "较上年 +7.4%", "trendState": "up" },
+                        { "label": "执行率", "value": "68%", "trend": "低于计划 4 个点", "trendState": "warning" },
+                        { "label": "可用预算", "value": "857 万", "trend": "年末仍可调剂", "trendState": "up" },
+                        { "label": "项目部门执行率", "value": "63%", "trend": "项目分化明显", "trendState": "warning" }
+                    ],
+                    "monthlyExecution": [
+                        { "month": "1月", "budget": 180, "executed": 128, "rate": 71 },
+                        { "month": "2月", "budget": 196, "executed": 136, "rate": 69 },
+                        { "month": "3月", "budget": 210, "executed": 154, "rate": 73 },
+                        { "month": "4月", "budget": 218, "executed": 162, "rate": 74 },
+                        { "month": "5月", "budget": 223, "executed": 166, "rate": 74 },
+                        { "month": "6月", "budget": 228, "executed": 171, "rate": 75 },
+                        { "month": "7月", "budget": 232, "executed": 168, "rate": 72 },
+                        { "month": "8月", "budget": 236, "executed": 175, "rate": 74 },
+                        { "month": "9月", "budget": 240, "executed": 182, "rate": 76 },
+                        { "month": "10月", "budget": 244, "executed": 186, "rate": 76 },
+                        { "month": "11月", "budget": 247, "executed": 191, "rate": 77 },
+                        { "month": "12月", "budget": 246, "executed": 164, "rate": 67 }
+                    ],
+                    "executionInsight": {
+                        "title": "AI 解读",
+                        "summary": "本年预算执行总体平稳，但四季度开始出现“预算还在、执行偏慢”的结构性分化，说明部分项目仍在等待集中落地。",
+                        "bullets": [
+                            "预算金额和执行金额没有明显失配，但执行率在 12 月回落，存在项目集中收尾的迹象。",
+                            "可用预算仍有 857 万，说明部分项目具备二次调剂空间。",
+                            "财务侧更适合优先盯低执行、非低预算的项目。"
+                        ]
+                    },
+                    "projectComparison": [
+                        { "name": "人员费用", "budget": 880, "executed": 826 },
+                        { "name": "基本保障", "budget": 460, "executed": 392 },
+                        { "name": "学生活动", "budget": 320, "executed": 228 },
+                        { "name": "教师成长", "budget": 180, "executed": 126 },
+                        { "name": "设备更新", "budget": 310, "executed": 204 },
+                        { "name": "信息运维", "budget": 210, "executed": 158 }
+                    ],
+                    "projectInsight": {
+                        "title": "AI 解读",
+                        "summary": "人员费用和基本保障执行最稳，学生活动、教师成长和设备更新存在明显的预算结余，说明发展性项目推进还不够充分。",
+                        "bullets": [
+                            "人员费用接近预算上线，刚性支出特征明显。",
+                            "学生活动和教师成长预算都有较大结余，更适合结合专题进一步看执行节奏。",
+                            "设备更新和信息运维的差距需要结合采购计划判断是真正节约还是延迟执行。"
+                        ]
+                    },
+                    "departmentExecution": [
+                        { "name": "行政部-人力", "value": 94, "unit": "%", "note": "人员费用执行稳定" },
+                        { "name": "后勤部-后勤小学", "value": 81, "unit": "%", "note": "保障类支出集中" },
+                        { "name": "教学服务中心", "value": 76, "unit": "%", "note": "教学项目基本按计划推进" },
+                        { "name": "德育中心", "value": 69, "unit": "%", "note": "活动项目执行偏慢" },
+                        { "name": "信息中心", "value": 64, "unit": "%", "note": "设备更新仍在后段执行" }
+                    ],
+                    "departmentInsight": {
+                        "title": "AI 解读",
+                        "summary": "部门执行率差异已经拉开，人员与后勤条线最稳定，发展型和设备型项目的执行节奏更容易偏慢。",
+                        "bullets": [
+                            "行政部-人力和后勤条线执行率高，说明刚性和保障支出兑现快。",
+                            "德育中心和信息中心执行率偏低，更适合列入月度跟踪。",
+                            "同样是低执行率，需要区分是项目延迟还是预算高估。"
+                        ]
+                    },
+                    "focusedProject": {
+                        "name": "人员费用",
+                        "departments": [
+                            { "name": "行政部-人力", "budget": 612, "executed": 587, "rate": 96 },
+                            { "name": "行政部-财务", "budget": 128, "executed": 116, "rate": 91 },
+                            { "name": "教学服务中心", "budget": 88, "executed": 74, "rate": 84 },
+                            { "name": "后勤部-后勤小学", "budget": 52, "executed": 49, "rate": 94 }
+                        ],
+                        "insight": {
+                            "title": "AI 解读",
+                            "summary": "人员费用项目内部的执行结构很清楚，主压力集中在人力条线，其他部门主要承担专项补贴和附加费用。",
+                            "bullets": [
+                                "行政部-人力几乎吃掉了人员费用的大头，说明它是校长判断人员成本的核心窗口。",
+                                "财务和教学服务中心承担了较多附加费用，适合继续拆解到补贴与社保层面。",
+                                "这一层交叉视图最适合做项目和部门的联动解释。"
+                            ]
+                        }
+                    }
+                },
+                "reimbursement": {
+                    "metrics": [
+                        { "label": "报销金额", "value": "1,962 万", "trend": "较上年 +9.2%", "trendState": "up" },
+                        { "label": "报销笔数", "value": "4,286", "trend": "学期末集中度 31%", "trendState": "warning" },
+                        { "label": "平均单笔", "value": "4,578", "trend": "大额单笔 82 笔", "trendState": "warning" },
+                        { "label": "TOP10 供应商占比", "value": "39.8%", "trend": "集中度中高", "trendState": "warning" }
+                    ],
+                    "monthlyTrend": [
+                        { "month": "1月", "amount": 96, "count": 102 },
+                        { "month": "2月", "amount": 102, "count": 108 },
+                        { "month": "3月", "amount": 110, "count": 121 },
+                        { "month": "4月", "amount": 126, "count": 132 },
+                        { "month": "5月", "amount": 121, "count": 126 },
+                        { "month": "6月", "amount": 142, "count": 148 },
+                        { "month": "7月", "amount": 151, "count": 161 },
+                        { "month": "8月", "amount": 168, "count": 173 },
+                        { "month": "9月", "amount": 164, "count": 182 },
+                        { "month": "10月", "amount": 177, "count": 194 },
+                        { "month": "11月", "amount": 196, "count": 208 },
+                        { "month": "12月", "amount": 216, "count": 224 }
+                    ],
+                    "monthlyInsight": {
+                        "title": "AI 解读",
+                        "summary": "本年报销金额整体抬升，四季度出现更明显的后段冲高，符合采购与活动费用集中报销的节奏。",
+                        "bullets": [
+                            "金额和笔数同步上升，说明不仅单笔金额增加，提交频次也在提升。",
+                            "9 月后报销活跃度明显抬高，更适合和预算执行联动阅读。",
+                            "如果次年一季度延续高位，需要进一步平滑报销节奏。"
+                        ]
+                    },
+                    "categoryBreakdown": [
+                        { "name": "活动费", "value": 28, "color": "#2F6BFF" },
+                        { "name": "设备材料", "value": 21, "color": "#18B47A" },
+                        { "name": "维修费", "value": 17, "color": "#FF9F43" },
+                        { "name": "培训差旅", "value": 14, "color": "#7C5CFF" },
+                        { "name": "办公用品", "value": 11, "color": "#13B5B1" },
+                        { "name": "其他", "value": 9, "color": "#94A3B8" }
+                    ],
+                    "categoryInsight": {
+                        "title": "AI 解读",
+                        "summary": "报销主要集中在活动、设备与维修三类，这三类既是金额大头，也是后续预算和专题分析最该联看的抓手。",
+                        "bullets": [
+                            "活动费和设备材料的占比始终较高，说明学校支出仍在办学活动和更新投入两端发力。",
+                            "维修费占比不低，适合在保障专题中继续拆解。",
+                            "培训差旅虽占比不高，但与教师成长专题关系紧密。"
+                        ]
+                    },
+                    "topVendors": [
+                        { "name": "城东教育设备有限公司", "value": 68, "unit": "万" },
+                        { "name": "博雅文化传播", "value": 54, "unit": "万" },
+                        { "name": "启明后勤服务", "value": 49, "unit": "万" },
+                        { "name": "卓越信息科技", "value": 42, "unit": "万" },
+                        { "name": "青禾书店", "value": 38, "unit": "万" }
+                    ],
+                    "vendorInsight": {
+                        "title": "AI 解读",
+                        "summary": "供应商集中度保持在中高区间，设备、活动执行和后勤服务供应商是最值得持续跟踪的合作对象。",
+                        "bullets": [
+                            "头部供应商的金额仍然较高，说明核心采购关系稳定。",
+                            "活动和后勤类供应商同时进入前列，表明学校支出结构比较清晰。",
+                            "若后续要做 AI 报表查询，供应商维度是最适合即时透视的分类之一。"
+                        ]
+                    },
+                    "largeExpenses": [
+                        { "project": "实验室设备采购", "category": "设备材料", "amount": "18.6 万" },
+                        { "project": "校园文化节执行", "category": "活动费", "amount": "13.3 万" },
+                        { "project": "暑期教室维修", "category": "维修费", "amount": "11.8 万" },
+                        { "project": "教师外出培训", "category": "培训差旅", "amount": "9.6 万" }
+                    ],
+                    "largeExpenseInsight": {
+                        "title": "AI 解读",
+                        "summary": "大额报销主要落在设备采购、活动执行和维修三类，说明高金额单据仍与学校重大事项和集中采购高度相关。",
+                        "bullets": [
+                            "设备与维修类大额单据更适合和预算执行一起看。",
+                            "活动执行大额单据可以下钻到专题的学生活动。",
+                            "教师外出培训是后续教师成长专题的天然入口。"
+                        ]
+                    }
+                },
+                "personnel": {
+                    "metrics": [
+                        { "label": "人员费用总额", "value": "1,328 万", "trend": "较上年 +6.1%", "trendState": "up" },
+                        { "label": "工资总额", "value": "911 万", "trend": "统发工资占 69%", "trendState": "up" },
+                        { "label": "社保公积金", "value": "252 万", "trend": "附加成本稳定", "trendState": "warning" },
+                        { "label": "补贴津贴总额", "value": "119 万", "trend": "四季度略有抬升", "trendState": "warning" }
+                    ],
+                    "monthlyComposition": {
+                        "labels": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+                        "series": [
+                            { "name": "基本工资", "color": "#2F6BFF", "data": [74, 74, 75, 75, 76, 76, 76, 76, 77, 77, 78, 78] },
+                            { "name": "绩效工资", "color": "#18B47A", "data": [22, 22, 23, 24, 24, 24, 25, 25, 27, 28, 29, 30] },
+                            { "name": "社保公积金", "color": "#F97316", "data": [20, 20, 21, 21, 21, 21, 21, 21, 22, 22, 21, 21] },
+                            { "name": "补贴津贴", "color": "#7C5CFF", "data": [7, 8, 8, 9, 9, 9, 9, 10, 12, 12, 13, 13] }
+                        ]
+                    },
+                    "compositionInsight": {
+                        "title": "AI 解读",
+                        "summary": "人员费用结构很稳定，基本工资始终占绝对大头，绩效和补贴在下半年逐步抬升，说明结构变化主要来自激励性费用。",
+                        "bullets": [
+                            "基本工资决定了总盘子的稳定性，是校长理解人员成本的底盘。",
+                            "绩效工资和补贴在 9 月后上升更明显，适合继续拆解到学期专项。",
+                            "社保公积金占比平稳，说明附加成本变化不是当前主要波动源。"
+                        ]
+                    },
+                    "focusTrend": {
+                        "labels": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+                        "series": [
+                            { "name": "基本工资", "color": "#2F6BFF", "data": [74, 74, 75, 75, 76, 76, 76, 76, 77, 77, 78, 78] },
+                            { "name": "绩效工资", "color": "#18B47A", "data": [22, 22, 23, 24, 24, 24, 25, 25, 27, 28, 29, 30] },
+                            { "name": "社保公积金", "color": "#F97316", "data": [20, 20, 21, 21, 21, 21, 21, 21, 22, 22, 21, 21] },
+                            { "name": "补贴总额", "color": "#7C5CFF", "data": [7, 8, 8, 9, 9, 9, 9, 10, 12, 12, 13, 13] }
+                        ]
+                    },
+                    "focusInsight": {
+                        "title": "AI 解读",
+                        "summary": "从重点费用趋势看，真正带来结构变化的是绩效和补贴，而不是基本工资，这也意味着管理动作主要落在激励类成本上。",
+                        "bullets": [
+                            "绩效工资全年缓慢上升，是结构变化最持续的一条线。",
+                            "补贴在四季度有明显抬升，更适合结合专题进一步看原因。",
+                            "如果后续加入人员类别，就能更清楚看到不同人群的成本分布。"
+                        ]
+                    },
+                    "structureBreakdown": [
+                        { "name": "基本工资", "value": 911, "unit": "万" },
+                        { "name": "绩效工资", "value": 292, "unit": "万" },
+                        { "name": "社保公积金", "value": 252, "unit": "万" },
+                        { "name": "补贴津贴", "value": 119, "unit": "万" },
+                        { "name": "课后服务专项", "value": 46, "unit": "万" }
+                    ],
+                    "structureInsight": {
+                        "title": "AI 解读",
+                        "summary": "当前人员费用依旧以基本工资和绩效工资为核心，两者合计构成人员费用的绝大多数，专项和补贴类费用更适合做结构性观察。",
+                        "bullets": [
+                            "基本工资和绩效工资共同决定人员成本总量。",
+                            "补贴和课后服务专项金额不算最大，但最容易体现政策和管理动作。",
+                            "这张图最适合作为“人员费用都花到哪里了”的第一张解释图。"
+                        ]
+                    }
+                },
+                "guarantee": {
+                    "metrics": [
+                        { "label": "保障总额", "value": "422 万", "trend": "较上年 +6.8%", "trendState": "warning" },
+                        { "label": "水电合计", "value": "188 万", "trend": "夏冬双峰明显", "trendState": "warning" },
+                        { "label": "物业采暖合计", "value": "146 万", "trend": "冬季上升明显", "trendState": "up" },
+                        { "label": "同比变化", "value": "+6.8%", "trend": "仍在可控区间", "trendState": "up" }
+                    ],
+                    "monthlyComposition": {
+                        "labels": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+                        "series": [
+                            { "name": "水费", "color": "#2F6BFF", "data": [8, 9, 8, 9, 10, 11, 11, 10, 9, 9, 8, 8] },
+                            { "name": "电费", "color": "#18B47A", "data": [10, 9, 10, 11, 12, 15, 17, 18, 14, 12, 11, 10] },
+                            { "name": "物业费", "color": "#F97316", "data": [11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11] },
+                            { "name": "采暖费", "color": "#7C5CFF", "data": [15, 14, 8, 3, 2, 1, 1, 1, 3, 9, 15, 16] },
+                            { "name": "其他保障", "color": "#94A3B8", "data": [5, 5, 6, 6, 6, 5, 5, 5, 6, 6, 6, 6] }
+                        ]
+                    },
+                    "compositionInsight": {
+                        "title": "AI 解读",
+                        "summary": "保障费用有明显季节性，夏季电费高，冬季采暖高，物业费则构成了稳定底盘，因此适合用一张总览图先看清构成。",
+                        "bullets": [
+                            "电费和采暖费共同决定了全年的两个峰值。",
+                            "物业费稳定，适合作为保障基线参考。",
+                            "如果仅看单月，很容易误判季节性波动为异常。"
+                        ]
+                    },
+                    "focusOptions": [
+                        { "value": "water", "label": "水费" },
+                        { "value": "electricity", "label": "电费" },
+                        { "value": "property", "label": "物业费" },
+                        { "value": "heating", "label": "采暖费" }
+                    ],
+                    "focusTrends": {
+                        "water": { "labels": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"], "name": "水费", "color": "#2F6BFF", "data": [8, 9, 8, 9, 10, 11, 11, 10, 9, 9, 8, 8] },
+                        "electricity": { "labels": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"], "name": "电费", "color": "#18B47A", "data": [10, 9, 10, 11, 12, 15, 17, 18, 14, 12, 11, 10] },
+                        "property": { "labels": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"], "name": "物业费", "color": "#F97316", "data": [11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11] },
+                        "heating": { "labels": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"], "name": "采暖费", "color": "#7C5CFF", "data": [15, 14, 8, 3, 2, 1, 1, 1, 3, 9, 15, 16] }
+                    },
+                    "focusInsights": {
+                        "water": { "title": "AI 解读", "summary": "水费全年波动不大，主要在夏季略高，当前更适合作为稳定类保障支出跟踪。", "bullets": ["水费曲线平稳，异常识别相对容易。", "若某个月份单点抬升，更可能是校区使用或抄表时间差。", "这类费用很适合放进 AI 报表查询做即时汇总。"] },
+                        "electricity": { "title": "AI 解读", "summary": "电费有明显夏季高峰，是保障专题中最值得持续追踪的单项费用。", "bullets": ["6 至 8 月为明显高位区间。", "如果未来补齐校址数据，可进一步拆校区做峰值解释。", "当前阶段先看趋势和汇总金额即可。"] },
+                        "property": { "title": "AI 解读", "summary": "物业费最稳定，适合当作学校基础运转成本的底盘观察项。", "bullets": ["月度差异极小，适合做合同或支付节奏的稳定性校验。", "若出现异常跳升，通常不是业务变化，而是支付节奏变化。", "这一项更适合和收款单位联看。"] },
+                        "heating": { "title": "AI 解读", "summary": "采暖费具有显著冬季特征，因此判断异常必须结合月份，不能与全年平均简单对比。", "bullets": ["11 月到次年 2 月是主支出区间。", "春夏低位是正常现象，不应被误判为执行不足。", "后续若补齐面积数据，可引入平米口径。"] }
+                    },
+                    "structureBreakdown": [
+                        { "name": "电费", "value": 149, "unit": "万" },
+                        { "name": "物业费", "value": 132, "unit": "万" },
+                        { "name": "采暖费", "value": 88, "unit": "万" },
+                        { "name": "水费", "value": 110, "unit": "万" },
+                        { "name": "其他保障", "value": 63, "unit": "万" }
+                    ],
+                    "structureInsight": {
+                        "title": "AI 解读",
+                        "summary": "保障费用里，电费、物业费和水费构成了最主要的三类成本，采暖费则带来明显季节波动。",
+                        "bullets": [
+                            "从结构上看，物业费是稳定底盘，电费和采暖费是波动来源。",
+                            "当前还不引入面积、人数口径时，这张结构图已经足够说明主要支出方向。",
+                            "下一步最值得补的是校址维度。"
+                        ]
+                    }
+                },
+                "special": {
+                    "defaultTopic": "studentActivity",
+                    "options": [
+                        { "value": "studentActivity", "label": "学生活动" },
+                        { "value": "teacherGrowth", "label": "教师成长" }
+                    ],
+                    "topics": {
+                        "studentActivity": {
+                            "title": "学生活动",
+                            "metrics": [
+                                { "label": "活动投入", "value": "228 万", "trend": "较上年 +11%", "trendState": "up" },
+                                { "label": "活跃月份", "value": "9 个月", "trend": "9-12 月更集中", "trendState": "warning" },
+                                { "label": "重点类型", "value": "赛事活动", "trend": "占比 34%", "trendState": "up" },
+                                { "label": "单月峰值", "value": "31 万", "trend": "发生在 10 月", "trendState": "warning" }
+                            ],
+                            "monthlyTrend": {
+                                "labels": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+                                "name": "学生活动投入",
+                                "color": "#2F6BFF",
+                                "data": [8, 6, 10, 15, 18, 16, 14, 15, 24, 31, 29, 42]
+                            },
+                            "trendInsight": {
+                                "title": "AI 解读",
+                                "summary": "学生活动投入在秋季明显升高，说明活动经费主要跟随学期重点项目释放，而不是平均分摊到全年。",
+                                "bullets": [
+                                    "9 月后快速抬升，和校园活动密集期一致。",
+                                    "10 月和 12 月出现两个高点，更适合做专项项目复盘。",
+                                    "这类投入最适合和报销行为中的活动费联看。"
+                                ]
+                            },
+                            "categoryBreakdown": [
+                                { "name": "赛事活动", "value": 34, "color": "#2F6BFF" },
+                                { "name": "实践活动", "value": 26, "color": "#18B47A" },
+                                { "name": "社团支持", "value": 22, "color": "#F97316" },
+                                { "name": "主题教育", "value": 18, "color": "#7C5CFF" }
+                            ],
+                            "structureInsight": {
+                                "title": "AI 解读",
+                                "summary": "赛事活动和实践活动构成了学生活动经费的主干，说明经费主要用在直接触达学生的项目上。",
+                                "bullets": [
+                                    "赛事和实践合计超过一半，是最能体现办学活力的投入。",
+                                    "社团支持占比不低，说明学生自主类活动也在持续发生。",
+                                    "结构图能帮助校长快速判断钱是否花在学生最近的地方。"
+                                ]
+                            },
+                            "projectRanking": [
+                                { "name": "校园文化节", "value": 33, "unit": "万" },
+                                { "name": "学生科技节", "value": 28, "unit": "万" },
+                                { "name": "社团展示季", "value": 19, "unit": "万" },
+                                { "name": "研学实践周", "value": 17, "unit": "万" }
+                            ],
+                            "projectInsight": {
+                                "title": "AI 解读",
+                                "summary": "重点项目金额比较集中，说明活动经费并不是完全分散的小额开销，而是有几个明确的年度重点项目。",
+                                "bullets": [
+                                    "校园文化节和学生科技节是最强的两个金额抓手。",
+                                    "如果要继续做校长视角的专题，这类项目最容易形成清晰解释。",
+                                    "榜单也适合在 AI 报表查询里做快速复用。"
+                                ]
+                            }
+                        },
+                        "teacherGrowth": {
+                            "title": "教师成长",
+                            "metrics": [
+                                { "label": "成长投入", "value": "126 万", "trend": "较上年 +8%", "trendState": "up" },
+                                { "label": "重点方式", "value": "外部研修", "trend": "占比 39%", "trendState": "warning" },
+                                { "label": "高峰月份", "value": "11 月", "trend": "教研和培训叠加", "trendState": "up" },
+                                { "label": "核心抓手", "value": "教研补偿", "trend": "保持稳定", "trendState": "up" }
+                            ],
+                            "monthlyTrend": {
+                                "labels": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+                                "name": "教师成长投入",
+                                "color": "#7C5CFF",
+                                "data": [6, 5, 7, 8, 9, 8, 7, 7, 11, 14, 18, 26]
+                            },
+                            "trendInsight": {
+                                "title": "AI 解读",
+                                "summary": "教师成长投入在下半年逐步抬升，说明培训、教研和专题支持更集中在学期后段展开。",
+                                "bullets": [
+                                    "9 月后明显增长，符合学期内集中培训节奏。",
+                                    "11 月到 12 月是年度峰值，适合关注项目兑现效率。",
+                                    "这条趋势线能和人员专题中的补贴变化形成呼应。"
+                                ]
+                            },
+                            "categoryBreakdown": [
+                                { "name": "外部研修", "value": 39, "color": "#7C5CFF" },
+                                { "name": "校本教研", "value": 31, "color": "#2F6BFF" },
+                                { "name": "专家讲座", "value": 18, "color": "#18B47A" },
+                                { "name": "成果补偿", "value": 12, "color": "#F97316" }
+                            ],
+                            "structureInsight": {
+                                "title": "AI 解读",
+                                "summary": "教师成长投入更多流向外部研修和校本教研，说明学校既在引入外部资源，也在维持内部教研活力。",
+                                "bullets": [
+                                    "外部研修占比最高，是提升外部输入的主要方式。",
+                                    "校本教研比重不低，说明内部成长机制仍有投入。",
+                                    "结构分布清楚，适合做年度教师成长专题。"
+                                ]
+                            },
+                            "projectRanking": [
+                                { "name": "骨干教师研修班", "value": 22, "unit": "万" },
+                                { "name": "校本教研补偿", "value": 18, "unit": "万" },
+                                { "name": "专家入校讲座", "value": 15, "unit": "万" },
+                                { "name": "新教师成长营", "value": 12, "unit": "万" }
+                            ],
+                            "projectInsight": {
+                                "title": "AI 解读",
+                                "summary": "教师成长投入并不是零散发生，而是围绕几类明确项目长期投入，这能帮助校长更清楚地看到投入抓手。",
+                                "bullets": [
+                                    "骨干教师研修班和校本教研补偿共同构成了两条主线。",
+                                    "专家入校讲座和新教师成长营是补充性抓手。",
+                                    "榜单最适合做专题汇报时的项目抓手说明。"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "quarter": {
+                "budget": {
+                    "metrics": [
+                        { "label": "预算金额", "value": "668 万", "trend": "本季计划值", "trendState": "up" },
+                        { "label": "执行率", "value": "72%", "trend": "较计划低 3 个点", "trendState": "warning" },
+                        { "label": "可用预算", "value": "186 万", "trend": "仍可调剂", "trendState": "up" },
+                        { "label": "项目部门执行率", "value": "67%", "trend": "后段追回", "trendState": "warning" }
+                    ],
+                    "monthlyExecution": [
+                        { "month": "10月", "budget": 214, "executed": 152, "rate": 71 },
+                        { "month": "11月", "budget": 222, "executed": 167, "rate": 75 },
+                        { "month": "12月", "budget": 232, "executed": 160, "rate": 69 },
+                        { "month": "本季均值", "budget": 223, "executed": 160, "rate": 72 }
+                    ],
+                    "executionInsight": {
+                        "title": "AI 解读",
+                        "summary": "本季预算执行仍偏后段发力，但 12 月执行率回落，说明有部分项目进入跨期或延迟状态。",
+                        "bullets": [
+                            "11 月执行最好，12 月有所回落。",
+                            "本季可用预算仍然不低，存在重新配置空间。",
+                            "项目与部门层面的差异比总盘子更值得看。"
+                        ]
+                    },
+                    "projectComparison": [
+                        { "name": "人员费用", "budget": 220, "executed": 212 },
+                        { "name": "基本保障", "budget": 118, "executed": 103 },
+                        { "name": "学生活动", "budget": 94, "executed": 68 },
+                        { "name": "教师成长", "budget": 56, "executed": 39 },
+                        { "name": "设备更新", "budget": 102, "executed": 71 }
+                    ],
+                    "projectInsight": {
+                        "title": "AI 解读",
+                        "summary": "本季仍是发展类项目执行偏慢，保障与人员最稳定，这与全年结构保持一致。",
+                        "bullets": [
+                            "学生活动和教师成长预算结余仍然较大。",
+                            "设备更新也存在明显后置执行。",
+                            "若下季继续偏慢，需要明确项目责任人。"
+                        ]
+                    },
+                    "departmentExecution": [
+                        { "name": "行政部-人力", "value": 95, "unit": "%", "note": "人员执行稳定" },
+                        { "name": "后勤部-后勤小学", "value": 83, "unit": "%", "note": "保障条线稳定" },
+                        { "name": "教学服务中心", "value": 72, "unit": "%", "note": "教学项目正常" },
+                        { "name": "德育中心", "value": 66, "unit": "%", "note": "活动结转较多" },
+                        { "name": "信息中心", "value": 61, "unit": "%", "note": "采购执行偏慢" }
+                    ],
+                    "departmentInsight": {
+                        "title": "AI 解读",
+                        "summary": "本季部门执行率结构和全年相似，说明问题不是短期波动，而是项目性质带来的天然差异。",
+                        "bullets": [
+                            "人力条线依旧执行最高。",
+                            "德育和信息条线仍需重点看节奏。",
+                            "这一图适合月度督办。"
+                        ]
+                    },
+                    "focusedProject": {
+                        "name": "学生活动",
+                        "departments": [
+                            { "name": "德育中心", "budget": 38, "executed": 24, "rate": 63 },
+                            { "name": "教学服务中心", "budget": 20, "executed": 16, "rate": 80 },
+                            { "name": "团委", "budget": 16, "executed": 14, "rate": 88 },
+                            { "name": "后勤部", "budget": 20, "executed": 14, "rate": 70 }
+                        ],
+                        "insight": {
+                            "title": "AI 解读",
+                            "summary": "学生活动项目内部并不均衡，德育中心预算体量最大，但执行节奏最慢，是最值得优先盯的部门。",
+                            "bullets": [
+                                "德育中心承担了最大活动预算，也决定了活动执行率的上限。",
+                                "团委执行效率较高，可作为活动项目对比样本。",
+                                "这个交叉视图能直接落到责任主体。"
+                            ]
+                        }
+                    }
+                },
+                "reimbursement": {
+                    "metrics": [
+                        { "label": "报销金额", "value": "589 万", "trend": "较上季 +8.1%", "trendState": "up" },
+                        { "label": "报销笔数", "value": "1,082", "trend": "季末集中度 36%", "trendState": "warning" },
+                        { "label": "平均单笔", "value": "5,444", "trend": "大额单笔 24 笔", "trendState": "warning" },
+                        { "label": "TOP10 供应商占比", "value": "42.3%", "trend": "集中度偏高", "trendState": "warning" }
+                    ],
+                    "monthlyTrend": [
+                        { "month": "10月", "amount": 177, "count": 194 },
+                        { "month": "11月", "amount": 196, "count": 208 },
+                        { "month": "12月", "amount": 216, "count": 224 },
+                        { "month": "本季均值", "amount": 196, "count": 209 }
+                    ],
+                    "monthlyInsight": {
+                        "title": "AI 解读",
+                        "summary": "本季报销继续上升，且 12 月冲高更明显，说明业务结转和集中提交仍在四季度放大。",
+                        "bullets": [
+                            "金额和笔数都在增长。",
+                            "活动类、设备类在季末拉动更明显。",
+                            "季末峰值最适合与预算执行、专题一起读。"
+                        ]
+                    },
+                    "categoryBreakdown": [
+                        { "name": "活动费", "value": 31, "color": "#2F6BFF" },
+                        { "name": "设备材料", "value": 24, "color": "#18B47A" },
+                        { "name": "维修费", "value": 15, "color": "#FF9F43" },
+                        { "name": "培训差旅", "value": 13, "color": "#7C5CFF" },
+                        { "name": "办公用品", "value": 9, "color": "#13B5B1" },
+                        { "name": "其他", "value": 8, "color": "#94A3B8" }
+                    ],
+                    "categoryInsight": {
+                        "title": "AI 解读",
+                        "summary": "本季活动费和设备材料继续是主支出类别，结构并没有偏离全年主线。",
+                        "bullets": [
+                            "活动费更适合和专题的学生活动联看。",
+                            "设备和维修适合与预算和保障联看。",
+                            "结构稳定有利于做环比对比。"
+                        ]
+                    },
+                    "topVendors": [
+                        { "name": "城东教育设备有限公司", "value": 24, "unit": "万" },
+                        { "name": "博雅文化传播", "value": 18, "unit": "万" },
+                        { "name": "启明后勤服务", "value": 17, "unit": "万" },
+                        { "name": "卓越信息科技", "value": 15, "unit": "万" },
+                        { "name": "青禾书店", "value": 13, "unit": "万" }
+                    ],
+                    "vendorInsight": {
+                        "title": "AI 解读",
+                        "summary": "本季头部供应商格局没有变化，说明季度报销主要还是围绕既有的稳定供应链展开。",
+                        "bullets": [
+                            "设备、活动和后勤服务供应商仍然居前。",
+                            "这类供应商关系稳定，适合长期跟踪。",
+                            "也是 AI 报表查询最适合下钻的维度。"
+                        ]
+                    },
+                    "largeExpenses": [
+                        { "project": "实验室设备采购", "category": "设备材料", "amount": "18.6 万" },
+                        { "project": "校园文化节执行", "category": "活动费", "amount": "13.3 万" },
+                        { "project": "教师外出培训", "category": "培训差旅", "amount": "9.6 万" },
+                        { "project": "校舍局部维修", "category": "维修费", "amount": "8.9 万" }
+                    ],
+                    "largeExpenseInsight": {
+                        "title": "AI 解读",
+                        "summary": "季度内的大额报销项目仍然围绕设备、活动、培训和维修，基本都能在其他专题中找到对应解释。",
+                        "bullets": [
+                            "这说明各专题之间的口径可以打通。",
+                            "大额项目不一定异常，但适合重点解释。",
+                            "这块在汇报场景里很有价值。"
+                        ]
+                    }
+                },
+                "personnel": {
+                    "metrics": [
+                        { "label": "人员费用总额", "value": "336 万", "trend": "较上季 +4.8%", "trendState": "up" },
+                        { "label": "工资总额", "value": "229 万", "trend": "基本平稳", "trendState": "up" },
+                        { "label": "社保公积金", "value": "63 万", "trend": "占比稳定", "trendState": "warning" },
+                        { "label": "补贴津贴总额", "value": "32 万", "trend": "11 月上升", "trendState": "warning" }
+                    ],
+                    "monthlyComposition": {
+                        "labels": ["10月", "11月", "12月", "本季均值"],
+                        "series": [
+                            { "name": "基本工资", "color": "#2F6BFF", "data": [77, 78, 78, 78] },
+                            { "name": "绩效工资", "color": "#18B47A", "data": [28, 29, 30, 29] },
+                            { "name": "社保公积金", "color": "#F97316", "data": [22, 21, 21, 21] },
+                            { "name": "补贴津贴", "color": "#7C5CFF", "data": [12, 13, 13, 13] }
+                        ]
+                    },
+                    "compositionInsight": {
+                        "title": "AI 解读",
+                        "summary": "本季人员费用结构稳定，绩效和补贴是主要变化源，基本工资和社保公积金并未出现异常波动。",
+                        "bullets": [
+                            "11 月后绩效和补贴略增。",
+                            "基本工资和附加成本平稳。",
+                            "这说明结构变化主要来自激励项。"
+                        ]
+                    },
+                    "focusTrend": {
+                        "labels": ["10月", "11月", "12月", "本季均值"],
+                        "series": [
+                            { "name": "基本工资", "color": "#2F6BFF", "data": [77, 78, 78, 78] },
+                            { "name": "绩效工资", "color": "#18B47A", "data": [28, 29, 30, 29] },
+                            { "name": "社保公积金", "color": "#F97316", "data": [22, 21, 21, 21] },
+                            { "name": "补贴总额", "color": "#7C5CFF", "data": [12, 13, 13, 13] }
+                        ]
+                    },
+                    "focusInsight": {
+                        "title": "AI 解读",
+                        "summary": "季度内补贴和绩效的联动变化更清楚，说明年末激励类费用对结构的影响更直接。",
+                        "bullets": [
+                            "绩效是最大的边际变量。",
+                            "补贴在年末保持高位。",
+                            "若后续加入人员类别，解释会更完整。"
+                        ]
+                    },
+                    "structureBreakdown": [
+                        { "name": "基本工资", "value": 233, "unit": "万" },
+                        { "name": "绩效工资", "value": 87, "unit": "万" },
+                        { "name": "社保公积金", "value": 63, "unit": "万" },
+                        { "name": "补贴津贴", "value": 32, "unit": "万" },
+                        { "name": "课后服务专项", "value": 11, "unit": "万" }
+                    ],
+                    "structureInsight": {
+                        "title": "AI 解读",
+                        "summary": "本季人员费用仍以工资和绩效为主，补贴类维持在相对稳定的补充位置。",
+                        "bullets": [
+                            "工资 + 绩效仍构成主结构。",
+                            "补贴和专项更适合做结构解释。",
+                            "季度视角更容易看年末变化。"
+                        ]
+                    }
+                },
+                "guarantee": {
+                    "metrics": [
+                        { "label": "保障总额", "value": "118 万", "trend": "较上季 +9.4%", "trendState": "warning" },
+                        { "label": "水电合计", "value": "57 万", "trend": "用电走高", "trendState": "warning" },
+                        { "label": "物业采暖合计", "value": "47 万", "trend": "采暖拉升", "trendState": "up" },
+                        { "label": "同比变化", "value": "+9.4%", "trend": "季末偏高", "trendState": "warning" }
+                    ],
+                    "monthlyComposition": {
+                        "labels": ["10月", "11月", "12月", "本季均值"],
+                        "series": [
+                            { "name": "水费", "color": "#2F6BFF", "data": [9, 8, 8, 8] },
+                            { "name": "电费", "color": "#18B47A", "data": [12, 11, 10, 11] },
+                            { "name": "物业费", "color": "#F97316", "data": [11, 11, 11, 11] },
+                            { "name": "采暖费", "color": "#7C5CFF", "data": [9, 15, 16, 13] },
+                            { "name": "其他保障", "color": "#94A3B8", "data": [6, 6, 6, 6] }
+                        ]
+                    },
+                    "compositionInsight": {
+                        "title": "AI 解读",
+                        "summary": "本季采暖费明显抬升，和电费共同抬高了保障总额，季节因素非常突出。",
+                        "bullets": [
+                            "采暖是四季度最大的新增压力。",
+                            "物业保持稳定。",
+                            "保障类更适合用总览 + 单项切换的组合看。"
+                        ]
+                    },
+                    "focusOptions": [
+                        { "value": "water", "label": "水费" },
+                        { "value": "electricity", "label": "电费" },
+                        { "value": "property", "label": "物业费" },
+                        { "value": "heating", "label": "采暖费" }
+                    ],
+                    "focusTrends": {
+                        "water": { "labels": ["10月", "11月", "12月", "本季均值"], "name": "水费", "color": "#2F6BFF", "data": [9, 8, 8, 8] },
+                        "electricity": { "labels": ["10月", "11月", "12月", "本季均值"], "name": "电费", "color": "#18B47A", "data": [12, 11, 10, 11] },
+                        "property": { "labels": ["10月", "11月", "12月", "本季均值"], "name": "物业费", "color": "#F97316", "data": [11, 11, 11, 11] },
+                        "heating": { "labels": ["10月", "11月", "12月", "本季均值"], "name": "采暖费", "color": "#7C5CFF", "data": [9, 15, 16, 13] }
+                    },
+                    "focusInsights": {
+                        "water": { "title": "AI 解读", "summary": "本季水费变化不大，仍处在常规波动区间。", "bullets": ["10-12 月整体平稳。", "更适合看汇总金额而非复杂结构。", "这类口径适合 AI 报表查询即时输出。"] },
+                        "electricity": { "title": "AI 解读", "summary": "本季电费略有回落，但仍保持较高水平，是四季度保障成本的重要部分。", "bullets": ["气温和使用强度共同影响。", "若未来补校区维度，可进一步解释。", "当前先看趋势已足够。"] },
+                        "property": { "title": "AI 解读", "summary": "物业费在季度内最稳定，是最适合作为保障基线的费用项。", "bullets": ["几乎没有波动。", "支付节奏比使用变化更重要。", "很适合作为合同型费用观察项。"] },
+                        "heating": { "title": "AI 解读", "summary": "采暖费是本季抬升最明显的单项，季节解释充分。", "bullets": ["11-12 月大幅上升。", "这不是异常而是季节性。", "后续若加面积字段，解释力会更强。"] }
+                    },
+                    "structureBreakdown": [
+                        { "name": "采暖费", "value": 40, "unit": "万" },
+                        { "name": "物业费", "value": 33, "unit": "万" },
+                        { "name": "电费", "value": 33, "unit": "万" },
+                        { "name": "水费", "value": 25, "unit": "万" },
+                        { "name": "其他保障", "value": 18, "unit": "万" }
+                    ],
+                    "structureInsight": {
+                        "title": "AI 解读",
+                        "summary": "本季保障费用结构已经转向采暖、物业和电费三项主导，更能体现四季度的典型特征。",
+                        "bullets": [
+                            "采暖成为季度第一大项。",
+                            "物业和电费提供稳定支撑。",
+                            "结构图比单月金额更适合做季度汇报。"
+                        ]
+                    }
+                },
+                "special": {
+                    "defaultTopic": "studentActivity",
+                    "options": [
+                        { "value": "studentActivity", "label": "学生活动" },
+                        { "value": "teacherGrowth", "label": "教师成长" }
+                    ],
+                    "topics": {
+                        "studentActivity": {
+                            "title": "学生活动",
+                            "metrics": [
+                                { "label": "活动投入", "value": "84 万", "trend": "较上季 +14%", "trendState": "up" },
+                                { "label": "重点月份", "value": "10 月", "trend": "校园活动密集", "trendState": "warning" },
+                                { "label": "重点类型", "value": "赛事活动", "trend": "占比 36%", "trendState": "up" },
+                                { "label": "核心项目", "value": "文化节", "trend": "金额最高", "trendState": "up" }
+                            ],
+                            "monthlyTrend": {
+                                "labels": ["10月", "11月", "12月", "本季均值"],
+                                "name": "学生活动投入",
+                                "color": "#2F6BFF",
+                                "data": [31, 29, 24, 28]
+                            },
+                            "trendInsight": {
+                                "title": "AI 解读",
+                                "summary": "本季学生活动投入主要集中在 10 至 11 月，说明活动经费释放与校园重点活动周期高度同步。",
+                                "bullets": [
+                                    "10 月达到峰值。",
+                                    "11 月保持高位。",
+                                    "12 月回落但仍在高位区间。"
+                                ]
+                            },
+                            "categoryBreakdown": [
+                                { "name": "赛事活动", "value": 36, "color": "#2F6BFF" },
+                                { "name": "实践活动", "value": 24, "color": "#18B47A" },
+                                { "name": "社团支持", "value": 21, "color": "#F97316" },
+                                { "name": "主题教育", "value": 19, "color": "#7C5CFF" }
+                            ],
+                            "structureInsight": {
+                                "title": "AI 解读",
+                                "summary": "赛事活动仍然是本季学生活动投入的最大头，实践和社团形成第二梯队。",
+                                "bullets": [
+                                    "活动类结构清楚。",
+                                    "社团支持保持稳定。",
+                                    "适合直接向校长解释。"
+                                ]
+                            },
+                            "projectRanking": [
+                                { "name": "校园文化节", "value": 26, "unit": "万" },
+                                { "name": "学生科技节", "value": 18, "unit": "万" },
+                                { "name": "社团展示季", "value": 14, "unit": "万" },
+                                { "name": "劳动实践周", "value": 11, "unit": "万" }
+                            ],
+                            "projectInsight": {
+                                "title": "AI 解读",
+                                "summary": "本季重点项目相对集中，文化节和科技节是最值得单列解释的两个项目。",
+                                "bullets": [
+                                    "头部项目拉动明显。",
+                                    "榜单适合领导汇报。",
+                                    "和报销行为中的活动费能相互印证。"
+                                ]
+                            }
+                        },
+                        "teacherGrowth": {
+                            "title": "教师成长",
+                            "metrics": [
+                                { "label": "成长投入", "value": "39 万", "trend": "较上季 +9%", "trendState": "up" },
+                                { "label": "重点方式", "value": "外部研修", "trend": "占比 41%", "trendState": "warning" },
+                                { "label": "高峰月份", "value": "11 月", "trend": "培训集中", "trendState": "up" },
+                                { "label": "重点项目", "value": "骨干研修班", "trend": "持续投入", "trendState": "up" }
+                            ],
+                            "monthlyTrend": {
+                                "labels": ["10月", "11月", "12月", "本季均值"],
+                                "name": "教师成长投入",
+                                "color": "#7C5CFF",
+                                "data": [11, 18, 10, 13]
+                            },
+                            "trendInsight": {
+                                "title": "AI 解读",
+                                "summary": "本季教师成长投入集中在 11 月，说明研修和教研活动在学期中后段集中兑现。",
+                                "bullets": [
+                                    "11 月为明显高点。",
+                                    "10 月和 12 月支撑相对稳定。",
+                                    "适合做季度成长专题。"
+                                ]
+                            },
+                            "categoryBreakdown": [
+                                { "name": "外部研修", "value": 41, "color": "#7C5CFF" },
+                                { "name": "校本教研", "value": 29, "color": "#2F6BFF" },
+                                { "name": "专家讲座", "value": 18, "color": "#18B47A" },
+                                { "name": "成果补偿", "value": 12, "color": "#F97316" }
+                            ],
+                            "structureInsight": {
+                                "title": "AI 解读",
+                                "summary": "教师成长投入仍然偏向外部研修与校本教研，结构稳定，便于持续跟踪。",
+                                "bullets": [
+                                    "外部研修依旧占比最高。",
+                                    "校本教研是第二主线。",
+                                    "结构适合做长期对比。"
+                                ]
+                            },
+                            "projectRanking": [
+                                { "name": "骨干教师研修班", "value": 12, "unit": "万" },
+                                { "name": "校本教研补偿", "value": 10, "unit": "万" },
+                                { "name": "专家入校讲座", "value": 7, "unit": "万" },
+                                { "name": "新教师成长营", "value": 5, "unit": "万" }
+                            ],
+                            "projectInsight": {
+                                "title": "AI 解读",
+                                "summary": "本季教师成长投入仍然围绕几类稳定项目展开，说明不是零散支出，而是有计划的成长投入。",
+                                "bullets": [
+                                    "骨干教师研修班拉动最大。",
+                                    "校本教研补偿稳定存在。",
+                                    "榜单适合作为专题说明。"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "month": {
+                "budget": {
+                    "metrics": [
+                        { "label": "预算金额", "value": "232 万", "trend": "本月计划值", "trendState": "up" },
+                        { "label": "执行率", "value": "69%", "trend": "低于应完成 5 个点", "trendState": "warning" },
+                        { "label": "可用预算", "value": "72 万", "trend": "存在结转可能", "trendState": "warning" },
+                        { "label": "项目部门执行率", "value": "61%", "trend": "部门差异明显", "trendState": "warning" }
+                    ],
+                    "monthlyExecution": [
+                        { "month": "第1周", "budget": 58, "executed": 37, "rate": 64 },
+                        { "month": "第2周", "budget": 58, "executed": 41, "rate": 71 },
+                        { "month": "第3周", "budget": 58, "executed": 43, "rate": 74 },
+                        { "month": "第4周", "budget": 58, "executed": 39, "rate": 67 }
+                    ],
+                    "executionInsight": {
+                        "title": "AI 解读",
+                        "summary": "本月预算执行周度节奏不均衡，中段追回、末周回落，说明部分项目仍未按计划在月内完成。",
+                        "bullets": [
+                            "第 2、3 周执行较好。",
+                            "第 4 周回落提示项目后置。",
+                            "更适合用月度节奏图做提醒。"
+                        ]
+                    },
+                    "projectComparison": [
+                        { "name": "人员费用", "budget": 74, "executed": 71 },
+                        { "name": "基本保障", "budget": 38, "executed": 34 },
+                        { "name": "学生活动", "budget": 28, "executed": 19 },
+                        { "name": "教师成长", "budget": 18, "executed": 10 },
+                        { "name": "设备更新", "budget": 41, "executed": 26 }
+                    ],
+                    "projectInsight": {
+                        "title": "AI 解读",
+                        "summary": "本月预算执行差距最明显的还是活动、教师成长和设备类项目，刚性和保障项目最稳。",
+                        "bullets": [
+                            "人员与保障最接近预算。",
+                            "发展类项目有明显结余。",
+                            "很适合做月度跟踪。"
+                        ]
+                    },
+                    "departmentExecution": [
+                        { "name": "行政部-人力", "value": 96, "unit": "%", "note": "稳定执行" },
+                        { "name": "后勤部-后勤小学", "value": 82, "unit": "%", "note": "保障类稳定" },
+                        { "name": "教学服务中心", "value": 68, "unit": "%", "note": "按节奏推进" },
+                        { "name": "德育中心", "value": 59, "unit": "%", "note": "活动项目偏慢" },
+                        { "name": "信息中心", "value": 52, "unit": "%", "note": "设备执行较慢" }
+                    ],
+                    "departmentInsight": {
+                        "title": "AI 解读",
+                        "summary": "本月部门执行差异继续扩大，德育和信息条线最需要月度提示。",
+                        "bullets": [
+                            "人力依旧最高。",
+                            "信息中心最低。",
+                            "适合用在月度财务例会上。"
+                        ]
+                    },
+                    "focusedProject": {
+                        "name": "教师成长",
+                        "departments": [
+                            { "name": "教学服务中心", "budget": 8, "executed": 6, "rate": 75 },
+                            { "name": "行政部-人力", "budget": 4, "executed": 2, "rate": 50 },
+                            { "name": "教科研中心", "budget": 4, "executed": 1, "rate": 25 },
+                            { "name": "德育中心", "budget": 2, "executed": 1, "rate": 50 }
+                        ],
+                        "insight": {
+                            "title": "AI 解读",
+                            "summary": "教师成长项目本月主要卡在教科研中心和人力条线，教学服务中心执行相对更好。",
+                            "bullets": [
+                                "这类交叉视图适合快速定位责任条线。",
+                                "执行慢不等于预算少。",
+                                "适合下一步做月度催办。"
+                            ]
+                        }
+                    }
+                },
+                "reimbursement": {
+                    "metrics": [
+                        { "label": "报销金额", "value": "186.4 万", "trend": "较上月 +12.8%", "trendState": "up" },
+                        { "label": "报销笔数", "value": "327", "trend": "月底集中度 34%", "trendState": "warning" },
+                        { "label": "平均单笔", "value": "5,701", "trend": "大额单笔 14 笔", "trendState": "warning" },
+                        { "label": "TOP10 供应商占比", "value": "41.6%", "trend": "集中度中高", "trendState": "warning" }
+                    ],
+                    "monthlyTrend": [
+                        { "month": "第1周", "amount": 39, "count": 62 },
+                        { "month": "第2周", "amount": 44, "count": 74 },
+                        { "month": "第3周", "amount": 48, "count": 89 },
+                        { "month": "第4周", "amount": 55, "count": 102 }
+                    ],
+                    "monthlyInsight": {
+                        "title": "AI 解读",
+                        "summary": "本月报销金额与笔数周周走高，月末集中依然明显，是典型的后段冲高结构。",
+                        "bullets": [
+                            "第 4 周达到峰值。",
+                            "报销节奏仍可继续平滑。",
+                            "适合和预算执行联看。"
+                        ]
+                    },
+                    "categoryBreakdown": [
+                        { "name": "活动费", "value": 30, "color": "#2F6BFF" },
+                        { "name": "设备材料", "value": 22, "color": "#18B47A" },
+                        { "name": "维修费", "value": 16, "color": "#FF9F43" },
+                        { "name": "培训差旅", "value": 13, "color": "#7C5CFF" },
+                        { "name": "办公用品", "value": 10, "color": "#13B5B1" },
+                        { "name": "其他", "value": 9, "color": "#94A3B8" }
+                    ],
+                    "categoryInsight": {
+                        "title": "AI 解读",
+                        "summary": "本月报销类别结构延续全年主线，活动、设备和维修依旧是前三类。",
+                        "bullets": [
+                            "结构稳定，说明可以直接对比。",
+                            "活动类与专题联动价值高。",
+                            "维修类与保障联动价值高。"
+                        ]
+                    },
+                    "topVendors": [
+                        { "name": "城东教育设备有限公司", "value": 8.6, "unit": "万" },
+                        { "name": "启明后勤服务", "value": 7.9, "unit": "万" },
+                        { "name": "博雅文化传播", "value": 7.4, "unit": "万" },
+                        { "name": "卓越信息科技", "value": 6.8, "unit": "万" },
+                        { "name": "青禾书店", "value": 5.9, "unit": "万" }
+                    ],
+                    "vendorInsight": {
+                        "title": "AI 解读",
+                        "summary": "本月头部供应商仍集中在设备、后勤和活动执行，说明月度支出结构没有偏离既有主线。",
+                        "bullets": [
+                            "供应商格局稳定。",
+                            "也说明月度数据适合做即时汇总。",
+                            "AI 报表查询对这类维度最友好。"
+                        ]
+                    },
+                    "largeExpenses": [
+                        { "project": "实验室设备采购", "category": "设备材料", "amount": "8.6 万" },
+                        { "project": "校园文化节执行", "category": "活动费", "amount": "7.4 万" },
+                        { "project": "后勤应急维修", "category": "维修费", "amount": "6.1 万" },
+                        { "project": "教师外出培训", "category": "培训差旅", "amount": "5.8 万" }
+                    ],
+                    "largeExpenseInsight": {
+                        "title": "AI 解读",
+                        "summary": "本月大额项目依旧分布在设备、活动、维修和培训，和专题口径之间有天然对应关系。",
+                        "bullets": [
+                            "大额项目有明确解释路径。",
+                            "最适合做月度汇报抓手。",
+                            "也适合做列表查询后二次汇总。"
+                        ]
+                    }
+                },
+                "personnel": {
+                    "metrics": [
+                        { "label": "人员费用总额", "value": "114 万", "trend": "较上月 +4.6%", "trendState": "up" },
+                        { "label": "工资总额", "value": "78 万", "trend": "统发工资稳定", "trendState": "up" },
+                        { "label": "社保公积金", "value": "21 万", "trend": "占比稳定", "trendState": "warning" },
+                        { "label": "补贴津贴总额", "value": "13 万", "trend": "年末略高", "trendState": "warning" }
+                    ],
+                    "monthlyComposition": {
+                        "labels": ["第1周", "第2周", "第3周", "第4周"],
+                        "series": [
+                            { "name": "基本工资", "color": "#2F6BFF", "data": [18, 20, 20, 20] },
+                            { "name": "绩效工资", "color": "#18B47A", "data": [6, 7, 8, 9] },
+                            { "name": "社保公积金", "color": "#F97316", "data": [5, 5, 5, 6] },
+                            { "name": "补贴津贴", "color": "#7C5CFF", "data": [2, 3, 4, 4] }
+                        ]
+                    },
+                    "compositionInsight": {
+                        "title": "AI 解读",
+                        "summary": "本月人员费用结构没有突变，末周抬升主要由绩效和补贴带动，而不是基本工资变化。",
+                        "bullets": [
+                            "基本工资周度稳定。",
+                            "绩效和补贴是主要波动源。",
+                            "适合继续深挖附件明细。"
+                        ]
+                    },
+                    "focusTrend": {
+                        "labels": ["第1周", "第2周", "第3周", "第4周"],
+                        "series": [
+                            { "name": "基本工资", "color": "#2F6BFF", "data": [18, 20, 20, 20] },
+                            { "name": "绩效工资", "color": "#18B47A", "data": [6, 7, 8, 9] },
+                            { "name": "社保公积金", "color": "#F97316", "data": [5, 5, 5, 6] },
+                            { "name": "补贴总额", "color": "#7C5CFF", "data": [2, 3, 4, 4] }
+                        ]
+                    },
+                    "focusInsight": {
+                        "title": "AI 解读",
+                        "summary": "本月最值得盯的还是绩效和补贴曲线，它们决定了本月人员费用的边际变化。",
+                        "bullets": [
+                            "末周增长更明显。",
+                            "工资与社保仍稳定。",
+                            "符合年末激励兑现节奏。"
+                        ]
+                    },
+                    "structureBreakdown": [
+                        { "name": "基本工资", "value": 78, "unit": "万" },
+                        { "name": "绩效工资", "value": 30, "unit": "万" },
+                        { "name": "社保公积金", "value": 21, "unit": "万" },
+                        { "name": "补贴津贴", "value": 13, "unit": "万" },
+                        { "name": "课后服务专项", "value": 4, "unit": "万" }
+                    ],
+                    "structureInsight": {
+                        "title": "AI 解读",
+                        "summary": "本月人员费用去向依然很清楚：工资、绩效、社保公积金是三大主项，补贴是边际解释项。",
+                        "bullets": [
+                            "工资决定总盘子。",
+                            "绩效决定结构波动。",
+                            "补贴决定解释细节。"
+                        ]
+                    }
+                },
+                "guarantee": {
+                    "metrics": [
+                        { "label": "保障总额", "value": "41 万", "trend": "较上月 +8.2%", "trendState": "warning" },
+                        { "label": "水电合计", "value": "18 万", "trend": "水费平稳、电费回落", "trendState": "warning" },
+                        { "label": "物业采暖合计", "value": "27 万", "trend": "采暖继续上升", "trendState": "up" },
+                        { "label": "同比变化", "value": "+8.2%", "trend": "冬季特征明显", "trendState": "warning" }
+                    ],
+                    "monthlyComposition": {
+                        "labels": ["第1周", "第2周", "第3周", "第4周"],
+                        "series": [
+                            { "name": "水费", "color": "#2F6BFF", "data": [2, 2, 2, 2] },
+                            { "name": "电费", "color": "#18B47A", "data": [3, 3, 2, 2] },
+                            { "name": "物业费", "color": "#F97316", "data": [3, 3, 3, 2] },
+                            { "name": "采暖费", "color": "#7C5CFF", "data": [3, 4, 4, 5] },
+                            { "name": "其他保障", "color": "#94A3B8", "data": [2, 1, 1, 1] }
+                        ]
+                    },
+                    "compositionInsight": {
+                        "title": "AI 解读",
+                        "summary": "本月保障费用的主要增量来自采暖费，其他项相对平稳，因此一张总览图就能把结构变化看清楚。",
+                        "bullets": [
+                            "采暖持续抬升。",
+                            "水费和物业相对稳定。",
+                            "适合结合单项趋势再看。"
+                        ]
+                    },
+                    "focusOptions": [
+                        { "value": "water", "label": "水费" },
+                        { "value": "electricity", "label": "电费" },
+                        { "value": "property", "label": "物业费" },
+                        { "value": "heating", "label": "采暖费" }
+                    ],
+                    "focusTrends": {
+                        "water": { "labels": ["第1周", "第2周", "第3周", "第4周"], "name": "水费", "color": "#2F6BFF", "data": [2, 2, 2, 2] },
+                        "electricity": { "labels": ["第1周", "第2周", "第3周", "第4周"], "name": "电费", "color": "#18B47A", "data": [3, 3, 2, 2] },
+                        "property": { "labels": ["第1周", "第2周", "第3周", "第4周"], "name": "物业费", "color": "#F97316", "data": [3, 3, 3, 2] },
+                        "heating": { "labels": ["第1周", "第2周", "第3周", "第4周"], "name": "采暖费", "color": "#7C5CFF", "data": [3, 4, 4, 5] }
+                    },
+                    "focusInsights": {
+                        "water": { "title": "AI 解读", "summary": "本月水费几乎没有波动，更适合看汇总和横向对比。", "bullets": ["稳定性很强。", "适合做 AI 报表查询。", "不是当前异常项。"] },
+                        "electricity": { "title": "AI 解读", "summary": "本月电费在后半月略有回落，没有出现异常冲高。", "bullets": ["第 1、2 周略高。", "后半月趋稳。", "当前不是最主要的增量来源。"] },
+                        "property": { "title": "AI 解读", "summary": "物业费在月内比较稳定，更适合作为基础运转成本基线。", "bullets": ["支付节奏比金额波动更关键。", "适合与收款单位核对。", "更少受业务季节影响。"] },
+                        "heating": { "title": "AI 解读", "summary": "采暖费周周走高，是本月保障费用最值得解释的一项。", "bullets": ["末周达到最高。", "符合冬季特征。", "这一项最适合在保障专题中突出。"] }
+                    },
+                    "structureBreakdown": [
+                        { "name": "采暖费", "value": 16, "unit": "万" },
+                        { "name": "物业费", "value": 11, "unit": "万" },
+                        { "name": "电费", "value": 10, "unit": "万" },
+                        { "name": "水费", "value": 8, "unit": "万" },
+                        { "name": "其他保障", "value": 5, "unit": "万" }
+                    ],
+                    "structureInsight": {
+                        "title": "AI 解读",
+                        "summary": "本月保障费用的解释重点很明确：采暖费第一，物业和电费第二梯队，水费相对平稳。",
+                        "bullets": [
+                            "最能解释本月上升的是采暖。",
+                            "物业和电费提供稳定支撑。",
+                            "结构已经足够支撑月度汇报。"
+                        ]
+                    }
+                },
+                "special": {
+                    "defaultTopic": "studentActivity",
+                    "options": [
+                        { "value": "studentActivity", "label": "学生活动" },
+                        { "value": "teacherGrowth", "label": "教师成长" }
+                    ],
+                    "topics": {
+                        "studentActivity": {
+                            "title": "学生活动",
+                            "metrics": [
+                                { "label": "活动投入", "value": "24 万", "trend": "本月活动较集中", "trendState": "up" },
+                                { "label": "重点类型", "value": "赛事活动", "trend": "占比 35%", "trendState": "up" },
+                                { "label": "重点项目", "value": "科技节", "trend": "金额最高", "trendState": "warning" },
+                                { "label": "项目数", "value": "8 项", "trend": "集中在月中", "trendState": "warning" }
+                            ],
+                            "monthlyTrend": {
+                                "labels": ["第1周", "第2周", "第3周", "第4周"],
+                                "name": "学生活动投入",
+                                "color": "#2F6BFF",
+                                "data": [5, 8, 7, 4]
+                            },
+                            "trendInsight": {
+                                "title": "AI 解读",
+                                "summary": "本月学生活动投入集中在月中两周，符合活动执行和结算在同一时间段集中的特征。",
+                                "bullets": [
+                                    "第 2 周达到高点。",
+                                    "后半月开始回落。",
+                                    "这类专题适合月度复盘。"
+                                ]
+                            },
+                            "categoryBreakdown": [
+                                { "name": "赛事活动", "value": 35, "color": "#2F6BFF" },
+                                { "name": "实践活动", "value": 27, "color": "#18B47A" },
+                                { "name": "社团支持", "value": 20, "color": "#F97316" },
+                                { "name": "主题教育", "value": 18, "color": "#7C5CFF" }
+                            ],
+                            "structureInsight": {
+                                "title": "AI 解读",
+                                "summary": "本月学生活动投入仍然以赛事和实践为主，说明支出更多落在直接触达学生的活动上。",
+                                "bullets": [
+                                    "结构足够清楚。",
+                                    "社团和主题教育提供补充。",
+                                    "适合对校长解释。"
+                                ]
+                            },
+                            "projectRanking": [
+                                { "name": "学生科技节", "value": 8.4, "unit": "万" },
+                                { "name": "校园文化节", "value": 6.8, "unit": "万" },
+                                { "name": "社团展演", "value": 4.2, "unit": "万" },
+                                { "name": "劳动实践日", "value": 2.9, "unit": "万" }
+                            ],
+                            "projectInsight": {
+                                "title": "AI 解读",
+                                "summary": "本月头部项目比较明确，科技节和文化节承担了主要投入。",
+                                "bullets": [
+                                    "头部项目最适合单独说明。",
+                                    "榜单可以直接复用到汇报中。",
+                                    "也适合以后下钻到项目明细。"
+                                ]
+                            }
+                        },
+                        "teacherGrowth": {
+                            "title": "教师成长",
+                            "metrics": [
+                                { "label": "成长投入", "value": "10 万", "trend": "本月常规推进", "trendState": "up" },
+                                { "label": "重点方式", "value": "校本教研", "trend": "占比 33%", "trendState": "warning" },
+                                { "label": "重点项目", "value": "教研补偿", "trend": "金额最高", "trendState": "up" },
+                                { "label": "活动次数", "value": "5 次", "trend": "集中在月中", "trendState": "warning" }
+                            ],
+                            "monthlyTrend": {
+                                "labels": ["第1周", "第2周", "第3周", "第4周"],
+                                "name": "教师成长投入",
+                                "color": "#7C5CFF",
+                                "data": [2, 3, 3, 2]
+                            },
+                            "trendInsight": {
+                                "title": "AI 解读",
+                                "summary": "本月教师成长投入维持常规节奏，月中略高，没有出现大幅波动。",
+                                "bullets": [
+                                    "第 2、3 周较高。",
+                                    "符合培训与教研安排节奏。",
+                                    "适合做轻量监测。"
+                                ]
+                            },
+                            "categoryBreakdown": [
+                                { "name": "校本教研", "value": 33, "color": "#2F6BFF" },
+                                { "name": "外部研修", "value": 29, "color": "#7C5CFF" },
+                                { "name": "专家讲座", "value": 22, "color": "#18B47A" },
+                                { "name": "成果补偿", "value": 16, "color": "#F97316" }
+                            ],
+                            "structureInsight": {
+                                "title": "AI 解读",
+                                "summary": "本月教师成长投入以校本教研和外部研修为主，说明内外结合的投入方式仍在持续。",
+                                "bullets": [
+                                    "校本教研略高于外部研修。",
+                                    "结构分布均衡。",
+                                    "适合持续跟踪。"
+                                ]
+                            },
+                            "projectRanking": [
+                                { "name": "校本教研补偿", "value": 3.6, "unit": "万" },
+                                { "name": "骨干教师研修班", "value": 2.8, "unit": "万" },
+                                { "name": "专家入校讲座", "value": 2.1, "unit": "万" },
+                                { "name": "新教师成长营", "value": 1.5, "unit": "万" }
+                            ],
+                            "projectInsight": {
+                                "title": "AI 解读",
+                                "summary": "本月教师成长项目金额较为分散，但教研补偿仍然是最稳定的核心项目。",
+                                "bullets": [
+                                    "头部项目差距不大。",
+                                    "教研补偿最稳定。",
+                                    "专题结构已经比较清楚。"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

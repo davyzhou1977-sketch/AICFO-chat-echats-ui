@@ -1,0 +1,118 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 420px;
+  padding: 24px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 18px 48px rgba(23, 37, 84, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.kicker {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #2f6bff;
+}
+
+.title {
+  margin: 8px 0 6px;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.description {
+  margin: 0;
+  color: #5d6c85;
+  line-height: 1.7;
+}
+
+.switcher {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 4px;
+  border-radius: 999px;
+  background: #edf3ff;
+}
+
+.switcherButton {
+  padding: 9px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #557091;
+  cursor: pointer;
+}
+
+.switcherActive {
+  padding: 9px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: #2f6bff;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(47, 107, 255, 0.28);
+}
+
+.metricGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.metricCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #f6f9ff 0%, #eef4ff 100%);
+}
+
+.metricLabel {
+  color: #66768f;
+  font-size: 13px;
+}
+
+.metricValue {
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.chartCard {
+  padding: 18px;
+  border-radius: 24px;
+  background: #f8fbff;
+}
+
+.chartTitle {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.insightCard {
+  padding: 18px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(227, 242, 255, 0.9), rgba(240, 250, 246, 0.96));
+}
+
+.insightTitle {
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.insightText {
+  margin: 0;
+  color: #46556d;
+  line-height: 1.8;
+}

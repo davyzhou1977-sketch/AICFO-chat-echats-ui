@@ -1,42 +1,21 @@
-# AICFO Workspace
+# AICFO V2.1
 
-这个仓库用于承载 AICFO 的统一工作区，当前重点是把移动端 Demo、设计文档和后续多端协作放到同一套清晰目录里。
+当前仓库只保留两个前端子项目：
 
-## 当前目录
+- `apps/web-v2` 对应 Web 端，开发端口 `4174`
+- `apps/mobile-v2` 对应移动端，开发端口 `4173`
 
-```text
-apps/
-  mobile/    当前可运行的移动端财务分析 Demo（Vite）
-docs/        方案、接口、视觉规范与评审文档
-Data/        原始数据样例
-reimburse-list-chat-echarts/  现有独立 Web 仓库，暂时隔离保留
-```
+当前定版基线：
 
-## 启动方式
+- 版本：`V2.1`
+- 定版日期：`2026-03-17`
+- 移动端固定访问路径：`/mobile/school-finance-fusion-demo`
+- 后续开发默认基于当前 V2.1 代码继续迭代，不再回退到旧 `apps/mobile` 结构
+- 详细规范见 `AGENTS.md` 与 `docs/项目技术栈与UI规范.md`
 
-虽然代码已经整理进 `apps/mobile`，但根目录仍然保留了一键命令：
+常用命令：
 
-```bash
-npm run dev
-npm run build
-npm run preview
-```
-
-当前主要演示页面：
-
-- `/mobile/school-finance-fusion-demo`
-- `/mobile/school-finance`
-- `/mobile/school-finance-v2`
-- `/web/reimbursements/ai-report-demo`
-
-## 当前协作策略
-
-- 根仓库负责统一管理移动端 Demo、文档和后续多端目录结构
-- `reimburse-list-chat-echarts/` 继续作为现有 Web 独立仓库保留，不在本阶段直接吞并
-- 等 Web 侧确认迁移窗口后，再把 Web 代码平滑迁入 `apps/web`
-
-## 下一步建议
-
-1. 继续把移动端 Demo 逐步收口为老技术栈可迁移结构
-2. 为未来的 `apps/web` 预留目录与发布规范
-3. 在根仓库中补齐共享接口契约、组件约束和上线说明
+- `npm run dev:web`
+- `npm run dev:mobile`
+- `npm run build:web`
+- `npm run build:mobile`

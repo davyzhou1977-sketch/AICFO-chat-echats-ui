@@ -1,0 +1,220 @@
+const axisLabelColor = "#64748B";
+const splitLineColor = "#E2E8F0";
+const softBarBackground = "rgba(222, 233, 247, 0.55)";
+const blueGradient = {
+    type: "linear",
+    x: 0,
+    y: 0,
+    x2: 0,
+    y2: 1,
+    colorStops: [
+        { offset: 0, color: "#2F6BFF" },
+        { offset: 1, color: "#8AC5FF" },
+    ],
+};
+const tealGradient = {
+    type: "linear",
+    x: 0,
+    y: 0,
+    x2: 0,
+    y2: 1,
+    colorStops: [
+        { offset: 0, color: "#1BC0CB" },
+        { offset: 1, color: "#00A2AD" },
+    ],
+};
+export function getBudgetCompletionRingOption(completionRate) {
+    const safeRate = Math.max(0, Math.min(completionRate, 100));
+    const rateLabel = `${safeRate.toFixed(2)}%`;
+    return {
+        animation: true,
+        animationDuration: 700,
+        animationEasing: "cubicOut",
+        series: [
+            {
+                type: "pie",
+                radius: ["74%", "88%"],
+                center: ["50%", "56%"],
+                silent: true,
+                label: { show: false },
+                data: [
+                    {
+                        value: safeRate,
+                        itemStyle: {
+                            color: tealGradient,
+                            borderRadius: 999,
+                        },
+                    },
+                    {
+                        value: Math.max(100 - safeRate, 0),
+                        itemStyle: {
+                            color: "#E5F6FC",
+                        },
+                    },
+                ],
+            },
+        ],
+        graphic: [
+            {
+                type: "text",
+                left: "center",
+                top: "46%",
+                style: {
+                    text: rateLabel,
+                    fill: "#07090C",
+                    fontSize: 24,
+                    fontWeight: 700,
+                },
+            },
+            {
+                type: "text",
+                left: "center",
+                top: "61%",
+                style: {
+                    text: "预算执行率",
+                    fill: "#64748B",
+                    fontSize: 12,
+                },
+            },
+        ],
+    };
+}
+export function getBudgetDepartmentBarOption(items) {
+    const count = Math.max(items.length, 1);
+    const computedBarWidth = Math.max(16, Math.min(42, Math.round(96 / count)));
+    return {
+        animation: true,
+        animationDuration: 650,
+        animationEasing: "cubicOut",
+        grid: { top: 18, right: 10, bottom: 50, left: 10, containLabel: true },
+        xAxis: {
+            type: "category",
+            data: items.map((item) => item.departmentName),
+            axisTick: { show: false },
+            axisLine: { lineStyle: { color: splitLineColor } },
+            axisLabel: {
+                color: axisLabelColor,
+                fontSize: 11,
+                interval: 0,
+                rotate: 45,
+            },
+        },
+        yAxis: {
+            type: "value",
+            name: "%",
+            nameTextStyle: {
+                color: axisLabelColor,
+                fontSize: 11,
+                padding: [0, 0, 0, -10],
+            },
+            axisLabel: {
+                color: axisLabelColor,
+                fontSize: 11,
+            },
+            splitLine: {
+                lineStyle: {
+                    color: splitLineColor,
+                    type: "dashed",
+                },
+            },
+        },
+        series: [
+            {
+                type: "bar",
+                showBackground: true,
+                backgroundStyle: {
+                    color: softBarBackground,
+                    borderRadius: [999, 999, 0, 0],
+                },
+                data: items.map((item) => item.ratio),
+                barWidth: computedBarWidth,
+                barCategoryGap: count <= 3 ? "28%" : count <= 5 ? "34%" : "42%",
+                itemStyle: {
+                    color: blueGradient,
+                    borderRadius: [999, 999, 0, 0],
+                },
+            },
+        ],
+    };
+}
+export function getBudgetStandardExpenseOption(totalAmount, highlightLabel, highlightRate, items) {
+    const safeRate = Math.max(0, Math.min(highlightRate, 100));
+    return {
+        animation: true,
+        animationDuration: 700,
+        animationEasing: "cubicOut",
+        tooltip: {
+            trigger: "item",
+            formatter: (params) => `${params.name}<br/>${Number(params.value ?? 0).toLocaleString("zh-CN", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+            })} 元`,
+        },
+        series: [
+            {
+                type: "pie",
+                radius: ["58%", "80%"],
+                center: ["50%", "50%"],
+                label: { show: false },
+                itemStyle: {
+                    borderColor: "#FFFFFF",
+                    borderWidth: 4,
+                    borderRadius: 10,
+                },
+                data: items.map((item) => ({
+                    name: item.label,
+                    value: item.amount,
+                    itemStyle: {
+                        color: {
+                            type: "linear",
+                            x: 0,
+                            y: 0,
+                            x2: 1,
+                            y2: 1,
+                            colorStops: [
+                                { offset: 0, color: item.color },
+                                { offset: 1, color: "#ffffff" },
+                            ],
+                        },
+                    },
+                })),
+            },
+        ],
+        graphic: [
+            {
+                type: "text",
+                left: "center",
+                top: "40%",
+                style: {
+                    text: highlightLabel,
+                    fill: "#64748B",
+                    fontSize: 12,
+                },
+            },
+            {
+                type: "text",
+                left: "center",
+                top: "50%",
+                style: {
+                    text: `${safeRate.toFixed(0)}%`,
+                    fill: "#0F172A",
+                    fontSize: 22,
+                    fontWeight: 700,
+                },
+            },
+            {
+                type: "text",
+                left: "center",
+                top: "62%",
+                style: {
+                    text: `总额 ${totalAmount.toLocaleString("zh-CN", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                    })}`,
+                    fill: "#94A3B8",
+                    fontSize: 11,
+                },
+            },
+        ],
+    };
+}

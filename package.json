@@ -4,32 +4,30 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "vite --config apps/mobile/vite.config.js",
-    "build": "tsc -p apps/mobile/tsconfig.json && vite build --config apps/mobile/vite.config.js",
-    "preview": "vite preview --config apps/mobile/vite.config.js",
-    "dev:mobile": "npm run dev",
-    "build:mobile": "npm run build",
-    "preview:mobile": "npm run preview"
+    "dev": "npm run dev:mobile",
+    "build": "npm run build:web && npm run build:mobile",
+    "prepare:mobile": "node scripts/prepare-mobile-v2.mjs",
+    "dev:web": "vite --config apps/web-v2/vite.config.ts",
+    "build:web": "tsc -p apps/web-v2/tsconfig.json && vite build --config apps/web-v2/vite.config.ts",
+    "preview:web": "vite preview --config apps/web-v2/vite.config.ts",
+    "dev:mobile": "npm run prepare:mobile && cd apps/mobile-v2 && HOST=127.0.0.1 PORT=4173 BROWSER=none roadhog dev",
+    "build:mobile": "npm run prepare:mobile && cd apps/mobile-v2 && roadhog build",
+    "preview:mobile": "echo 'roadhog mobile preview uses dev server on port 4173'"
   },
   "dependencies": {
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "echarts": "^5.6.0",
-    "lucide-react": "^0.511.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-router-dom": "^6.30.1",
-    "tailwind-merge": "^3.3.0"
+    "antd": "4.23.0",
+    "antd-mobile": "2.3.4",
+    "echarts": "4.9.0",
+    "react": "16.14.0",
+    "react-dom": "16.14.0"
   },
   "devDependencies": {
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.5",
-    "@vitejs/plugin-react": "^4.5.0",
-    "autoprefixer": "^10.4.21",
-    "less": "^4.6.4",
-    "postcss": "^8.5.3",
-    "tailwindcss": "^3.4.17",
+    "@types/react": "16.14.24",
+    "@types/react-dom": "16.9.19",
+    "@vitejs/plugin-react": "5.1.1",
+    "less": "4.2.0",
+    "roadhog": "2.5.0-beta.4",
     "typescript": "^5.8.3",
-    "vite": "^6.3.5"
+    "vite": "7.3.1"
   }
 }

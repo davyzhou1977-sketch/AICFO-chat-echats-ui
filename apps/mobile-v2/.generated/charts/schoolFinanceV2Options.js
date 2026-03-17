@@ -1,0 +1,408 @@
+const axisLabelColor = "#64748B";
+const splitLineColor = "#E2E8F0";
+const webBlue = "#2F6BFF";
+const webBlueLight = "#8AC5FF";
+const webTeal = "#1BC0CB";
+const webTealDeep = "#00A2AD";
+const accentOrange = "#F97316";
+const softBarBackground = "rgba(222, 233, 247, 0.5)";
+function seriesGradient(start, end) {
+    return {
+        type: "linear",
+        x: 0,
+        y: 0,
+        x2: 0,
+        y2: 1,
+        colorStops: [
+            { offset: 0, color: `${start}F2` },
+            { offset: 1, color: end ? `${end}B3` : `${start}59` },
+        ],
+    };
+}
+function lineAreaGradient(color) {
+    return {
+        type: "linear",
+        x: 0,
+        y: 0,
+        x2: 0,
+        y2: 1,
+        colorStops: [
+            { offset: 0, color: `${color}33` },
+            { offset: 1, color: `${color}05` },
+        ],
+    };
+}
+function buildLineSeries(series) {
+    return series.map((item) => ({
+        name: item.name,
+        type: "line",
+        smooth: true,
+        symbol: "circle",
+        symbolSize: 7,
+        data: item.data,
+        lineStyle: { width: 3, color: item.color },
+        itemStyle: { color: item.color, borderColor: "#fff", borderWidth: 2 },
+        areaStyle: { color: lineAreaGradient(item.color) },
+    }));
+}
+export function getBudgetExecutionOverviewOption(data) {
+    return {
+        tooltip: {
+            trigger: "axis",
+            backgroundColor: "rgba(15, 23, 42, 0.88)",
+            borderWidth: 0,
+            textStyle: { color: "#fff" },
+        },
+        grid: { top: 20, right: 18, bottom: 16, left: 10, containLabel: true },
+        xAxis: {
+            type: "category",
+            data: data.map((item) => item.month),
+            axisTick: { show: false },
+            axisLine: { lineStyle: { color: splitLineColor } },
+            axisLabel: { color: axisLabelColor, fontSize: 11 },
+        },
+        yAxis: [
+            {
+                type: "value",
+                axisLabel: { color: axisLabelColor, fontSize: 11 },
+                splitLine: { lineStyle: { color: splitLineColor, type: "dashed" } },
+            },
+            {
+                type: "value",
+                min: 0,
+                max: 100,
+                axisLabel: { color: axisLabelColor, fontSize: 11, formatter: "{value}%" },
+                splitLine: { show: false },
+            },
+        ],
+        series: [
+            {
+                name: "预算金额",
+                type: "bar",
+                showBackground: true,
+                backgroundStyle: {
+                    color: softBarBackground,
+                    borderRadius: [8, 8, 0, 0],
+                },
+                data: data.map((item) => item.budget),
+                barWidth: 16,
+                itemStyle: {
+                    color: seriesGradient(webBlueLight, "#D8ECFF"),
+                    borderRadius: [8, 8, 0, 0],
+                },
+            },
+            {
+                name: "已执行",
+                type: "bar",
+                showBackground: true,
+                backgroundStyle: {
+                    color: softBarBackground,
+                    borderRadius: [8, 8, 0, 0],
+                },
+                data: data.map((item) => item.executed),
+                barWidth: 16,
+                itemStyle: {
+                    color: seriesGradient(webBlue, webTeal),
+                    borderRadius: [8, 8, 0, 0],
+                },
+            },
+            {
+                name: "执行率",
+                type: "line",
+                yAxisIndex: 1,
+                smooth: true,
+                symbol: "circle",
+                symbolSize: 7,
+                lineStyle: { width: 3, color: accentOrange },
+                itemStyle: { color: accentOrange, borderColor: "#fff", borderWidth: 2 },
+                areaStyle: { color: lineAreaGradient(accentOrange) },
+                data: data.map((item) => item.rate),
+            },
+        ],
+    };
+}
+export function getBudgetProjectCompareOption(data) {
+    return {
+        tooltip: { trigger: "axis" },
+        grid: { top: 20, right: 12, bottom: 36, left: 10, containLabel: true },
+        xAxis: {
+            type: "category",
+            data: data.map((item) => item.name),
+            axisTick: { show: false },
+            axisLabel: { color: axisLabelColor, fontSize: 11, interval: 0 },
+            axisLine: { lineStyle: { color: splitLineColor } },
+        },
+        yAxis: {
+            type: "value",
+            axisLabel: { color: axisLabelColor, fontSize: 11 },
+            splitLine: { lineStyle: { color: splitLineColor, type: "dashed" } },
+        },
+        series: [
+            {
+                name: "预算金额",
+                type: "bar",
+                showBackground: true,
+                backgroundStyle: {
+                    color: softBarBackground,
+                    borderRadius: [8, 8, 0, 0],
+                },
+                barWidth: 14,
+                data: data.map((item) => item.budget),
+                itemStyle: { color: seriesGradient(webBlueLight, "#DCEEFF"), borderRadius: [8, 8, 0, 0] },
+            },
+            {
+                name: "已执行金额",
+                type: "bar",
+                showBackground: true,
+                backgroundStyle: {
+                    color: softBarBackground,
+                    borderRadius: [8, 8, 0, 0],
+                },
+                barWidth: 14,
+                data: data.map((item) => item.executed),
+                itemStyle: { color: seriesGradient(webBlue, webTealDeep), borderRadius: [8, 8, 0, 0] },
+            },
+        ],
+    };
+}
+export function getStackedBarOption(dataset, unit = "万") {
+    return {
+        tooltip: { trigger: "axis" },
+        grid: { top: 18, right: 12, bottom: 20, left: 10, containLabel: true },
+        xAxis: {
+            type: "category",
+            data: dataset.labels,
+            axisTick: { show: false },
+            axisLine: { lineStyle: { color: splitLineColor } },
+            axisLabel: { color: axisLabelColor, fontSize: 11 },
+        },
+        yAxis: {
+            type: "value",
+            axisLabel: { color: axisLabelColor, fontSize: 11, formatter: `{value}${unit}` },
+            splitLine: { lineStyle: { color: splitLineColor, type: "dashed" } },
+        },
+        series: dataset.series.map((item) => ({
+            name: item.name,
+            type: "bar",
+            stack: "total",
+            showBackground: true,
+            backgroundStyle: {
+                color: softBarBackground,
+                borderRadius: [8, 8, 0, 0],
+            },
+            barWidth: 18,
+            data: item.data,
+            itemStyle: {
+                color: seriesGradient(item.color),
+                borderRadius: [8, 8, 0, 0],
+            },
+        })),
+    };
+}
+export function getMultiLineOption(dataset, unit = "万") {
+    return {
+        tooltip: { trigger: "axis" },
+        grid: { top: 18, right: 12, bottom: 20, left: 10, containLabel: true },
+        xAxis: {
+            type: "category",
+            data: dataset.labels,
+            axisTick: { show: false },
+            axisLine: { lineStyle: { color: splitLineColor } },
+            axisLabel: { color: axisLabelColor, fontSize: 11 },
+        },
+        yAxis: {
+            type: "value",
+            axisLabel: { color: axisLabelColor, fontSize: 11, formatter: `{value}${unit}` },
+            splitLine: { lineStyle: { color: splitLineColor, type: "dashed" } },
+        },
+        series: buildLineSeries(dataset.series),
+    };
+}
+export function getSingleLineOption(dataset, unit = "万") {
+    return {
+        tooltip: { trigger: "axis" },
+        grid: { top: 18, right: 12, bottom: 20, left: 10, containLabel: true },
+        xAxis: {
+            type: "category",
+            data: dataset.labels,
+            axisTick: { show: false },
+            axisLine: { lineStyle: { color: splitLineColor } },
+            axisLabel: { color: axisLabelColor, fontSize: 11 },
+        },
+        yAxis: {
+            type: "value",
+            axisLabel: { color: axisLabelColor, fontSize: 11, formatter: `{value}${unit}` },
+            splitLine: { lineStyle: { color: splitLineColor, type: "dashed" } },
+        },
+        series: buildLineSeries([
+            {
+                name: dataset.name,
+                color: dataset.color,
+                data: dataset.data,
+            },
+        ]),
+    };
+}
+export function getHorizontalRankingOption(data, valueFormatter) {
+    const reversed = [...data].reverse();
+    return {
+        grid: { top: 12, right: 8, bottom: 0, left: 8, containLabel: true },
+        xAxis: {
+            type: "value",
+            show: false,
+        },
+        yAxis: {
+            type: "category",
+            data: reversed.map((item) => item.name),
+            axisTick: { show: false },
+            axisLine: { show: false },
+            axisLabel: {
+                color: "#334155",
+                width: 116,
+                overflow: "truncate",
+                fontSize: 11,
+            },
+        },
+        series: [
+            {
+                type: "bar",
+                data: reversed.map((item) => item.value),
+                barWidth: 12,
+                itemStyle: {
+                    color: {
+                        type: "linear",
+                        x: 0,
+                        y: 0,
+                        x2: 1,
+                        y2: 0,
+                        colorStops: [
+                            { offset: 0, color: "#1BC0CB" },
+                            { offset: 1, color: "#00A2AD" },
+                        ],
+                    },
+                    borderRadius: [999, 999, 999, 999],
+                },
+                label: {
+                    show: true,
+                    position: "right",
+                    formatter: (params) => {
+                        const numericValue = Number(params.value ?? 0);
+                        const item = reversed.find((entry) => entry.value === numericValue) ?? reversed[0];
+                        return valueFormatter
+                            ? valueFormatter(numericValue, item?.unit ?? "")
+                            : `${numericValue}${item?.unit ?? ""}`;
+                    },
+                    color: "#475569",
+                    fontSize: 11,
+                },
+            },
+        ],
+    };
+}
+export function getFocusedProjectOption(data) {
+    return {
+        tooltip: { trigger: "axis" },
+        grid: { top: 20, right: 18, bottom: 20, left: 10, containLabel: true },
+        xAxis: {
+            type: "category",
+            data: data.map((item) => item.name),
+            axisTick: { show: false },
+            axisLine: { lineStyle: { color: splitLineColor } },
+            axisLabel: { color: axisLabelColor, fontSize: 11, interval: 0 },
+        },
+        yAxis: [
+            {
+                type: "value",
+                axisLabel: { color: axisLabelColor, fontSize: 11 },
+                splitLine: { lineStyle: { color: splitLineColor, type: "dashed" } },
+            },
+            {
+                type: "value",
+                min: 0,
+                max: 100,
+                axisLabel: { color: axisLabelColor, fontSize: 11, formatter: "{value}%" },
+                splitLine: { show: false },
+            },
+        ],
+        series: [
+            {
+                name: "预算",
+                type: "bar",
+                showBackground: true,
+                backgroundStyle: {
+                    color: softBarBackground,
+                    borderRadius: [10, 10, 0, 0],
+                },
+                barWidth: 14,
+                data: data.map((item) => item.budget),
+                itemStyle: {
+                    color: seriesGradient(webBlueLight, "#DCEEFF"),
+                    borderRadius: [10, 10, 0, 0],
+                },
+            },
+            {
+                name: "执行",
+                type: "bar",
+                showBackground: true,
+                backgroundStyle: {
+                    color: softBarBackground,
+                    borderRadius: [10, 10, 0, 0],
+                },
+                barWidth: 14,
+                data: data.map((item) => item.executed),
+                itemStyle: {
+                    color: seriesGradient(webBlue, webTealDeep),
+                    borderRadius: [10, 10, 0, 0],
+                },
+            },
+            {
+                name: "执行率",
+                type: "line",
+                yAxisIndex: 1,
+                smooth: true,
+                symbol: "circle",
+                symbolSize: 7,
+                lineStyle: { width: 3, color: "#10B981" },
+                itemStyle: { color: "#10B981", borderColor: "#fff", borderWidth: 2 },
+                data: data.map((item) => item.rate),
+            },
+        ],
+    };
+}
+export function getGroupedBarOption(dataset, valueFormatter) {
+    return {
+        tooltip: { trigger: "axis" },
+        grid: { top: 20, right: 12, bottom: 24, left: 12, containLabel: true },
+        xAxis: {
+            type: "category",
+            data: dataset.labels,
+            axisTick: { show: false },
+            axisLine: { lineStyle: { color: splitLineColor } },
+            axisLabel: { color: axisLabelColor, fontSize: 11 },
+        },
+        yAxis: {
+            type: "value",
+            axisLabel: {
+                color: axisLabelColor,
+                fontSize: 11,
+                formatter: valueFormatter ? (value) => valueFormatter(value) : undefined,
+            },
+            splitLine: { lineStyle: { color: splitLineColor, type: "dashed" } },
+        },
+        series: dataset.series.map((item) => ({
+            name: item.name,
+            type: "bar",
+            showBackground: true,
+            backgroundStyle: {
+                color: softBarBackground,
+                borderRadius: [10, 10, 0, 0],
+            },
+            barWidth: 18,
+            data: item.data,
+            itemStyle: {
+                color: seriesGradient(item.color),
+                borderRadius: [10, 10, 0, 0],
+            },
+        })),
+    };
+}
