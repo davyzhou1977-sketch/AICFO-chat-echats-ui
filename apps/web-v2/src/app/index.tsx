@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { Button, Tag } from "antd";
 import { ReportPanel } from "@/components/report-panel/index";
 import { reportData, type ChartMode } from "@/data/report";
-import styles from "./index.module.less";
+import styles from "./index.less";
 
 export function App() {
   const [chartMode, setChartMode] = useState<ChartMode>("bar");

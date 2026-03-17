@@ -7,7 +7,7 @@ import "echarts/lib/chart/pie";
 import "echarts/lib/component/grid";
 import "echarts/lib/component/legend";
 import "echarts/lib/component/tooltip";
-import styles from "./index.module.less";
+import styles from "./index.less";
 export function Chart({ option, className }) {
     const containerRef = useRef(null);
     const instanceRef = useRef(null);

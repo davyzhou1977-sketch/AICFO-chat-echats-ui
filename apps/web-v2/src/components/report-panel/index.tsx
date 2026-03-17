@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { Chart } from "@/components/chart/index";
 import type { ChartMode, ReportData } from "@/data/report";
-import styles from "./index.module.less";
+import styles from "./index.less";
 
 interface ReportPanelProps {
   data: ReportData["drawer"];

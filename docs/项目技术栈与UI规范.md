@@ -58,21 +58,25 @@
 
 ### 4.1 Web 端
 
-- 新增样式统一使用 `Less Modules`
+- 新增局部样式统一使用普通 `.less` 文件并以 CSS Modules 默认导入方式使用
 - 推荐写法：
 
 ```tsx
-import styles from "./index.module.less";
+import styles from "./index.less";
 
 <div className={styles.button}>ai报表</div>;
 ```
 
-- 不允许继续引入新的全局 CSS 方案替代 `Less Modules`
+- 业务组件中不允许直接引入 `*.module.less`
+- 如 Web 构建需要兼容桥接文件，必须由构建配置或桥接层兜底，不能改变业务层统一写法
+- 不允许继续引入新的全局 CSS 方案替代这一写法
 
 ### 4.2 移动端
 
 - 以“上一版已验收结构优先”为原则，允许保留为还原旧版所必需的全局 Less
-- 新增局部样式优先使用 Less 文件组织，不允许使用 Tailwind 原子类串联 `className`
+- 新增局部样式必须使用 `import styles from "./index.less"` 并通过 `styles.xxx` 引用
+- 除已确认的全局基线样式文件外，不允许把新增局部样式继续写成全局类名
+- 不允许使用 Tailwind 原子类串联 `className`
 - 若引入新样式文件，必须保证命名、层级和复用方式清晰，避免无约束扩散
 
 ## 5. UI 与交互规范

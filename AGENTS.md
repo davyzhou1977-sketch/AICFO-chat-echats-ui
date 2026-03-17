@@ -47,8 +47,15 @@
 
 ## Styling Rules
 
-- Web 样式使用 `Less Modules`
+- Web 局部样式必须使用普通 `.less` 文件并以 CSS Modules 方式引入
+- 标准写法固定为：
+- `import styles from "./index.less";`
+- `<div className={styles.button}>ai报表</div>`
+- 业务组件中禁止直接 `import "./index.module.less"` 或其他 `*.module.less`
+- 如 Web 构建链需要兼容桥接文件，必须由构建层处理，不能把这类桥接文件暴露为业务层默认写法
 - Mobile 样式优先沿用上一版成熟结构；如需改动，必须先证明与上一版一致或更接近规范
+- Mobile 新增局部样式同样必须使用 `import styles from "./index.less"` + `styles.xxx`
+- 仅对移动端当前已验收的全局基线样式文件，例如 `src/styles/global.less`、`src/styles/school-finance-fusion-legacy.less`，允许继续保留全局引入
 - 图表配色必须遵循 UI 规范，并参考 Web 端的渐变思路处理高光、面积和柱形渐变
 
 ## Delivery Rules
