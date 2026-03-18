@@ -6,7 +6,7 @@ import { FinancialAnalysisFusionLegacy } from "@/components/mobile/financial-ana
 import { LegacyBottomNav } from "@/components/mobile/legacy-bottom-nav";
 import { syncHostNavigationTitle } from "@/services/hostNavigationService";
 import { fetchSchoolFinanceFusionDemo } from "@/services/schoolFinanceFusionService";
-import "@/styles/school-finance-fusion-legacy.less";
+import styles from "./index.less";
 const targetPath = "/mobile/school-finance-fusion-demo";
 function LoadingState() {
     return (_jsxs("div", { style: {
@@ -55,5 +55,5 @@ export function App() {
     if (!data) {
         return _jsx(LoadingState, {});
     }
-    return (_jsxs("div", { className: "legacy-page", children: [_jsx(FinancialAnalysisFusionLegacy, { data: data, activePeriod: activePeriod, periodControl: _jsxs("label", { className: "legacy-page__period", children: [_jsx("select", { value: activePeriod, onChange: (event) => setActivePeriod(event.target.value), className: "legacy-page__period-select", "aria-label": "\u9009\u62E9\u5206\u6790\u6570\u636E\u5468\u671F", children: data.periodOptions.map((item) => (_jsx("option", { value: item.value, children: item.label }, item.value))) }), _jsx(ChevronDown, { className: "legacy-page__period-icon" })] }) }), _jsx(LegacyBottomNav, { activeKey: "report" })] }));
+    return (_jsxs("div", { className: styles.page, children: [_jsx(FinancialAnalysisFusionLegacy, { data: data, activePeriod: activePeriod, periodControl: _jsxs("label", { className: styles.period, children: [_jsx("select", { value: activePeriod, onChange: (event) => setActivePeriod(event.target.value), className: styles.periodSelect, "aria-label": "\u9009\u62E9\u5206\u6790\u6570\u636E\u5468\u671F", children: data.periodOptions.map((item) => (_jsx("option", { value: item.value, children: item.label }, item.value))) }), _jsx(ChevronDown, { className: styles.periodIcon })] }) }), _jsx(LegacyBottomNav, { activeKey: "report" })] }));
 }

@@ -42,6 +42,7 @@ import type {
   FinancialAnalysisFusionData,
   LegacyBudgetTopicSection,
 } from "@/types/schoolFinanceFusion";
+import styles from "./index.less";
 
 type FusionTopic = "budget" | "reimbursement" | "personnel" | "guarantee";
 type SortMode = "desc" | "asc";
@@ -51,6 +52,12 @@ const topicMeta: Record<FusionTopic, { label: string; icon: typeof WalletCards }
   reimbursement: { label: "报销", icon: ReceiptText },
   personnel: { label: "人员", icon: UsersRound },
   guarantee: { label: "保障", icon: ShieldCheck },
+};
+
+const metricTrendClassMap = {
+  up: styles.legacyMetricCardTrendUp,
+  down: styles.legacyMetricCardTrendDown,
+  warning: styles.legacyMetricCardTrendWarning,
 };
 
 const currencyFormatter = new Intl.NumberFormat("zh-CN", {
@@ -111,7 +118,7 @@ export function FinancialAnalysisFusionLegacy({
   };
 
   return (
-    <div className={cx("legacy-analysis", className)} style={style}>
+    <div className={cx(styles.legacyAnalysis, className)} style={style}>
       <LegacyTopicTabs activeTopic={activeTopic} onChange={setActiveTopic} />
       <LegacyFirstUseCoachmark
         visible={showCoachmark}
@@ -156,7 +163,7 @@ const LegacyTopicTabs = forwardRef<LegacyTopicTabsRef, LegacyTopicTabsProps>(
     useImperativeHandle(ref, () => ({
       focusActive: () => {
         const element = document.querySelector(
-          ".legacy-topic-tabs__button--active",
+          '[data-active-topic-tab="true"]',
         ) as HTMLButtonElement | null;
         element?.focus();
       },
@@ -170,7 +177,7 @@ const LegacyTopicTabs = forwardRef<LegacyTopicTabsRef, LegacyTopicTabsProps>(
     };
 
     return (
-      <div className={cx("legacy-topic-tabs", className)} style={style}>
+      <div className={cx(styles.legacyTopicTabs, className)} style={style}>
         {(Object.keys(topicMeta) as FusionTopic[]).map((topic) => {
           const meta = topicMeta[topic];
           const Icon = meta.icon;
@@ -181,12 +188,13 @@ const LegacyTopicTabs = forwardRef<LegacyTopicTabsRef, LegacyTopicTabsProps>(
               key={topic}
               type="button"
               className={cx(
-                "legacy-topic-tabs__button",
-                isActive && "legacy-topic-tabs__button--active",
+                styles.legacyTopicTabsButton,
+                isActive && styles.legacyTopicTabsButtonActive,
               )}
               onClick={() => handleClick(topic)}
+              data-active-topic-tab={isActive ? "true" : undefined}
             >
-              <Icon className="legacy-topic-tabs__icon" />
+              <Icon className={styles.legacyTopicTabsIcon} />
               <span>{meta.label}</span>
             </button>
           );
@@ -226,35 +234,35 @@ function BudgetTopicContent({
   }, [section.inTransitItems]);
 
   return (
-    <div className="legacy-topic">
+    <div className={styles.legacyTopic}>
       <LegacyTopicHeading title="预算执行分析" rightSlot={periodControl} />
 
-      <LegacyCard className="legacy-budget-hero">
-        <div className="legacy-budget-hero__headline">
-          <div className="legacy-budget-hero__label">本期预算总额(元)</div>
-          <div className="legacy-budget-hero__value">
+      <LegacyCard className={styles.legacyBudgetHero}>
+        <div className={styles.legacyBudgetHeroHeadline}>
+          <div className={styles.legacyBudgetHeroLabel}>本期预算总额(元)</div>
+          <div className={styles.legacyBudgetHeroValue}>
             {currencyFormatter.format(section.totalBudget)}
           </div>
         </div>
 
-        <div className="legacy-budget-hero__ring">
+        <div className={styles.legacyBudgetHeroRing}>
           <Chart
-            className="legacy-chart legacy-chart--ring"
+            className={cx(styles.chartFrame, styles.legacyChartRing)}
             option={getBudgetCompletionRingOption(section.completionRate)}
           />
         </div>
 
-        <div className="legacy-budget-hero__summary-list">
+        <div className={styles.legacyBudgetHeroSummaryList}>
           {section.overviewItems.map((item) => (
-            <div key={item.label} className="legacy-budget-summary-row">
-              <div className="legacy-budget-summary-row__label">
+            <div key={item.label} className={styles.legacyBudgetSummaryRow}>
+              <div className={styles.legacyBudgetSummaryRowLabel}>
                 <span
-                  className="legacy-budget-summary-row__dot"
+                  className={styles.legacyBudgetSummaryRowDot}
                   style={{ backgroundColor: item.color }}
                 />
                 <span>{item.label}</span>
               </div>
-              <div className="legacy-budget-summary-row__value">
+              <div className={styles.legacyBudgetSummaryRowValue}>
                 {currencyFormatter.format(item.value)}
               </div>
             </div>
@@ -268,39 +276,39 @@ function BudgetTopicContent({
         rightSlot={
           <button
             type="button"
-            className="legacy-ghost-button"
+            className={styles.legacyGhostButton}
             onClick={() =>
               setSortMode((current) => (current === "desc" ? "asc" : "desc"))
             }
           >
             {sortMode === "desc" ? (
-              <ArrowDownWideNarrow className="legacy-ghost-button__icon" />
+              <ArrowDownWideNarrow className={styles.legacyGhostButtonIcon} />
             ) : (
-              <ArrowUpWideNarrow className="legacy-ghost-button__icon" />
+              <ArrowUpWideNarrow className={styles.legacyGhostButtonIcon} />
             )}
             <span>{sortMode === "desc" ? "降序展示" : "升序展示"}</span>
           </button>
         }
       >
         <Chart
-          className="legacy-chart legacy-chart--medium"
+          className={cx(styles.chartFrame, styles.legacyChartMedium)}
           option={getBudgetDepartmentBarOption(sortedDepartments)}
         />
       </LegacySectionCard>
 
       <LegacySectionCard title="在途预算" badge="单位：元">
-        <div className="legacy-progress-list">
+        <div className={styles.legacyProgressList}>
           {section.inTransitItems.map((item) => (
-            <div key={item.key} className="legacy-progress-item">
-              <div className="legacy-progress-item__header">
-                <span className="legacy-progress-item__title">{item.label}</span>
-                <span className="legacy-progress-item__value">
+            <div key={item.key}>
+              <div className={styles.legacyProgressItemHeader}>
+                <span className={styles.legacyProgressItemTitle}>{item.label}</span>
+                <span className={styles.legacyProgressItemValue}>
                   {currencyFormatter.format(item.amount)}
                 </span>
               </div>
-              <div className="legacy-progress-item__track">
+              <div className={styles.legacyProgressItemTrack}>
                 <div
-                  className="legacy-progress-item__fill"
+                  className={styles.legacyProgressItemFill}
                   style={{
                     width: animateTransit
                       ? `${Math.max(
@@ -318,10 +326,10 @@ function BudgetTopicContent({
       </LegacySectionCard>
 
       <LegacySectionCard title="标准经费支出" badge="单位：元">
-        <div className="legacy-budget-expense">
-          <div className="legacy-budget-expense__chart">
+        <div className={styles.legacyBudgetExpense}>
+          <div className={styles.legacyBudgetExpenseChart}>
             <Chart
-              className="legacy-chart legacy-chart--small"
+              className={cx(styles.chartFrame, styles.legacyChartSmall)}
               option={getBudgetStandardExpenseOption(
                 section.standardExpense.totalAmount,
                 section.standardExpense.highlightLabel,
@@ -330,18 +338,18 @@ function BudgetTopicContent({
               )}
             />
           </div>
-          <div className="legacy-budget-expense__legend">
+          <div className={styles.legacyBudgetExpenseLegend}>
             {section.standardExpense.items.map((item) => (
-              <div key={item.key} className="legacy-budget-expense__legend-item">
-                <div className="legacy-budget-expense__legend-line">
-                  <span className="legacy-budget-expense__legend-label">
+              <div key={item.key} className={styles.legacyBudgetExpenseLegendItem}>
+                <div className={styles.legacyBudgetExpenseLegendLine}>
+                  <span className={styles.legacyBudgetExpenseLegendLabel}>
                     <span
-                      className="legacy-budget-expense__legend-dot"
+                      className={styles.legacyBudgetExpenseLegendDot}
                       style={{ backgroundColor: item.color }}
                     />
                     {item.label}
                   </span>
-                  <span className="legacy-budget-expense__legend-value">
+                  <span className={styles.legacyBudgetExpenseLegendValue}>
                     {currencyFormatter.format(item.amount)}
                   </span>
                 </div>
@@ -364,7 +372,7 @@ function ReimbursementTopicContent({
   periodControl?: ReactNode;
 }) {
   return (
-    <div className="legacy-topic">
+    <div className={styles.legacyTopic}>
       <LegacyTopicHeading title="报销行为分析" rightSlot={periodControl} />
 
       <LegacyMetricsGrid metrics={section.metrics} />
@@ -375,16 +383,20 @@ function ReimbursementTopicContent({
         footer={<LegacyLegend items={[["#2F6BFF", "报销金额"], ["#18B47A", "报销笔数"]]} />}
       >
         <Chart
-          className="legacy-chart legacy-chart--large"
+          className={cx(styles.chartFrame, styles.legacyChartLarge)}
           option={getMonthlyTrendOption(section.monthlyTrend)}
         />
       </LegacySectionCard>
       <LegacyInsightCard insight={section.monthlyInsight} />
 
       <LegacySectionCard title="报销类别结构" badge="类别口径">
-        <div className="legacy-split-panel">
+        <div className={styles.legacySplitPanel}>
           <Chart
-            className="legacy-chart legacy-chart--small"
+            className={cx(
+              styles.chartFrame,
+              styles.legacyChartSmall,
+              styles.legacySplitPanelChart,
+            )}
             option={getExpenseCategoryOption(section.categoryBreakdown)}
           />
           <LegacyRankingList items={section.categoryBreakdown} />
@@ -394,7 +406,7 @@ function ReimbursementTopicContent({
 
       <LegacySectionCard title="高频供应商 TOP5" badge="供应商">
         <Chart
-          className="legacy-chart legacy-chart--medium"
+          className={cx(styles.chartFrame, styles.legacyChartMedium)}
           option={getVendorRankingOption(section.topVendors)}
         />
       </LegacySectionCard>
@@ -416,7 +428,7 @@ function PersonnelTopicContent({
   periodControl?: ReactNode;
 }) {
   return (
-    <div className="legacy-topic">
+    <div className={styles.legacyTopic}>
       <LegacyTopicHeading title="人员费用分析" rightSlot={periodControl} />
 
       <LegacyMetricsGrid metrics={section.metrics} />
@@ -427,7 +439,7 @@ function PersonnelTopicContent({
         footer={<LegacySeriesLegend series={section.monthlyComposition.series} />}
       >
         <Chart
-          className="legacy-chart legacy-chart--large"
+          className={cx(styles.chartFrame, styles.legacyChartLarge)}
           option={getStackedBarOption(section.monthlyComposition)}
         />
       </LegacySectionCard>
@@ -435,7 +447,7 @@ function PersonnelTopicContent({
 
       <LegacySectionCard title="重点费用趋势" badge="工资 / 绩效 / 社保 / 补贴">
         <Chart
-          className="legacy-chart legacy-chart--large"
+          className={cx(styles.chartFrame, styles.legacyChartLarge)}
           option={getMultiLineOption(section.focusTrend)}
         />
       </LegacySectionCard>
@@ -443,7 +455,7 @@ function PersonnelTopicContent({
 
       <LegacySectionCard title="当前周期费用结构" badge="费用类型">
         <Chart
-          className="legacy-chart legacy-chart--medium"
+          className={cx(styles.chartFrame, styles.legacyChartMedium)}
           option={getHorizontalRankingOption(section.structureBreakdown)}
         />
       </LegacySectionCard>
@@ -468,7 +480,7 @@ function GuaranteeTopicContent({
   }, [section.focusOptions]);
 
   return (
-    <div className="legacy-topic">
+    <div className={styles.legacyTopic}>
       <LegacyTopicHeading title="基本保障费用分析" rightSlot={periodControl} />
 
       <LegacyMetricsGrid metrics={section.metrics} />
@@ -479,7 +491,7 @@ function GuaranteeTopicContent({
         footer={<LegacySeriesLegend series={section.monthlyComposition.series} />}
       >
         <Chart
-          className="legacy-chart legacy-chart--large"
+          className={cx(styles.chartFrame, styles.legacyChartLarge)}
           option={getStackedBarOption(section.monthlyComposition)}
         />
       </LegacySectionCard>
@@ -489,14 +501,14 @@ function GuaranteeTopicContent({
         title="单项保障趋势"
         badge="按费用切换"
         rightSlot={
-          <div className="legacy-segment-tabs">
+          <div className={styles.legacySegmentTabs}>
             {section.focusOptions.map((item) => (
               <button
                 key={item.value}
                 type="button"
                 className={cx(
-                  "legacy-segment-tabs__button",
-                  activeFocus === item.value && "legacy-segment-tabs__button--active",
+                  styles.legacySegmentTabsButton,
+                  activeFocus === item.value && styles.legacySegmentTabsButtonActive,
                 )}
                 onClick={() => setActiveFocus(item.value)}
               >
@@ -507,7 +519,7 @@ function GuaranteeTopicContent({
         }
       >
         <Chart
-          className="legacy-chart legacy-chart--medium"
+          className={cx(styles.chartFrame, styles.legacyChartMedium)}
           option={getSingleLineOption(section.focusTrends[activeFocus])}
         />
       </LegacySectionCard>
@@ -515,7 +527,7 @@ function GuaranteeTopicContent({
 
       <LegacySectionCard title="当前周期费用结构" badge="保障类别">
         <Chart
-          className="legacy-chart legacy-chart--medium"
+          className={cx(styles.chartFrame, styles.legacyChartMedium)}
           option={getHorizontalRankingOption(section.structureBreakdown)}
         />
       </LegacySectionCard>
@@ -531,7 +543,7 @@ interface LegacyCardProps extends PropsWithChildren<{}> {
 
 function LegacyCard({ className, style, children }: LegacyCardProps) {
   return (
-    <div className={cx("legacy-card", className)} style={style}>
+    <div className={cx(styles.legacyCard, className)} style={style}>
       {children}
     </div>
   );
@@ -556,16 +568,16 @@ function LegacySectionCard({
   children,
 }: LegacySectionCardProps) {
   return (
-    <LegacyCard className={cx("legacy-section-card", className)} style={style}>
-      <div className="legacy-section-card__header">
-        <div className="legacy-section-card__title">{title}</div>
-        <div className="legacy-section-card__actions">
+    <LegacyCard className={cx(styles.legacySectionCard, className)} style={style}>
+      <div className={styles.legacySectionCardHeader}>
+        <div className={styles.legacySectionCardTitle}>{title}</div>
+        <div className={styles.legacySectionCardActions}>
           {rightSlot}
-          {badge ? <span className="legacy-badge">{badge}</span> : null}
+          {badge ? <span className={styles.legacyBadge}>{badge}</span> : null}
         </div>
       </div>
-      <div className="legacy-section-card__content">{children}</div>
-      {footer ? <div className="legacy-section-card__footer">{footer}</div> : null}
+      <div className={styles.legacySectionCardContent}>{children}</div>
+      {footer ? <div className={styles.legacySectionCardFooter}>{footer}</div> : null}
     </LegacyCard>
   );
 }
@@ -578,9 +590,9 @@ function LegacyTopicHeading({
   rightSlot?: ReactNode;
 }) {
   return (
-    <div className="legacy-topic-heading">
-      <div className="legacy-topic-heading__title">{title}</div>
-      {rightSlot ? <div className="legacy-topic-heading__actions">{rightSlot}</div> : null}
+    <div className={styles.legacyTopicHeading}>
+      <div className={styles.legacyTopicHeadingTitle}>{title}</div>
+      {rightSlot ? <div className={styles.legacyTopicHeadingActions}>{rightSlot}</div> : null}
     </div>
   );
 }
@@ -596,7 +608,7 @@ function LegacyMetricsGrid({
   }>;
 }) {
   return (
-    <div className="legacy-metrics-grid">
+    <div className={styles.legacyMetricsGrid}>
       {metrics.map((metric) => (
         <LegacyMetricCard key={metric.label} metric={metric} />
       ))}
@@ -615,13 +627,13 @@ function LegacyMetricCard({
   };
 }) {
   return (
-    <LegacyCard className="legacy-metric-card">
-      <div className="legacy-metric-card__label">{metric.label}</div>
-      <div className="legacy-metric-card__value">{metric.value}</div>
+    <LegacyCard className={styles.legacyMetricCard}>
+      <div className={styles.legacyMetricCardLabel}>{metric.label}</div>
+      <div className={styles.legacyMetricCardValue}>{metric.value}</div>
       <div
         className={cx(
-          "legacy-metric-card__trend",
-          `legacy-metric-card__trend--${metric.trendState}`,
+          styles.legacyMetricCardTrend,
+          metricTrendClassMap[metric.trendState],
         )}
       >
         {metric.trend}
@@ -640,13 +652,13 @@ function LegacyInsightCard({
   };
 }) {
   return (
-    <LegacyCard className="legacy-insight-card">
-      <div className="legacy-insight-card__title">{insight.title}</div>
-      <div className="legacy-insight-card__summary">{insight.summary}</div>
-      <div className="legacy-insight-card__list">
+    <LegacyCard className={styles.legacyInsightCard}>
+      <div className={styles.legacyInsightCardTitle}>{insight.title}</div>
+      <div className={styles.legacyInsightCardSummary}>{insight.summary}</div>
+      <div className={styles.legacyInsightCardList}>
         {insight.bullets.map((bullet) => (
-          <div key={bullet} className="legacy-insight-card__item">
-            <span className="legacy-insight-card__item-dot" />
+          <div key={bullet} className={styles.legacyInsightCardItem}>
+            <span className={styles.legacyInsightCardItemDot} />
             <span>{bullet}</span>
           </div>
         ))}
@@ -661,10 +673,10 @@ function LegacyLegend({
   items: Array<[string, string]>;
 }) {
   return (
-    <div className="legacy-legend">
+    <div className={styles.legacyLegend}>
       {items.map(([color, label]) => (
-        <span key={label} className="legacy-legend__item">
-          <span className="legacy-legend__dot" style={{ backgroundColor: color }} />
+        <span key={label} className={styles.legacyLegendItem}>
+          <span className={styles.legacyLegendDot} style={{ backgroundColor: color }} />
           <span>{label}</span>
         </span>
       ))}
@@ -690,19 +702,19 @@ function LegacyRankingList({
   const max = Math.max(...items.map((item) => item.value), 1);
 
   return (
-    <div className="legacy-ranking-list">
+    <div className={styles.legacyRankingList}>
       {items.map((item) => (
-        <div key={item.name} className="legacy-ranking-list__item">
-          <div className="legacy-ranking-list__header">
-            <span className="legacy-ranking-list__name">{item.name}</span>
-            <span className="legacy-ranking-list__value">
+        <div key={item.name} className={styles.legacyRankingListItem}>
+          <div className={styles.legacyRankingListHeader}>
+            <span className={styles.legacyRankingListName}>{item.name}</span>
+            <span className={styles.legacyRankingListValue}>
               {item.value}
               {item.unit ?? "%"}
             </span>
           </div>
-          <div className="legacy-ranking-list__track">
+          <div className={styles.legacyRankingListTrack}>
             <div
-              className="legacy-ranking-list__fill"
+              className={styles.legacyRankingListFill}
               style={{
                 width: `${(item.value / max) * 100}%`,
                 backgroundColor: item.color ?? "#2F6BFF",
@@ -721,19 +733,19 @@ function LegacyLargeExpenseList({
   items: Array<{ project: string; category: string; amount: string }>;
 }) {
   return (
-    <div className="legacy-large-expense-list">
+    <div className={styles.legacyLargeExpenseList}>
       {items.map((item, index) => (
-        <div key={item.project} className="legacy-large-expense-list__item">
-          <div className="legacy-large-expense-list__left">
-            <span className="legacy-large-expense-list__tag">TOP {index + 1}</span>
+        <div key={item.project} className={styles.legacyLargeExpenseListItem}>
+          <div className={styles.legacyLargeExpenseListLeft}>
+            <span className={styles.legacyLargeExpenseListTag}>TOP {index + 1}</span>
             <div>
-              <div className="legacy-large-expense-list__name">{item.project}</div>
-              <div className="legacy-large-expense-list__category">{item.category}</div>
+              <div className={styles.legacyLargeExpenseListName}>{item.project}</div>
+              <div className={styles.legacyLargeExpenseListCategory}>{item.category}</div>
             </div>
           </div>
-          <div className="legacy-large-expense-list__right">
-            <div className="legacy-large-expense-list__amount">{item.amount}</div>
-            <div className="legacy-large-expense-list__remark">重点关注</div>
+          <div className={styles.legacyLargeExpenseListRight}>
+            <div className={styles.legacyLargeExpenseListAmount}>{item.amount}</div>
+            <div className={styles.legacyLargeExpenseListRemark}>重点关注</div>
           </div>
         </div>
       ))}

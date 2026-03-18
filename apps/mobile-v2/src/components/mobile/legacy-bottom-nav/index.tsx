@@ -7,6 +7,7 @@ import {
   House,
   Plus,
 } from "@/components/mobile/legacy-icons";
+import styles from "./index.less";
 
 function cx(...classNames: Array<string | undefined | false>) {
   return classNames.filter(Boolean).join(" ");
@@ -40,15 +41,15 @@ export const LegacyBottomNav = forwardRef<LegacyBottomNavRef, LegacyBottomNavPro
     useImperativeHandle(ref, () => ({
       focusActive: () => {
         const element = document.querySelector(
-          ".legacy-bottom-nav__item--active",
+          '[data-active-bottom-nav="true"]',
         ) as HTMLButtonElement | null;
         element?.focus();
       },
     }));
 
     return (
-      <div className={cx("legacy-bottom-nav", className)} style={style}>
-        {navItems.map((item, index) => {
+      <div className={cx(styles.bottomNav, className)} style={style}>
+        {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = item.key === activeKey;
 
@@ -56,21 +57,19 @@ export const LegacyBottomNav = forwardRef<LegacyBottomNavRef, LegacyBottomNavPro
             <button
               key={item.key}
               type="button"
-              className={cx(
-                "legacy-bottom-nav__item",
-                isActive && "legacy-bottom-nav__item--active",
-              )}
+              className={cx(styles.item, isActive && styles.itemActive)}
               aria-current={isActive ? "page" : undefined}
+              data-active-bottom-nav={isActive ? "true" : undefined}
             >
-              <Icon className="legacy-bottom-nav__icon" />
-              <span className="legacy-bottom-nav__label">{item.label}</span>
+              <Icon className={styles.icon} />
+              <span className={styles.label}>{item.label}</span>
             </button>
           );
         })}
 
-        <div className="legacy-bottom-nav__center">
-          <button type="button" className="legacy-bottom-nav__center-button">
-            <Plus className="legacy-bottom-nav__center-icon" />
+        <div className={styles.center}>
+          <button type="button" className={styles.centerButton}>
+            <Plus className={styles.centerIcon} />
           </button>
         </div>
       </div>

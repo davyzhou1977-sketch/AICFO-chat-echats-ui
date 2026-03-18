@@ -5,9 +5,9 @@ import { FinancialAnalysisFusionLegacy } from "@/components/mobile/financial-ana
 import { LegacyBottomNav } from "@/components/mobile/legacy-bottom-nav";
 import { syncHostNavigationTitle } from "@/services/hostNavigationService";
 import { fetchSchoolFinanceFusionDemo } from "@/services/schoolFinanceFusionService";
-import "@/styles/school-finance-fusion-legacy.less";
 import type { FinancialPeriod } from "@/types/schoolFinanceV2";
 import type { FinancialAnalysisFusionData } from "@/types/schoolFinanceFusion";
+import styles from "./index.less";
 
 const targetPath = "/mobile/school-finance-fusion-demo";
 
@@ -80,16 +80,16 @@ export function App() {
   }
 
   return (
-    <div className="legacy-page">
+    <div className={styles.page}>
       <FinancialAnalysisFusionLegacy
         data={data}
         activePeriod={activePeriod}
         periodControl={
-          <label className="legacy-page__period">
+          <label className={styles.period}>
             <select
               value={activePeriod}
               onChange={(event) => setActivePeriod(event.target.value as FinancialPeriod)}
-              className="legacy-page__period-select"
+              className={styles.periodSelect}
               aria-label="选择分析数据周期"
             >
               {data.periodOptions.map((item) => (
@@ -98,7 +98,7 @@ export function App() {
                 </option>
               ))}
             </select>
-            <ChevronDown className="legacy-page__period-icon" />
+            <ChevronDown className={styles.periodIcon} />
           </label>
         }
       />

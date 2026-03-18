@@ -1,0 +1,66 @@
+.bottomNav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: stretch;
+  height: 50px;
+  padding: 0 3vw 0;
+  border-top: 1px solid #d9d9d9;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: none;
+  box-sizing: border-box;
+  z-index: 20;
+}
+
+.item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border: none;
+  background: transparent;
+  color: #898f96;
+}
+
+.itemActive {
+  color: #00a2ad;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.label {
+  font-size: 11px;
+  line-height: 1;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: -10px;
+  transform: translateX(-50%);
+}
+
+.centerButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f2f5f8;
+  border-radius: 50%;
+  background: #1bc0cb;
+  box-shadow: none;
+}
+
+.centerIcon {
+  width: 18px;
+  height: 18px;
+  color: #fff;
+}

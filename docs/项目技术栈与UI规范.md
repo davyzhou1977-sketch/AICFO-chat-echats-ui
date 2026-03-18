@@ -68,14 +68,17 @@ import styles from "./index.less";
 ```
 
 - 业务组件中不允许直接引入 `*.module.less`
+- 只要组件引入了局部 less，就不允许继续把该 less 中的类名写成裸字符串 `className="xxx"`
+- 组件私有样式必须统一写成 `className={styles.xxx}`；字符串 `className` 仅允许用于第三方组件要求的全局钩子或非样式语义标识
 - 如 Web 构建需要兼容桥接文件，必须由构建配置或桥接层兜底，不能改变业务层统一写法
 - 不允许继续引入新的全局 CSS 方案替代这一写法
 
 ### 4.2 移动端
 
-- 以“上一版已验收结构优先”为原则，允许保留为还原旧版所必需的全局 Less
+- 以“上一版已验收结构优先”为原则，仅允许保留当前已验收的全局基线样式 `src/styles/global.less`
 - 新增局部样式必须使用 `import styles from "./index.less"` 并通过 `styles.xxx` 引用
-- 除已确认的全局基线样式文件外，不允许把新增局部样式继续写成全局类名
+- 只要组件引入了局部 less，就不允许继续把该 less 中的类名写成裸字符串 `className="xxx"`
+- 除已确认的全局基线样式文件外，不允许把新增局部样式继续写成全局类名，也不允许新增新的业务全局 less 入口
 - 不允许使用 Tailwind 原子类串联 `className`
 - 若引入新样式文件，必须保证命名、层级和复用方式清晰，避免无约束扩散
 
@@ -104,6 +107,8 @@ import styles from "./index.less";
 - 移动端可访问 `http://127.0.0.1:4173/mobile/school-finance-fusion-demo`
 - 检查是否误引入 `Tailwind CSS`
 - 检查是否误升级或替换了规定技术栈
+- 检查 `apps/web-v2/src` 与 `apps/mobile-v2/src` 中是否存在 `import styles from "*.module.less"`
+- 检查 `apps/web-v2/src` 与 `apps/mobile-v2/src` 中是否仍存在把本地 less 类名写成裸字符串 `className="..."` 的代码
 - 检查移动端页面是否出现白屏、资源路径错误、挂载节点缺失、图表未渲染等阻塞问题
 - 检查移动端预算首屏在较宽容器下是否仍存在横向滚动
 - 检查预算主题环图中心是否仍正确显示预算执行率数字与标签

@@ -10,9 +10,7 @@ module.exports = {
   },
   cssModulesExcludes: [
     ".generated/styles/global.less",
-    ".generated/styles/school-finance-fusion-legacy.less",
     "src/styles/global.less",
-    "src/styles/school-finance-fusion-legacy.less",
   ],
   alias: {
     "@": path.resolve(__dirname, ".generated"),

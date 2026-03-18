@@ -52,10 +52,13 @@
 - `import styles from "./index.less";`
 - `<div className={styles.button}>ai报表</div>`
 - 业务组件中禁止直接 `import "./index.module.less"` 或其他 `*.module.less`
+- 只要组件引入了本地局部 less，就禁止继续书写该样式文件对应的裸字符串类名，例如 `className="button"`、`className="legacy-coachmark__head"`
+- 组件私有样式必须统一通过 `styles.xxx` 使用；字符串 `className` 仅允许用于第三方库明确要求的全局钩子、测试钩子或业务约定的 `data-*` 标记，且不能承载本地 less 样式
 - 如 Web 构建链需要兼容桥接文件，必须由构建层处理，不能把这类桥接文件暴露为业务层默认写法
 - Mobile 样式优先沿用上一版成熟结构；如需改动，必须先证明与上一版一致或更接近规范
 - Mobile 新增局部样式同样必须使用 `import styles from "./index.less"` + `styles.xxx`
-- 仅对移动端当前已验收的全局基线样式文件，例如 `src/styles/global.less`、`src/styles/school-finance-fusion-legacy.less`，允许继续保留全局引入
+- 移动端当前仅允许 `src/styles/global.less` 继续作为全局基线样式入口；业务组件样式不得再回退到新的全局 less 文件
+- 提交前必须执行源码检索，确认 `apps/web-v2/src` 与 `apps/mobile-v2/src` 中不存在 `import styles from "*.module.less"`，也不存在把本地 less 类名写成裸字符串 `className="..."` 的情况
 - 图表配色必须遵循 UI 规范，并参考 Web 端的渐变思路处理高光、面积和柱形渐变
 
 ## Delivery Rules

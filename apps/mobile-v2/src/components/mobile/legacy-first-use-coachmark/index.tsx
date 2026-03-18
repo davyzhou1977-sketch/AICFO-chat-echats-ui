@@ -7,6 +7,7 @@ import {
 } from "react";
 import type { CSSProperties } from "react";
 import { Bot, ReceiptText, ShieldCheck, UsersRound, X } from "@/components/mobile/legacy-icons";
+import styles from "./index.less";
 
 function cx(...classNames: Array<string | undefined | false>) {
   return classNames.filter(Boolean).join(" ");
@@ -59,56 +60,52 @@ export const LegacyFirstUseCoachmark = forwardRef<
   }
 
   return (
-    <div className={cx("legacy-coachmark", className)} style={style}>
-      <div className="legacy-coachmark__arrow" />
+    <div className={cx(styles.coachmark, className)} style={style}>
+      <div className={styles.arrow} />
 
-      <div className="legacy-coachmark__head">
-        <div className="legacy-coachmark__eyebrow">新增分析主题</div>
+      <div className={styles.head}>
+        <div className={styles.eyebrow}>新增分析主题</div>
         <button
           type="button"
-          className="legacy-coachmark__close"
+          className={styles.close}
           onClick={() => setVisible(false)}
           aria-label="关闭提示"
         >
-          <X className="legacy-coachmark__close-icon" />
+          <X className={styles.closeIcon} />
         </button>
       </div>
 
-      <div className="legacy-coachmark__title">已新增 3 个主题和 AI 解读</div>
-      <div className="legacy-coachmark__desc">
+      <div className={styles.title}>已新增 3 个主题和 AI 解读</div>
+      <div className={styles.desc}>
         除了预算执行分析，现在还可以查看报销行为、人员费用和基本保障费用，并在每个主题里快速看到 AI 解读。
       </div>
 
-      <div className="legacy-coachmark__chips">
-        <span className="legacy-coachmark__chip">
-          <ReceiptText className="legacy-coachmark__chip-icon" />
+      <div className={styles.chips}>
+        <span className={styles.chip}>
+          <ReceiptText className={styles.chipIcon} />
           报销行为分析
         </span>
-        <span className="legacy-coachmark__chip">
-          <UsersRound className="legacy-coachmark__chip-icon" />
+        <span className={styles.chip}>
+          <UsersRound className={styles.chipIcon} />
           人员费用分析
         </span>
-        <span className="legacy-coachmark__chip">
-          <ShieldCheck className="legacy-coachmark__chip-icon" />
+        <span className={styles.chip}>
+          <ShieldCheck className={styles.chipIcon} />
           基本保障费用分析
         </span>
-        <span className="legacy-coachmark__chip legacy-coachmark__chip--accent">
-          <Bot className="legacy-coachmark__chip-icon" />
+        <span className={cx(styles.chip, styles.chipAccent)}>
+          <Bot className={styles.chipIcon} />
           AI 解读
         </span>
       </div>
 
-      <div className="legacy-coachmark__tips">
-        <div className="legacy-coachmark__tip">点按上方主题，切换不同分析视角</div>
-        <div className="legacy-coachmark__tip">每个主题底部都有 AI 解读卡，帮助快速抓住重点</div>
+      <div className={styles.tips}>
+        <div className={styles.tip}>点按上方主题，切换不同分析视角</div>
+        <div className={styles.tip}>每个主题底部都有 AI 解读卡，帮助快速抓住重点</div>
       </div>
 
-      <div className="legacy-coachmark__actions">
-        <button
-          type="button"
-          className="legacy-coachmark__button"
-          onClick={() => setVisible(false)}
-        >
+      <div className={styles.actions}>
+        <button type="button" className={styles.button} onClick={() => setVisible(false)}>
           我知道了
         </button>
       </div>
